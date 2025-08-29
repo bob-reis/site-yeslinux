@@ -1,0 +1,1401 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YesLinux - Segurança, Liberdade e Inovação</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔐</text></svg>">
+    <style>
+        /* Reset básico */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        /* Variáveis CSS */
+        :root {
+            --cyber-green: #00ff41;
+            --cyber-blue: #0066cc;
+            --cyber-orange: #ff6b35;
+            --bg-black: #000000;
+            --bg-dark: #0d1117;
+            --text-light: #f0f6fc;
+            --text-muted: #8b949e;
+            --border-gray: #30363d;
+        }
+        
+        /* Base styles */
+        body {
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            background: linear-gradient(135deg, var(--bg-black) 0%, var(--bg-dark) 50%, var(--bg-black) 100%);
+            color: var(--text-light);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        
+        /* Utility classes */
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 1rem; }
+        .text-center { text-align: center; }
+        .flex { display: flex; }
+        .flex-col { flex-direction: column; }
+        .items-center { align-items: center; }
+        .justify-center { justify-content: center; }
+        .space-y-2 > * + * { margin-top: 0.5rem; }
+        .space-y-4 > * + * { margin-top: 1rem; }
+        .space-x-4 > * + * { margin-left: 1rem; }
+        .grid { display: grid; }
+        .grid-cols-1 { grid-template-columns: repeat(1, 1fr); }
+        .grid-cols-2 { grid-template-columns: repeat(2, 1fr); }
+        .grid-cols-4 { grid-template-columns: repeat(4, 1fr); }
+        .gap-6 { gap: 1.5rem; }
+        .gap-8 { gap: 2rem; }
+        .mb-4 { margin-bottom: 1rem; }
+        .mb-6 { margin-bottom: 1.5rem; }
+        .mb-8 { margin-bottom: 2rem; }
+        .mb-12 { margin-bottom: 3rem; }
+        .mb-16 { margin-bottom: 4rem; }
+        .mt-2 { margin-top: 0.5rem; }
+        .mt-4 { margin-top: 1rem; }
+        .py-4 { padding: 1rem 0; }
+        .py-12 { padding: 3rem 0; }
+        .py-20 { padding: 5rem 0; }
+        .px-4 { padding: 0 1rem; }
+        .px-6 { padding: 0 1.5rem; }
+        .px-8 { padding: 0 2rem; }
+        .p-6 { padding: 1.5rem; }
+        .p-8 { padding: 2rem; }
+        .rounded-lg { border-radius: 0.5rem; }
+        .border { border-width: 1px; }
+        .border-2 { border-width: 2px; }
+        
+        /* Typography */
+        .text-xs { font-size: 0.75rem; }
+        .text-sm { font-size: 0.875rem; }
+        .text-base { font-size: 1rem; }
+        .text-lg { font-size: 1.125rem; }
+        .text-xl { font-size: 1.25rem; }
+        .text-2xl { font-size: 1.5rem; }
+        .text-3xl { font-size: 1.875rem; }
+        .text-4xl { font-size: 2.25rem; }
+        .text-6xl { font-size: 3.75rem; }
+        .text-8xl { font-size: 6rem; }
+        .font-bold { font-weight: 700; }
+        .font-semibold { font-weight: 600; }
+        .font-light { font-weight: 300; }
+        
+        /* Colors */
+        .text-cyber-green { color: var(--cyber-green); }
+        .text-cyber-blue { color: var(--cyber-blue); }
+        .text-cyber-orange { color: var(--cyber-orange); }
+        .text-white { color: white; }
+        .text-gray-300 { color: #d1d5db; }
+        .text-gray-400 { color: #9ca3af; }
+        .text-yellow-400 { color: #fbbf24; }
+        .text-red-400 { color: #f87171; }
+        .bg-cyber-green { background-color: var(--cyber-green); }
+        .bg-black { background-color: var(--bg-black); }
+        .bg-gray-900 { background-color: #111827; }
+        .bg-dark { background-color: var(--bg-dark); }
+        .border-cyber-green { border-color: var(--cyber-green); }
+        .border-gray-600 { border-color: #4b5563; }
+        .border-gray-700 { border-color: #374151; }
+        
+        /* Layout */
+        .fixed { position: fixed; }
+        .relative { position: relative; }
+        .absolute { position: absolute; }
+        .inset-0 { top: 0; right: 0; bottom: 0; left: 0; }
+        .z-0 { z-index: 0; }
+        .z-10 { z-index: 10; }
+        .w-full { width: 100%; }
+        .h-full { height: 100%; }
+        .min-h-screen { min-height: 100vh; }
+        .max-w-2xl { max-width: 42rem; }
+        .max-w-3xl { max-width: 48rem; }
+        .max-w-4xl { max-width: 56rem; }
+        .max-w-6xl { max-width: 72rem; }
+        .mx-auto { margin-left: auto; margin-right: auto; }
+        .pointer-events-none { pointer-events: none; }
+        
+        /* Backgrounds and effects */
+        .backdrop-blur-sm { backdrop-filter: blur(4px); }
+        .bg-opacity-50 { background-color: rgba(0, 0, 0, 0.5); }
+        .bg-opacity-80 { background-color: rgba(0, 0, 0, 0.8); }
+        
+        /* Responsive */
+        @media (min-width: 768px) {
+            .md\\:text-3xl { font-size: 1.875rem; }
+            .md\\:text-8xl { font-size: 6rem; }
+            .md\\:grid-cols-2 { grid-template-columns: repeat(2, 1fr); }
+            .md\\:grid-cols-4 { grid-template-columns: repeat(4, 1fr); }
+        }
+        
+        @media (min-width: 1024px) {
+            .lg\\:grid-cols-2 { grid-template-columns: repeat(2, 1fr); }
+        }
+        
+        @media (max-width: 640px) {
+            .text-6xl { font-size: 3rem; }
+            .text-8xl { font-size: 4rem; }
+        }
+        
+        /* Custom styles */
+        .font-mono {
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+        }
+        
+        .glow-green {
+            box-shadow: 0 0 10px var(--cyber-green), 0 0 20px var(--cyber-green), 0 0 30px var(--cyber-green);
+        }
+        
+        .btn-cyber {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border-style: solid;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .btn-cyber:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 255, 65, 0.3);
+        }
+        
+        .btn-cyber::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 65, 0.4), transparent);
+            transition: left 0.5s;
+            z-index: 0;
+        }
+        
+        .btn-cyber:hover::before {
+            left: 100%;
+        }
+        
+        .btn-cyber span {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .typing::after {
+            content: '_';
+            animation: blink 1s infinite;
+        }
+        
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            border-color: var(--cyber-green);
+        }
+        
+        /* Flex utilities */
+        .sm\\:flex-row {
+            flex-direction: row;
+        }
+        
+        /* Background utilities */
+        .bg-gray-900-50 {
+            background-color: rgba(17, 24, 39, 0.5);
+        }
+        
+        .bg-black-80 {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        
+        .border-cyber-green-50 {
+            border-color: rgba(0, 255, 65, 0.5);
+        }
+        
+        /* Text color */
+        .text-black {
+            color: #000;
+        }
+        
+        .hover\\:bg-green-300:hover {
+            background-color: #86efac;
+        }
+        
+        .hover\\:bg-cyber-green:hover {
+            background-color: var(--cyber-green);
+        }
+        
+        .hover\\:text-black:hover {
+            color: #000;
+        }
+        
+        .hover\\:text-white:hover {
+            color: #fff;
+        }
+        
+        .transition-colors {
+            transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+        }
+        
+        .leading-relaxed {
+            line-height: 1.625;
+        }
+        
+        .inline-flex {
+            display: inline-flex;
+        }
+        
+        /* Header/Navigation styles */
+        .nav-header {
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 255, 65, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 0;
+        }
+        
+        .nav-logo {
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        .nav-links {
+            display: none;
+            align-items: center;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            color: #8b949e;
+            text-decoration: none;
+            font-size: 0.875rem;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: var(--cyber-green);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--cyber-green);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .nav-contact {
+            display: none;
+            align-items: center;
+            gap: 1rem;
+            font-size: 0.875rem;
+        }
+        
+        .nav-contact a {
+            color: var(--cyber-green);
+            text-decoration: none;
+        }
+        
+        .nav-toggle {
+            display: block;
+            background: none;
+            border: 2px solid var(--cyber-green);
+            color: var(--cyber-green);
+            padding: 0.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: 'Consolas', monospace;
+            font-size: 0.875rem;
+        }
+        
+        .nav-toggle:hover {
+            background: rgba(0, 255, 65, 0.1);
+        }
+        
+        /* Mobile menu */
+        .mobile-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.98);
+            border-bottom: 1px solid rgba(0, 255, 65, 0.2);
+            padding: 1rem;
+        }
+        
+        .mobile-menu.active {
+            display: block;
+        }
+        
+        .mobile-menu a {
+            display: block;
+            color: #8b949e;
+            text-decoration: none;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.875rem;
+        }
+        
+        .mobile-menu a:hover {
+            color: var(--cyber-green);
+            padding-left: 0.5rem;
+        }
+        
+        /* Desktop navigation */
+        @media (min-width: 768px) {
+            .nav-links {
+                display: flex;
+            }
+            
+            .nav-contact {
+                display: flex;
+            }
+            
+            .nav-toggle {
+                display: none;
+            }
+        }
+        
+        /* Smooth scroll offset para sticky header */
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+        
+        .opacity-10 {
+            opacity: 0.1;
+        }
+        
+        /* Adicionar suporte para gap em flexbox para browsers mais antigos */
+        .gap-6 > * + * {
+            margin-left: 1.5rem;
+        }
+        
+        .flex-col .gap-6 > * + * {
+            margin-left: 0;
+            margin-top: 1.5rem;
+        }
+        
+        .min-w-64 {
+            min-width: 16rem;
+        }
+        
+        .space-y-1 > * + * {
+            margin-top: 0.25rem;
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    
+    <!-- Navigation Header -->
+    <header class="nav-header">
+        <div class="container mx-auto px-4">
+            <nav class="nav-menu">
+                <!-- Logo -->
+                <div class="nav-logo">
+                    <span class="text-cyber-green">YES</span><span class="text-white">LINUX</span>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="nav-links">
+                    <a href="#inicio">Início</a>
+                    <a href="#universo">Universo InfoSec</a>
+                    <a href="#servicos">Serviços</a>
+                    <a href="#sobre">Sobre Nós</a>
+                    <a href="#contato">Contato</a>
+                </div>
+                
+                <!-- Contact Info -->
+                <div class="nav-contact">
+                    <div class="font-mono text-xs">
+                        <a href="mailto:contato@yeslinux.com.br">contato@yeslinux.com.br</a>
+                    </div>
+                    <div class="text-gray-400">|</div>
+                    <div class="font-mono text-xs text-gray-400">
+                        +55 (11) 99999-9999
+                    </div>
+                </div>
+                
+                <!-- Mobile Menu Toggle -->
+                <button class="nav-toggle" onclick="toggleMobileMenu()">
+                    MENU
+                </button>
+                
+                <!-- Mobile Menu -->
+                <div id="mobile-menu" class="mobile-menu">
+                    <a href="#inicio">🏠 Início</a>
+                    <a href="#universo">🌐 Universo InfoSec</a>
+                    <a href="#servicos">🛡️ Serviços</a>
+                    <a href="#sobre">👥 Sobre Nós</a>
+                    <a href="#contato">📞 Contato</a>
+                    <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1);">
+                        <a href="mailto:contato@yeslinux.com.br" style="border: none; color: var(--cyber-green);">✉️ contato@yeslinux.com.br</a>
+                        <a href="tel:+5511999999999" style="border: none; color: var(--cyber-green);">📱 +55 (11) 96160-0500</a>
+                    </div>
+                    <div style="margin-top: 1rem; display: flex; gap: 1rem; justify-content: center;">
+                        <a href="https://www.linkedin.com/in/bobreis/" style="border: none; color: var(--cyber-blue);">LinkedIn</a>
+                        <a href="https://github.com/bob-reis" style="border: none; color: var(--cyber-green);">GitHub</a>
+                        <a href="https://www.youtube.com/@bobzeratech" style="border: none; color: var(--cyber-orange);">YouTube</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Matrix Background Animation -->
+    <div class="fixed inset-0 pointer-events-none opacity-10 z-0">
+        <canvas id="matrix-canvas" class="w-full h-full"></canvas>
+    </div>
+    
+    <!-- Main Content -->
+    <div class="relative z-10 min-h-screen">
+        
+        <!-- Header -->
+        <header id="inicio" class="text-center py-20 px-4">
+            <div class="max-w-4xl mx-auto">
+                <h1 class="text-6xl md:text-8xl font-bold mb-6 font-mono">
+                    <span class="text-cyber-green">YES</span><span class="text-white">LINUX</span>
+                </h1>
+                
+                <div class="mb-8">
+                    <div class="inline-flex items-center space-x-4 text-sm md:text-base">
+                        <span class="flex items-center"><span class="text-cyber-green mr-2">🛡️</span>SEGURANÇA</span>
+                        <span class="flex items-center"><span class="text-cyber-blue mr-2">⚙️</span>LIBERDADE</span>
+                        <span class="flex items-center"><span class="text-cyber-orange mr-2">⚡</span>INOVAÇÃO</span>
+                    </div>
+                </div>
+                
+                <p class="text-2xl md:text-3xl mb-4 font-light">
+                    Segurança, liberdade e inovação em <span class="text-cyber-green typing">cada linha de código</span>
+                </p>
+                
+                <p class="text-lg text-gray-400 mb-12 max-w-3xl mx-auto leading-relaxed">
+                    Na YesLinux, unimos <span class="text-cyber-green">software livre</span>, 
+                    <span class="text-cyber-blue">cibersegurança</span> e 
+                    <span class="text-cyber-orange">tecnologia de ponta</span> para proteger seu negócio 
+                    e impulsionar sua transformação digital.
+                </p>
+                
+                <!-- Status Terminal -->
+                <div class="bg-black-80 border border-cyber-green-50 rounded-lg p-6 mb-12 max-w-2xl mx-auto backdrop-blur-sm">
+                    <div class="text-left">
+                        <div class="text-cyber-green font-mono text-sm mb-4">$ system_status --yeslinux</div>
+                        <div class="space-y-2 font-mono text-xs">
+                            <div class="flex items-center">
+                                <span class="text-cyber-green mr-3">✓</span>
+                                <span class="text-gray-300">Servidor Online: </span>
+                                <span class="text-cyber-green">ACTIVE</span>
+                            </div>
+                            <div class="flex items-center">
+                                <span class="text-cyber-green mr-3">✓</span>
+                                <span class="text-gray-300">Segurança: </span>
+                                <span class="text-cyber-green">MÁXIMA</span>
+                            </div>
+                            <div class="flex items-center">
+                                <span class="text-cyber-green mr-3">✓</span>
+                                <span class="text-gray-300">Software Livre: </span>
+                                <span class="text-cyber-green">100%</span>
+                            </div>
+                            <div class="flex items-center">
+                                <span class="text-yellow-400 mr-3">⚡</span>
+                                <span class="text-gray-300">Status: </span>
+                                <span class="text-cyber-green">PRONTO PARA AÇÃO</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        
+        <!-- InfoSec Universe Visualization -->
+        <section id="universo" class="py-20 px-4">
+            <div class="max-w-6xl mx-auto">
+                <h2 class="text-4xl font-bold text-center mb-8">
+                    <span class="text-cyber-green">Universo</span> InfoSec
+                </h2>
+                <p class="text-center text-gray-400 mb-12 max-w-2xl mx-auto">
+                    Explore o ecossistema completo da segurança da informação: legislações, normas, teams, 
+                    cargos, tarefas e tecnologias em uma rede interativa 3D
+                </p>
+                
+                <div class="relative">
+                    <canvas id="network-canvas" class="w-full rounded-lg border border-cyber-green-50" style="height: 700px; background: linear-gradient(135deg, rgba(0,0,0,0.9) 0%, rgba(13,17,23,0.9) 50%, rgba(0,0,0,0.9) 100%);"></canvas>
+                    
+                    <!-- Info Panel -->
+                    <div id="node-info" class="absolute top-4 right-4 bg-black-80 border border-cyber-green-50 rounded-lg p-4 backdrop-blur-sm min-w-64" style="display: none;">
+                        <h3 id="node-title" class="text-cyber-green font-bold mb-2"></h3>
+                        <p id="node-description" class="text-gray-300 text-sm"></p>
+                        <div id="node-command" class="font-mono text-xs text-cyber-blue mt-2"></div>
+                    </div>
+                    
+                    <!-- Controls -->
+                    <div class="absolute bottom-4 left-4 bg-black-80 border border-gray-600 rounded-lg p-3 backdrop-blur-sm">
+                        <div class="text-xs text-gray-400 mb-2">Controles:</div>
+                        <div class="text-xs text-gray-300 space-y-1">
+                            <div>🖱️ Mover mouse: Rotacionar</div>
+                            <div>📱 Touch: Interagir</div>
+                            <div>👆 Clique: Selecionar nó</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <br>
+        <!-- Services Grid -->
+        <section id="servicos" class="py-20 px-4">
+            <div class="max-w-6xl mx-auto">
+                <h2 class="text-4xl font-bold text-center mb-16">
+                    <span class="text-cyber-green">Nossos</span> Serviços
+                </h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+                    
+                    <!-- Consultoria DevSecOps -->
+                    <div class="card-hover bg-gray-900-50 border border-gray-600 rounded-lg p-8 backdrop-blur-sm">
+                        <div class="text-4xl mb-4">🔐</div>
+                        <h3 class="text-xl font-bold text-cyber-green mb-3">Consultoria DevSecOps</h3>
+                        <p class="text-gray-400 mb-4">
+                            Implementamos práticas de DevSecOps e Clean Code, garantindo que seu software seja ágil, escalável e, acima de tudo, seguro.
+                        </p>
+                        <div class="font-mono text-xs text-cyber-green">
+                            $ secure-pipeline --deploy
+                        </div>
+                    </div>
+                    
+                    <!-- Investigação Cibernética -->
+                    <div class="card-hover bg-gray-900-50 border border-gray-600 rounded-lg p-8 backdrop-blur-sm">
+                        <div class="text-4xl mb-4">🕵️</div>
+                        <h3 class="text-xl font-bold text-cyber-blue mb-3">Investigação Cibernética</h3>
+                        <p class="text-gray-400 mb-4">
+                            Exponha a verdade com nossa equipe especializada em OSINT e técnicas avançadas de rastreamento digital.
+                        </p>
+                        <div class="font-mono text-xs text-cyber-blue">
+                            $ osint --trace --deep-web
+                        </div>
+                    </div>
+                    
+                    <!-- Defesa Cibernética -->
+                    <div class="card-hover bg-gray-900-50 border border-gray-600 rounded-lg p-8 backdrop-blur-sm">
+                        <div class="text-4xl mb-4">🛡️</div>
+                        <h3 class="text-xl font-bold text-cyber-orange mb-3">Defesa Cibernética</h3>
+                        <p class="text-gray-400 mb-4">
+                            Proteção de ponta com XDR, EDR, Firewalls e soluções de segurança integradas. Monitoramento 24/7.
+                        </p>
+                        <div class="font-mono text-xs text-cyber-orange">
+                            $ defense-matrix --active
+                        </div>
+                    </div>
+                    
+                    <!-- Análise de Vulnerabilidades -->
+                    <div class="card-hover bg-gray-900-50 border border-gray-600 rounded-lg p-8 backdrop-blur-sm">
+                        <div class="text-4xl mb-4">🔎</div>
+                        <h3 class="text-xl font-bold text-red-400 mb-3">Pentest & Vulnerabilidades</h3>
+                        <p class="text-gray-400 mb-4">
+                            Testamos os limites do seu sistema com cenários de ataque avançados. Identifique e corrija falhas antes dos criminosos.
+                        </p>
+                        <div class="font-mono text-xs text-red-400">
+                            $ pentest --advanced --report
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+        
+        <!-- Sobre Nós -->
+        <section id="sobre" class="py-20 px-4 bg-dark">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-4xl font-bold mb-8">
+                    <span class="text-cyber-green">Sobre</span> Nós
+                </h2>
+                <div class="text-lg text-gray-300 leading-relaxed space-y-6">
+                    <p>
+                        A <span class="text-cyber-green font-semibold">YesLinux</span> nasceu com a missão de 
+                        democratizar a segurança digital por meio do software livre.
+                    </p>
+                    <p>
+                        Somos especialistas em <span class="text-cyber-blue">desenvolvimento seguro</span>, 
+                        <span class="text-cyber-orange">investigação cibernética</span> e 
+                        <span class="text-red-400">defesa de infraestruturas críticas</span>.
+                    </p>
+                    <p>
+                        Atuamos lado a lado com empresas e pessoas para oferecer soluções robustas, 
+                        acessíveis e sustentáveis, sempre com foco em transparência, inovação e proteção.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action -->
+        <section id="contato" class="py-20 px-4">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-3xl font-bold mb-8">
+                    Pronto para <span class="text-cyber-green">fortalecer</span> sua segurança digital?
+                </h2>
+                
+                <div class="flex justify-center">
+                    <button class="btn-cyber bg-cyber-green text-black px-8 py-4 rounded-lg font-bold text-lg hover:bg-green-300">
+                        <span>Falar com Especialista</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Footer -->
+        <footer class="border-t border-gray-700 py-8 px-4">
+            <div class="max-w-6xl mx-auto text-center">
+                <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+                    <div class="text-gray-400 text-sm">
+                        &copy; 2024 YesLinux Consultoria em Software Livre. Todos os direitos reservados.
+                    </div>
+                    
+                    <div class="flex items-center gap-6">
+                        <a href="#" class="text-cyber-blue hover:text-white transition-colors text-sm">LinkedIn</a>
+                        <a href="#" class="text-cyber-green hover:text-white transition-colors text-sm">GitHub</a>
+                        <a href="#" class="text-cyber-orange hover:text-white transition-colors text-sm">YouTube</a>
+                    </div>
+                </div>
+                
+                <div class="text-cyber-green font-mono text-xs mt-4">
+                    $ echo "Made with ❤️ and Open Source"
+                </div>
+            </div>
+        </footer>
+    </div>
+    
+    <!-- Matrix Animation Script -->
+    <script>
+        // Matrix Rain Effect
+        const canvas = document.getElementById('matrix-canvas');
+        const ctx = canvas.getContext('2d');
+        
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        
+        const chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%^&*(){}[]';
+        const charArray = chars.split('');
+        
+        const fontSize = 14;
+        const columns = canvas.width / fontSize;
+        
+        const drops = [];
+        for (let x = 0; x < columns; x++) {
+            drops[x] = 1;
+        }
+        
+        function draw() {
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            ctx.fillStyle = '#00ff41';
+            ctx.font = fontSize + 'px JetBrains Mono, monospace';
+            
+            for (let i = 0; i < drops.length; i++) {
+                const text = charArray[Math.floor(Math.random() * charArray.length)];
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+                
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+                drops[i]++;
+            }
+        }
+        
+        setInterval(draw, 100);
+        
+        // Responsive canvas
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // 3D Network Visualization
+        class NetworkVisualization {
+            constructor() {
+                this.canvas = document.getElementById('network-canvas');
+                this.ctx = this.canvas.getContext('2d');
+                this.infoPanel = document.getElementById('node-info');
+                this.nodeTitle = document.getElementById('node-title');
+                this.nodeDescription = document.getElementById('node-description');
+                this.nodeCommand = document.getElementById('node-command');
+                
+                this.mouse = { x: 0, y: 0 };
+                this.rotation = { x: 0, y: 0 };
+                this.selectedNode = null;
+                this.isMouseOver = false;
+                
+                this.setupCanvas();
+                this.setupNodes();
+                this.setupEvents();
+                this.animate();
+            }
+            
+            setupCanvas() {
+                const rect = this.canvas.getBoundingClientRect();
+                this.canvas.width = rect.width * window.devicePixelRatio;
+                this.canvas.height = rect.height * window.devicePixelRatio;
+                this.ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+                
+                this.centerX = rect.width / 2;
+                this.centerY = rect.height / 2;
+            }
+            
+            setupNodes() {
+                this.nodes = [
+                    // CENTRO - YesLinux
+                    {
+                        id: 'yeslinux', name: 'YesLinux', 
+                        description: 'Centro de expertise em segurança da informação e software livre',
+                        command: '$ yeslinux --core --security --expertise',
+                        x: 0, y: 0, z: 0, color: '#00ff41', size: 15,
+                        connections: ['blueteam', 'redteam', 'purpleteam', 'soc', 'grc']
+                    },
+                    
+                    // TEAMS - Blue/Red/Purple
+                    {
+                        id: 'blueteam', name: 'Blue Team', 
+                        description: 'Defesa cibernética, detecção e resposta a incidentes',
+                        command: '$ blue-team --defend --monitor --respond',
+                        x: -100, y: 50, z: 20, color: '#0066ff', size: 12,
+                        connections: ['soc', 'dfir', 'threatintel', 'csirt']
+                    },
+                    {
+                        id: 'redteam', name: 'Red Team', 
+                        description: 'Simulação de ataques e testes ofensivos avançados',
+                        command: '$ red-team --attack --simulate --adversary',
+                        x: 100, y: -50, z: -20, color: '#ff0000', size: 12,
+                        connections: ['pentest', 'osint', 'socialeng', 'phishing']
+                    },
+                    {
+                        id: 'purpleteam', name: 'Purple Team', 
+                        description: 'Colaboração entre Blue e Red Teams para melhoria contínua',
+                        command: '$ purple-team --collaborate --improve --validate',
+                        x: 0, y: 120, z: 40, color: '#8a2be2', size: 10,
+                        connections: ['blueteam', 'redteam', 'threathunt']
+                    },
+                    
+                    // OPERAÇÕES - SOC/CSIRT/DFIR
+                    {
+                        id: 'soc', name: 'SOC', 
+                        description: 'Security Operations Center - Monitoramento 24x7',
+                        command: '$ soc --monitor --analyze --alert',
+                        x: -120, y: -20, z: 60, color: '#00bfff', size: 11,
+                        connections: ['siem', 'csirt', 'threatintel']
+                    },
+                    {
+                        id: 'csirt', name: 'CSIRT', 
+                        description: 'Computer Security Incident Response Team',
+                        command: '$ csirt --incident --response --coordinate',
+                        x: -80, y: -100, z: 30, color: '#1e90ff', size: 9,
+                        connections: ['dfir', 'forensics']
+                    },
+                    {
+                        id: 'dfir', name: 'DFIR', 
+                        description: 'Digital Forensics and Incident Response',
+                        command: '$ dfir --investigate --forensics --timeline',
+                        x: -60, y: -150, z: -10, color: '#4682b4', size: 9,
+                        connections: ['forensics', 'malware']
+                    },
+                    
+                    // ANÁLISES E INTELIGÊNCIA
+                    {
+                        id: 'threatintel', name: 'Threat Intel', 
+                        description: 'Inteligência de ameaças e análise de indicadores',
+                        command: '$ threat-intel --ioc --ttp --attribution',
+                        x: -150, y: 80, z: -30, color: '#20b2aa', size: 10,
+                        connections: ['osint', 'mitre', 'cti']
+                    },
+                    {
+                        id: 'threathunt', name: 'Threat Hunting', 
+                        description: 'Caça proativa a ameaças em ambientes corporativos',
+                        command: '$ threat-hunt --proactive --hypothesis --hunt',
+                        x: -50, y: 160, z: 80, color: '#3cb371', size: 9,
+                        connections: ['soc', 'threatintel']
+                    },
+                    {
+                        id: 'osint', name: 'OSINT', 
+                        description: 'Open Source Intelligence - Inteligência de fontes abertas',
+                        command: '$ osint --investigate --sources --passive',
+                        x: 150, y: 80, z: 30, color: '#ff6347', size: 10,
+                        connections: ['socialeng', 'reconn', 'cti']
+                    },
+                    
+                    // TESTES E PENTESTING
+                    {
+                        id: 'pentest', name: 'Pentest', 
+                        description: 'Testes de penetração e avaliação de segurança',
+                        command: '$ pentest --scope --methodology --report',
+                        x: 120, y: -120, z: -40, color: '#dc143c', size: 11,
+                        connections: ['vulnassess', 'webapp', 'network']
+                    },
+                    {
+                        id: 'vulnassess', name: 'Vuln Assessment', 
+                        description: 'Avaliação e análise de vulnerabilidades',
+                        command: '$ vuln-assess --scan --prioritize --remediate',
+                        x: 80, y: -180, z: -60, color: '#b22222', size: 9,
+                        connections: ['webapp', 'network']
+                    },
+                    
+                    // ÁREAS ESPECIALIZADAS
+                    {
+                        id: 'forensics', name: 'Digital Forensics', 
+                        description: 'Perícia digital e análise forense de evidências',
+                        command: '$ forensics --acquire --analyze --report',
+                        x: -30, y: -200, z: -80, color: '#191970', size: 9,
+                        connections: ['malware', 'memory']
+                    },
+                    {
+                        id: 'malware', name: 'Malware Analysis', 
+                        description: 'Análise de malware e engenharia reversa',
+                        command: '$ malware-analysis --static --dynamic --reverse',
+                        x: 30, y: -220, z: -100, color: '#800080', size: 8,
+                        connections: ['sandbox', 'yara']
+                    },
+                    {
+                        id: 'socialeng', name: 'Social Engineering', 
+                        description: 'Testes de engenharia social e conscientização',
+                        command: '$ social-eng --phishing --pretexting --awareness',
+                        x: 180, y: 20, z: -60, color: '#ff69b4', size: 8,
+                        connections: ['phishing', 'awareness']
+                    },
+                    
+                    // COMPLIANCE E GOVERNANÇA
+                    {
+                        id: 'grc', name: 'GRC', 
+                        description: 'Governance, Risk and Compliance',
+                        command: '$ grc --governance --risk --compliance',
+                        x: 50, y: 80, z: 100, color: '#9370db', size: 11,
+                        connections: ['iso27001', 'nist', 'lgpd', 'sox']
+                    },
+                    {
+                        id: 'iso27001', name: 'ISO 27001', 
+                        description: 'Norma internacional para gestão de segurança da informação',
+                        command: '$ iso27001 --isms --controls --audit',
+                        x: 20, y: 140, z: 150, color: '#4b0082', size: 8,
+                        connections: ['iso27002', 'audit']
+                    },
+                    {
+                        id: 'nist', name: 'NIST Framework', 
+                        description: 'Framework de cibersegurança do NIST',
+                        command: '$ nist --identify --protect --detect',
+                        x: 100, y: 120, z: 120, color: '#6a5acd', size: 9,
+                        connections: ['csf', 'controls']
+                    },
+                    {
+                        id: 'lgpd', name: 'LGPD', 
+                        description: 'Lei Geral de Proteção de Dados Pessoais',
+                        command: '$ lgpd --privacy --protection --rights',
+                        x: 80, y: 160, z: 80, color: '#483d8b', size: 8,
+                        connections: ['privacy', 'dpo']
+                    },
+                    
+                    // TECNOLOGIAS E FERRAMENTAS
+                    {
+                        id: 'siem', name: 'SIEM/SOAR', 
+                        description: 'Security Information and Event Management / Orchestration',
+                        command: '$ siem --correlate --automate --orchestrate',
+                        x: -200, y: -50, z: 90, color: '#00ced1', size: 9,
+                        connections: ['xdr', 'ueba']
+                    },
+                    {
+                        id: 'xdr', name: 'XDR/EDR', 
+                        description: 'Extended/Endpoint Detection and Response',
+                        command: '$ xdr --detect --investigate --respond',
+                        x: -180, y: -120, z: 110, color: '#48d1cc', size: 8,
+                        connections: ['edr', 'endpoint']
+                    },
+                    
+                    // FRAMEWORKS E METODOLOGIAS
+                    {
+                        id: 'mitre', name: 'MITRE ATT&CK', 
+                        description: 'Framework de táticas, técnicas e procedimentos adversários',
+                        command: '$ mitre --ttp --tactics --techniques',
+                        x: -100, y: 200, z: -50, color: '#ff8c00', size: 9,
+                        connections: ['ttp', 'killchain']
+                    },
+                    {
+                        id: 'owasp', name: 'OWASP', 
+                        description: 'Open Web Application Security Project',
+                        command: '$ owasp --top10 --testing --secure-coding',
+                        x: 60, y: -80, z: -120, color: '#ff4500', size: 9,
+                        connections: ['webapp', 'appsec']
+                    },
+                    
+                    // MITRE D3FEND E PHISHING
+                    {
+                        id: 'd3fend', name: 'MITRE D3FEND', 
+                        description: 'Framework de técnicas de defesa cibernética',
+                        command: '$ d3fend --defensive --techniques --countermeasures',
+                        x: -120, y: 180, z: -80, color: '#ffa500', size: 9,
+                        connections: ['mitre', 'blueteam', 'controls']
+                    },
+                    {
+                        id: 'phishing', name: 'Phishing', 
+                        description: 'Ataques de engenharia social por email e mensagens',
+                        command: '$ phishing --simulate --awareness --prevention',
+                        x: 200, y: 40, z: -40, color: '#ff1493', size: 8,
+                        connections: ['socialeng', 'awareness', 'email']
+                    },
+                    
+                    // IA E DEEP FAKE
+                    {
+                        id: 'aiml', name: 'AI/ML Security', 
+                        description: 'Segurança em Inteligência Artificial e Machine Learning',
+                        command: '$ ai-security --adversarial --model --protection',
+                        x: -250, y: 120, z: 60, color: '#00ff7f', size: 10,
+                        connections: ['deepfake', 'datascience', 'privacy']
+                    },
+                    {
+                        id: 'deepfake', name: 'DeepFake Detection', 
+                        description: 'Detecção e análise de conteúdo sintético gerado por IA',
+                        command: '$ deepfake --detect --analyze --synthetic',
+                        x: -280, y: 160, z: 20, color: '#32cd32', size: 9,
+                        connections: ['aiml', 'forensics', 'media']
+                    },
+                    {
+                        id: 'llmsec', name: 'LLM Security', 
+                        description: 'Segurança em Large Language Models e prompt injection',
+                        command: '$ llm-security --prompt --injection --guardrails',
+                        x: -220, y: 200, z: 100, color: '#98fb98', size: 8,
+                        connections: ['aiml', 'prompt', 'nlp']
+                    },
+                    
+                    // NORMAS E LEGISLAÇÕES ADICIONAIS
+                    {
+                        id: 'iso27002', name: 'ISO 27002', 
+                        description: 'Código de práticas para controles de segurança da informação',
+                        command: '$ iso27002 --controls --practices --implementation',
+                        x: 40, y: 180, z: 180, color: '#663399', size: 8,
+                        connections: ['iso27001', 'controls']
+                    },
+                    {
+                        id: 'pci', name: 'PCI DSS', 
+                        description: 'Payment Card Industry Data Security Standard',
+                        command: '$ pci-dss --payment --compliance --audit',
+                        x: 120, y: 180, z: 140, color: '#8b008b', size: 8,
+                        connections: ['grc', 'compliance', 'audit']
+                    },
+                    {
+                        id: 'sox', name: 'SOX', 
+                        description: 'Sarbanes-Oxley Act - Compliance financeiro',
+                        command: '$ sox --financial --controls --audit',
+                        x: 80, y: 200, z: 160, color: '#9932cc', size: 7,
+                        connections: ['grc', 'audit', 'finance']
+                    },
+                    {
+                        id: 'gdpr', name: 'GDPR', 
+                        description: 'General Data Protection Regulation (Europa)',
+                        command: '$ gdpr --privacy --rights --protection',
+                        x: 60, y: 220, z: 120, color: '#da70d6', size: 8,
+                        connections: ['lgpd', 'privacy', 'dpo']
+                    },
+                    
+                    // CLOUD E DEVOPS SECURITY
+                    {
+                        id: 'cloudsec', name: 'Cloud Security', 
+                        description: 'Segurança em ambientes de computação em nuvem',
+                        command: '$ cloud-security --aws --azure --gcp',
+                        x: 150, y: -60, z: 140, color: '#87ceeb', size: 10,
+                        connections: ['devsecops', 'cspm', 'iam']
+                    },
+                    {
+                        id: 'devsecops', name: 'DevSecOps', 
+                        description: 'Integração de segurança no pipeline de desenvolvimento',
+                        command: '$ devsecops --pipeline --sast --dast',
+                        x: 120, y: -30, z: 160, color: '#40e0d0', size: 11,
+                        connections: ['cloudsec', 'appsec', 'sast']
+                    },
+                    {
+                        id: 'container', name: 'Container Security', 
+                        description: 'Segurança em containers Docker/Kubernetes',
+                        command: '$ container-sec --docker --k8s --runtime',
+                        x: 180, y: -100, z: 120, color: '#20b2aa', size: 9,
+                        connections: ['cloudsec', 'devsecops']
+                    },
+                    
+                    // ÁREAS ESPECIALIZADAS
+                    {
+                        id: 'iot', name: 'IoT Security', 
+                        description: 'Segurança em Internet das Coisas',
+                        command: '$ iot-security --devices --firmware --protocol',
+                        x: -160, y: -180, z: -120, color: '#ffd700', size: 9,
+                        connections: ['embedded', 'wireless', 'protocol']
+                    },
+                    {
+                        id: 'ot', name: 'OT Security', 
+                        description: 'Operational Technology Security - SCADA/ICS',
+                        command: '$ ot-security --scada --ics --industrial',
+                        x: -200, y: -160, z: -100, color: '#daa520', size: 9,
+                        connections: ['iot', 'industrial', 'critical']
+                    },
+                    {
+                        id: 'mobile', name: 'Mobile Security', 
+                        description: 'Segurança em dispositivos e aplicações móveis',
+                        command: '$ mobile-security --android --ios --mdm',
+                        x: 140, y: -160, z: -80, color: '#ff8c00', size: 9,
+                        connections: ['appsec', 'byod', 'mdm']
+                    },
+                    
+                    // ANÁLISE E MONITORAMENTO
+                    {
+                        id: 'ueba', name: 'UEBA', 
+                        description: 'User and Entity Behavior Analytics',
+                        command: '$ ueba --behavior --anomaly --baseline',
+                        x: -240, y: -80, z: 120, color: '#00ffff', size: 8,
+                        connections: ['siem', 'ai', 'anomaly']
+                    },
+                    {
+                        id: 'ndr', name: 'NDR', 
+                        description: 'Network Detection and Response',
+                        command: '$ ndr --network --traffic --lateral',
+                        x: -160, y: -40, z: 140, color: '#87cefa', size: 8,
+                        connections: ['xdr', 'network', 'detection']
+                    },
+                    
+                    // ÁREA DE DADOS E CRIPTOGRAFIA
+                    {
+                        id: 'crypto', name: 'Cryptography', 
+                        description: 'Criptografia e gestão de chaves',
+                        command: '$ crypto --encryption --pki --quantum',
+                        x: -120, y: -220, z: 60, color: '#dda0dd', size: 9,
+                        connections: ['pki', 'quantum', 'keys']
+                    },
+                    {
+                        id: 'blockchain', name: 'Blockchain Security', 
+                        description: 'Segurança em blockchain e smart contracts',
+                        command: '$ blockchain --smartcontract --defi --audit',
+                        x: -80, y: -260, z: 40, color: '#ee82ee', size: 8,
+                        connections: ['crypto', 'smartcontract', 'audit']
+                    },
+                    
+                    // THREAT LANDSCAPE
+                    {
+                        id: 'apt', name: 'APT Analysis', 
+                        description: 'Advanced Persistent Threats Analysis',
+                        command: '$ apt --groups --campaigns --attribution',
+                        x: 200, y: 120, z: -20, color: '#cd5c5c', size: 9,
+                        connections: ['threatintel', 'attribution', 'campaign']
+                    },
+                    {
+                        id: 'ransomware', name: 'Ransomware', 
+                        description: 'Análise e defesa contra ransomware',
+                        command: '$ ransomware --analysis --recovery --prevention',
+                        x: 60, y: -250, z: -120, color: '#dc143c', size: 9,
+                        connections: ['malware', 'backup', 'incident']
+                    },
+                    
+                    // AWARENESS E TREINAMENTO
+                    {
+                        id: 'awareness', name: 'Security Awareness', 
+                        description: 'Conscientização e treinamento em segurança',
+                        command: '$ awareness --training --phishing --culture',
+                        x: 220, y: 80, z: -80, color: '#ffc0cb', size: 8,
+                        connections: ['socialeng', 'phishing', 'training']
+                    }
+                ];
+                
+                // Criar conexões bidirecionais
+                this.connections = [];
+                this.nodes.forEach(node => {
+                    node.connections.forEach(targetId => {
+                        this.connections.push({
+                            from: node.id,
+                            to: targetId,
+                            opacity: 0.3
+                        });
+                    });
+                });
+            }
+            
+            setupEvents() {
+                this.canvas.addEventListener('mousemove', (e) => {
+                    const rect = this.canvas.getBoundingClientRect();
+                    this.mouse.x = e.clientX - rect.left;
+                    this.mouse.y = e.clientY - rect.top;
+                    
+                    // Rotação baseada no mouse com limites
+                    const maxRotation = Math.PI / 3; // Limitar a 60 graus
+                    this.rotation.y = Math.max(-maxRotation, Math.min(maxRotation, (this.mouse.x - this.centerX) * 0.003));
+                    this.rotation.x = Math.max(-maxRotation, Math.min(maxRotation, (this.mouse.y - this.centerY) * 0.003));
+                    
+                    // Check node hover
+                    this.checkNodeHover();
+                });
+                
+                this.canvas.addEventListener('click', (e) => {
+                    this.handleNodeClick();
+                });
+                
+                this.canvas.addEventListener('mouseenter', () => {
+                    this.isMouseOver = true;
+                });
+                
+                this.canvas.addEventListener('mouseleave', () => {
+                    this.isMouseOver = false;
+                    this.hideInfo();
+                });
+                
+                window.addEventListener('resize', () => {
+                    this.setupCanvas();
+                });
+            }
+            
+            project3D(x, y, z) {
+                // Aplicar rotação
+                const cosY = Math.cos(this.rotation.y);
+                const sinY = Math.sin(this.rotation.y);
+                const cosX = Math.cos(this.rotation.x);
+                const sinX = Math.sin(this.rotation.x);
+                
+                // Rotação Y
+                const x1 = x * cosY - z * sinY;
+                const z1 = x * sinY + z * cosY;
+                
+                // Rotação X
+                const y1 = y * cosX - z1 * sinX;
+                const z2 = y * sinX + z1 * cosX;
+                
+                // Projeção perspectiva com validação
+                const distance = 300;
+                const minDistance = 50; // Distância mínima para evitar divisão por zero
+                const adjustedZ = Math.max(z2, -distance + minDistance);
+                const scale = Math.max(distance / (distance + adjustedZ), 0.1); // Scale mínimo
+                
+                return {
+                    x: this.centerX + x1 * scale,
+                    y: this.centerY + y1 * scale,
+                    z: adjustedZ,
+                    scale: Math.max(scale, 0.1) // Garantir scale positivo
+                };
+            }
+            
+            checkNodeHover() {
+                let hoveredNode = null;
+                
+                this.nodes.forEach(node => {
+                    const projected = this.project3D(node.x, node.y, node.z);
+                    const distance = Math.sqrt(
+                        Math.pow(this.mouse.x - projected.x, 2) + 
+                        Math.pow(this.mouse.y - projected.y, 2)
+                    );
+                    
+                    // Validar valores antes de usar
+                    const nodeRadius = Math.max(node.size * projected.scale + 5, 5);
+                    
+                    if (distance < nodeRadius) {
+                        hoveredNode = node;
+                    }
+                });
+                
+                if (hoveredNode !== this.selectedNode) {
+                    this.selectedNode = hoveredNode;
+                    if (hoveredNode) {
+                        this.showInfo(hoveredNode);
+                    } else {
+                        this.hideInfo();
+                    }
+                }
+                
+                this.canvas.style.cursor = hoveredNode ? 'pointer' : 'default';
+            }
+            
+            handleNodeClick() {
+                if (this.selectedNode) {
+                    // Criar efeito de pulso no nó clicado
+                    this.selectedNode.pulse = 1.5;
+                    
+                    // Destacar conexões
+                    this.connections.forEach(conn => {
+                        if (conn.from === this.selectedNode.id || conn.to === this.selectedNode.id) {
+                            conn.highlight = 30; // frames para destacar
+                        }
+                    });
+                }
+            }
+            
+            showInfo(node) {
+                this.nodeTitle.textContent = node.name;
+                this.nodeDescription.textContent = node.description;
+                this.nodeCommand.textContent = node.command;
+                this.infoPanel.style.display = 'block';
+            }
+            
+            hideInfo() {
+                this.infoPanel.style.display = 'none';
+            }
+            
+            drawConnections() {
+                this.connections.forEach(conn => {
+                    const fromNode = this.nodes.find(n => n.id === conn.from);
+                    const toNode = this.nodes.find(n => n.id === conn.to);
+                    
+                    if (fromNode && toNode) {
+                        const from = this.project3D(fromNode.x, fromNode.y, fromNode.z);
+                        const to = this.project3D(toNode.x, toNode.y, toNode.z);
+                        
+                        // Ordenar por Z para renderização correta
+                        const avgZ = (from.z + to.z) / 2;
+                        
+                        this.ctx.strokeStyle = conn.highlight ? '#00ff41' : 'rgba(0, 255, 65, 0.3)';
+                        this.ctx.lineWidth = conn.highlight ? 2 : 1;
+                        this.ctx.setLineDash(conn.highlight ? [] : [5, 5]);
+                        
+                        this.ctx.beginPath();
+                        this.ctx.moveTo(from.x, from.y);
+                        this.ctx.lineTo(to.x, to.y);
+                        this.ctx.stroke();
+                        
+                        // Data flow animation
+                        if (conn.highlight) {
+                            const progress = (Date.now() % 2000) / 2000;
+                            const flowX = from.x + (to.x - from.x) * progress;
+                            const flowY = from.y + (to.y - from.y) * progress;
+                            
+                            this.ctx.fillStyle = '#00ff41';
+                            this.ctx.beginPath();
+                            this.ctx.arc(flowX, flowY, 3, 0, Math.PI * 2);
+                            this.ctx.fill();
+                        }
+                        
+                        if (conn.highlight) conn.highlight--;
+                    }
+                });
+                
+                this.ctx.setLineDash([]);
+            }
+            
+            drawNodes() {
+                // Ordenar nós por Z (mais distantes primeiro)
+                const sortedNodes = [...this.nodes].sort((a, b) => {
+                    const aZ = this.project3D(a.x, a.y, a.z).z;
+                    const bZ = this.project3D(b.x, b.y, b.z).z;
+                    return bZ - aZ;
+                });
+                
+                sortedNodes.forEach(node => {
+                    const projected = this.project3D(node.x, node.y, node.z);
+                    
+                    // Validar e limitar o tamanho do nó
+                    const baseSize = Math.max(node.size || 8, 3);
+                    const scale = Math.max(projected.scale, 0.1);
+                    const pulseMultiplier = Math.max(node.pulse || 1, 0.5);
+                    const size = Math.max(baseSize * scale * pulseMultiplier, 2);
+                    
+                    // Verificar se o nó está na tela visível
+                    if (projected.x < -100 || projected.x > this.canvas.width + 100 ||
+                        projected.y < -100 || projected.y > this.canvas.height + 100) {
+                        return; // Skip nós fora da tela
+                    }
+                    
+                    // Shadow/glow effect
+                    this.ctx.shadowColor = node.color || '#00ff41';
+                    this.ctx.shadowBlur = node === this.selectedNode ? 20 : 10;
+                    
+                    // Node circle
+                    this.ctx.fillStyle = node.color || '#00ff41';
+                    this.ctx.beginPath();
+                    this.ctx.arc(projected.x, projected.y, size, 0, Math.PI * 2);
+                    this.ctx.fill();
+                    
+                    // Inner core
+                    this.ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
+                    this.ctx.beginPath();
+                    this.ctx.arc(projected.x, projected.y, Math.max(size * 0.3, 1), 0, Math.PI * 2);
+                    this.ctx.fill();
+                    
+                    // Label
+                    this.ctx.shadowBlur = 0;
+                    this.ctx.fillStyle = node.color || '#00ff41';
+                    const fontSize = Math.max(Math.min(10 * scale, 16), 8);
+                    this.ctx.font = `${fontSize}px Consolas, monospace`;
+                    this.ctx.textAlign = 'center';
+                    this.ctx.fillText(node.name || 'Node', projected.x, projected.y + size + 15);
+                    
+                    // Decay pulse effect
+                    if (node.pulse) {
+                        node.pulse -= 0.02;
+                        if (node.pulse <= 1) node.pulse = null;
+                    }
+                });
+            }
+            
+            animate() {
+                this.ctx.clearRect(0, 0, this.canvas.width / window.devicePixelRatio, this.canvas.height / window.devicePixelRatio);
+                
+                // Adicionar rotação automática suave apenas se o mouse não estiver sobre o canvas
+                if (!this.isMouseOver) {
+                    this.rotation.y += 0.005;
+                    // Manter a rotação em limites razoáveis
+                    if (this.rotation.y > Math.PI * 2) this.rotation.y -= Math.PI * 2;
+                    if (this.rotation.y < -Math.PI * 2) this.rotation.y += Math.PI * 2;
+                }
+                
+                try {
+                    this.drawConnections();
+                    this.drawNodes();
+                } catch (error) {
+                    console.warn('Erro na renderização 3D:', error);
+                }
+                
+                requestAnimationFrame(() => this.animate());
+            }
+        }
+        
+        // Inicializar quando o DOM estiver pronto
+        document.addEventListener('DOMContentLoaded', () => {
+            new NetworkVisualization();
+        });
+        
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('active');
+        }
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('#mobile-menu a[href^="#"]').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('mobile-menu').classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>
