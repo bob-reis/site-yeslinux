@@ -1,5 +1,12 @@
 # YesLinux – Tecnologia em Software Livre
 
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=bob-reis_site-yeslinux&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=bob-reis_site-yeslinux)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=bob-reis_site-yeslinux&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=bob-reis_site-yeslinux)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=bob-reis_site-yeslinux&metric=bugs)](https://sonarcloud.io/summary/new_code?id=bob-reis_site-yeslinux)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=bob-reis_site-yeslinux&metric=coverage)](https://sonarcloud.io/summary/new_code?id=bob-reis_site-yeslinux)
+[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=bob-reis_site-yeslinux&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=bob-reis_site-yeslinux)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=bob-reis_site-yeslinux&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=bob-reis_site-yeslinux)
+
 Site institucional da **YesLinux**, empresa especializada em software livre, segurança digital e inovação.
 
 ---
