@@ -72,8 +72,8 @@ const AboutSection = () => {
               <div className="bg-darker/50 border border-primary/20 rounded-lg p-6 mt-8">
                 <h3 className="text-primary font-semibold text-lg mb-3">Nossa Missão</h3>
                 <p className="text-text-muted italic">
-                  "Tornar a segurança digital acessível através do software livre, 
-                  protegendo empresas e pessoas com soluções transparentes e inovadoras."
+                  &quot;Tornar a segurança digital acessível através do software livre, 
+                  protegendo empresas e pessoas com soluções transparentes e inovadoras.&quot;
                 </p>
               </div>
             </div>
