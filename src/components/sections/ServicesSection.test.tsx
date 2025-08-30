@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react'
+import { renderToString } from 'react-dom/server'
 import ServicesSection from './ServicesSection'
 
 // Mock the Section component
@@ -10,21 +10,19 @@ vi.mock('../ui/Section', () => ({
       <p>{description}</p>
       {children}
     </div>
-  )
+  ),
 }))
 
 describe('ServicesSection', () => {
   it('renders with correct props passed to Section component', () => {
-    render(<ServicesSection />)
-    
-    expect(screen.getByText('Nossos')).toBeInTheDocument()
-    expect(screen.getByText('Serviços')).toBeInTheDocument()
-    expect(screen.getByText('Soluções completas em segurança digital e software livre')).toBeInTheDocument()
+    const html = renderToString(<ServicesSection />)
+    expect(html).toContain('Nossos')
+    expect(html).toContain('Serviços')
+    expect(html).toContain('Soluções completas em segurança digital e software livre')
   })
 
   it('renders placeholder content', () => {
-    render(<ServicesSection />)
-    
-    expect(screen.getByText('[Seção de Serviços será desenvolvida]')).toBeInTheDocument()
+    const html = renderToString(<ServicesSection />)
+    expect(html).toContain('[Seção de Serviços será desenvolvida]')
   })
 })

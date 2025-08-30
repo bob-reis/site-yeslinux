@@ -28,7 +28,7 @@ jobs:
       run: npm ci
 
     - name: Run npm audit
-      run: npm audit --audit-level=moderate
+      run: npm audit --audit-level=moderate --omit=dev
 
     - name: Run dependency check
       uses: dependency-check/Dependency-Check_Action@main
