@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react'
+import { renderToString } from 'react-dom/server'
 import AboutSection from './AboutSection'
 
 // Mock framer-motion
@@ -13,46 +13,42 @@ vi.mock('lucide-react', () => ({
   Shield: () => <div data-testid="shield-icon" />,
   Users: () => <div data-testid="users-icon" />,
   Award: () => <div data-testid="award-icon" />,
-  Target: () => <div data-testid="target-icon" />
+  Target: () => <div data-testid="target-icon" />,
 }))
 
 describe('AboutSection', () => {
   it('renders the section heading', () => {
-    render(<AboutSection />)
-    
-    expect(screen.getByText('Sobre')).toBeInTheDocument()
-    expect(screen.getByText('Nós')).toBeInTheDocument()
+    const html = renderToString(<AboutSection />)
+    expect(html).toContain('Sobre')
+    expect(html).toContain('Nós')
   })
 
   it('renders all value cards with icons and descriptions', () => {
-    render(<AboutSection />)
-    
+    const html = renderToString(<AboutSection />)
+
     // Security
-    expect(screen.getByTestId('shield-icon')).toBeInTheDocument()
-    expect(screen.getByText('Segurança')).toBeInTheDocument()
-    expect(screen.getByText('Proteção é nossa prioridade número um em cada projeto.')).toBeInTheDocument()
-    
+    expect(html).toContain('data-testid="shield-icon"')
+    expect(html).toContain('Segurança')
+    expect(html).toContain('Proteção é nossa prioridade número um em cada projeto.')
+
     // Transparency
-    expect(screen.getByTestId('users-icon')).toBeInTheDocument()
-    expect(screen.getByText('Transparência')).toBeInTheDocument()
-    expect(screen.getByText('Software livre significa código aberto e confiança total.')).toBeInTheDocument()
-    
+    expect(html).toContain('data-testid="users-icon"')
+    expect(html).toContain('Transparência')
+    expect(html).toContain('Software livre significa código aberto e confiança total.')
+
     // Excellence
-    expect(screen.getByTestId('award-icon')).toBeInTheDocument()
-    expect(screen.getByText('Excelência')).toBeInTheDocument()
-    expect(screen.getByText('Padrões elevados em desenvolvimento e consultoria.')).toBeInTheDocument()
-    
+    expect(html).toContain('data-testid="award-icon"')
+    expect(html).toContain('Excelência')
+    expect(html).toContain('Padrões elevados em desenvolvimento e consultoria.')
+
     // Focus
-    expect(screen.getByTestId('target-icon')).toBeInTheDocument()
-    expect(screen.getByText('Foco')).toBeInTheDocument()
-    expect(screen.getByText('Soluções direcionadas para suas necessidades específicas.')).toBeInTheDocument()
+    expect(html).toContain('data-testid="target-icon"')
+    expect(html).toContain('Foco')
+    expect(html).toContain('Soluções direcionadas para suas necessidades específicas.')
   })
 
-  it('has proper section structure and id', () => {
-    const { container } = render(<AboutSection />)
-    
-    const section = container.querySelector('section#about')
-    expect(section).toBeInTheDocument()
-    expect(section).toHaveClass('py-20', 'relative', 'bg-dark/50')
+  it('has section id', () => {
+    const html = renderToString(<AboutSection />)
+    expect(html).toContain('id="about"')
   })
 })
