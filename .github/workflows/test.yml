@@ -12,6 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
     strategy:
       matrix:
@@ -51,11 +52,10 @@ jobs:
         fail_ci_if_error: true
 
     - name: SonarCloud Scan
-      if: matrix.node-version == '20.x'
-      uses: SonarSource/sonarcloud-github-action@master
+      if: matrix.node-version == '20.x' && env.SONAR_TOKEN != ''
+      uses: SonarSource/sonarqube-scan-action@v5
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
     - name: Check coverage threshold
       if: matrix.node-version == '20.x'
