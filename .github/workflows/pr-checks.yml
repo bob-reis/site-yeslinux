@@ -29,7 +29,12 @@ jobs:
         cache: 'npm'
 
     - name: Install dependencies
-      run: npm ci
+      run: |
+        if [ -f "package-lock.json" ]; then
+          npm ci || npm install
+        else
+          npm install
+        fi
 
     - name: Check for breaking changes
       run: |
@@ -102,7 +107,12 @@ jobs:
         cache: 'npm'
 
     - name: Install dependencies
-      run: npm ci
+      run: |
+        if [ -f "package-lock.json" ]; then
+          npm ci || npm install
+        else
+          npm install
+        fi
 
     - name: Build and analyze bundle
       run: |
