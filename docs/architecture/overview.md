@@ -36,6 +36,8 @@ graph TD
 
 A seção de serviços usa o componente `HackerCard` disposto em uma grade responsiva. O `index.html` estático de fallback replica essa mesma disposição para manter a consistência visual.
 
+Um componente global `Navbar` provê navegação fixa no topo com links essenciais e informações de contato.
+
 ## 🏛️ Arquitetura de Componentes
 
 ### Hierarquia de Componentes

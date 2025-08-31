@@ -24,6 +24,12 @@ describe('RootLayout', () => {
     expect(html).toContain('Test Content')
   })
 
+  it('includes the navigation header', () => {
+    const html = renderToString(<RootLayout>{mockChildren}</RootLayout>)
+    expect(html).toContain('YES')
+    expect(html).toContain('href="#inicio"')
+  })
+
   it('includes Inter font class in body', () => {
     const html = renderToString(<RootLayout>{mockChildren}</RootLayout>)
     // Inter font generates a class name

@@ -8,6 +8,7 @@ O formato é baseado em [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 
 ### Adicionado
 - Seção de serviços agora utiliza cards em estilo hacker
+- Cabeçalho de navegação com visual hacker e informações de contato
 
 ### Removido
 - Efeito de background Matrix Rain
