@@ -9,10 +9,9 @@ const MatrixRain = () => {
     if (!containerRef.current) return
 
     const container = containerRef.current
-    const chars =
-      '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%^&*(){}[]'
+    const chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%^&*(){}[]'
     const columns = Math.floor(window.innerWidth / 20)
-
+    
     // Clear existing content
     container.innerHTML = ''
 
@@ -20,11 +19,11 @@ const MatrixRain = () => {
       const column = document.createElement('div')
       column.className = 'absolute top-0 flex flex-col opacity-20'
       column.style.left = `${x * 20}px`
-
+      
       const animateColumn = () => {
         column.innerHTML = ''
         const height = Math.random() * 100 + 50
-
+        
         for (let i = 0; i < height / 20; i++) {
           const char = document.createElement('div')
           char.textContent = chars[Math.floor(Math.random() * chars.length)]
@@ -32,10 +31,10 @@ const MatrixRain = () => {
           char.style.animationDelay = `${i * 0.1}s`
           column.appendChild(char)
         }
-
+        
         setTimeout(animateColumn, Math.random() * 3000 + 2000)
       }
-
+      
       animateColumn()
       return column
     }
@@ -61,13 +60,12 @@ const MatrixRain = () => {
   }, [])
 
   return (
-    <div
+    <div 
       ref={containerRef}
-      className="fixed inset-0 pointer-events-none -z-10 overflow-hidden"
+      className="fixed inset-0 pointer-events-none z-0 overflow-hidden"
       aria-hidden="true"
     />
   )
 }
 
 export default MatrixRain
-

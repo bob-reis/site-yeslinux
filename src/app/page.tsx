@@ -1,21 +1,16 @@
+import HeroSection from '@/components/sections/HeroSection'
 import AboutSection from '@/components/sections/AboutSection'
+import ServicesSection from '@/components/sections/ServicesSection'
 import BlogSection from '@/components/sections/BlogSection'
 import ContactSection from '@/components/sections/ContactSection'
-import GamificationSection from '@/components/sections/GamificationSection'
-import HeroSection from '@/components/sections/HeroSection'
-import MatrixRain from '@/components/ui/MatrixRain'
-import ServicesSection from '@/components/sections/ServicesSection'
-import TerminalSection from '@/components/sections/TerminalSection'
+import LoadingSpinner from '@/components/ui/LoadingSpinner'
 
 export default function HomePage() {
   return (
-    <main className="relative">
-      <MatrixRain />
+    <main>
       <HeroSection />
       <AboutSection />
       <ServicesSection />
-      <TerminalSection />
-      <GamificationSection />
       <BlogSection />
       <ContactSection />
     </main>
