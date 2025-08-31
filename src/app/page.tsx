@@ -3,6 +3,7 @@ import AboutSection from '@/components/sections/AboutSection'
 import ServicesSection from '@/components/sections/ServicesSection'
 import BlogSection from '@/components/sections/BlogSection'
 import ContactSection from '@/components/sections/ContactSection'
+import LoadingSpinner from '@/components/ui/LoadingSpinner'
 
 export default function HomePage() {
   return (
