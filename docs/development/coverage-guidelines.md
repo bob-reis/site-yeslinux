@@ -135,7 +135,7 @@ npm test
 
 **UI Components:**
 - ✅ `LoadingSpinner.tsx` + `LoadingSpinner.test.tsx`
-- ✅ `MatrixRain.tsx` + `MatrixRain.test.tsx`
+- ✅ `HackerCard.tsx` + `HackerCard.test.tsx`
 - ✅ `Section.tsx` + `Section.test.tsx`
 
 ### Resultado Esperado: 90%+ de cobertura

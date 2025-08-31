@@ -6,6 +6,24 @@ O formato é baseado em [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 
 ## [Unreleased]
 
+### Adicionado
+- Seção de serviços agora utiliza cards em estilo hacker
+- Cabeçalho de navegação com visual hacker e informações de contato
+
+### Removido
+- Efeito de background Matrix Rain
+
+### Corrigido
+- Dependências de CSS movidas para produção para garantir estilos em deploy
+- Cards de serviços exibidos agora em grade responsiva
+- Reescrita removida para servir o app Next.js em vez de `index.html` estático
+- Plugin `tailwindcss` reativado no PostCSS para gerar estilos corretamente
+- Teste da Navbar ajustado para validar logo dividido em múltiplos elementos
+- Mock do Framer Motion atualizado para suprimir avisos de propriedades inválidas
+- Mock do Framer Motion corrigido para compatibilidade de tipagem no build
+- Navegação refatorada para mapear links dinamicamente e reduzir duplicação de código
+- Testes de UI consolidados com HTML pré-gerado para minimizar linhas repetidas
+
 ### Planejado
 - Sistema de blog completo
 - Dashboard administrativo

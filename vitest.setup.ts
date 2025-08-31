@@ -1,3 +1,4 @@
+import React from 'react'
 import '@testing-library/jest-dom'
 import { vi } from 'vitest'
 
@@ -12,22 +13,39 @@ vi.mock('next/font/google', () => ({
 vi.mock('./src/app/globals.css', () => ({}))
 
 // Mock Framer Motion para evitar warnings de SSR
-vi.mock('framer-motion', () => ({
-  motion: {
-    div: 'div',
-    section: 'section',
-    h1: 'h1',
-    h2: 'h2',
-    p: 'p',
-    button: 'button',
-    span: 'span'
-  },
-  AnimatePresence: ({ children }: { children: React.ReactNode }) => children,
-  useAnimation: () => ({
-    start: vi.fn(),
-    set: vi.fn()
-  })
-}))
+vi.mock('framer-motion', () => {
+  const mock = (tag: keyof JSX.IntrinsicElements) =>
+    ({ children, ...props }: any) => {
+      const {
+        whileInView,
+        initial,
+        animate,
+        exit,
+        transition,
+        viewport,
+        ...rest
+      } = props
+      return React.createElement(tag, rest, children)
+    }
+
+  return {
+    motion: {
+      div: mock('div'),
+      section: mock('section'),
+      h1: mock('h1'),
+      h2: mock('h2'),
+      p: mock('p'),
+      button: mock('button'),
+      span: mock('span')
+    },
+    AnimatePresence: ({ children }: { children: React.ReactNode }) =>
+      React.createElement(React.Fragment, null, children),
+    useAnimation: () => ({
+      start: vi.fn(),
+      set: vi.fn()
+    })
+  }
+})
 
 // Mock window methods que podem ser usados nos componentes
 Object.defineProperty(window, 'matchMedia', {

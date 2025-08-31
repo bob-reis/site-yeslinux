@@ -21,18 +21,25 @@ graph TD
 
 ### Camada de Apresentação
 ```mermaid
-graph LR
-    A[React 18] --> B[TypeScript]
-    B --> C[Tailwind CSS]
-    C --> D[Framer Motion]
-    D --> E[Three.js]
+  graph LR
+      A[React 18] --> B[TypeScript]
+      B --> C[Tailwind CSS]
+      C --> D[Framer Motion]
+      D --> E[Three.js]
     
-    subgraph "UI Components"
-        F[Lucide Icons]
-        G[Custom Components]
-        H[Responsive Design]
-    end
-```
+      subgraph "UI Components"
+          F[Lucide Icons]
+          G[Custom Components]
+          H[Responsive Design]
+      end
+  ```
+
+A seção de serviços usa o componente `HackerCard` disposto em uma grade responsiva.
+
+Um componente global `Navbar` provê navegação fixa no topo com links essenciais e informações de contato.
+Os links são declarados em uma estrutura de dados e mapeados em tempo de execução, reduzindo duplicação de código.
+
+As classes utilitárias são geradas via plugin `tailwindcss` no PostCSS, garantindo o tema hacker consistente em todos os componentes.
 
 ## 🏛️ Arquitetura de Componentes
 
@@ -45,7 +52,7 @@ App Layout
 │   ├── Section Components (Hero, Services, Contact)
 │   │   ├── UI Components (Button, Card, Modal)
 │   │   └── Utility Components (Loading, Error)
-│   └── Feature Components (Terminal, Matrix, 3D)
+│   └── Feature Components (Terminal, 3D)
 └── Provider Components (Theme, State, Analytics)
 ```
 

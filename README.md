@@ -28,6 +28,7 @@ Site institucional da **YesLinux**, empresa especializada em **software livre**,
 - ✅ **Performance:** Otimização extrema para velocidade e experiência do usuário
 - ✅ **Acessibilidade:** Compliance total com WCAG 2.1 AA
 - ✅ **SEO:** Otimização avançada para motores de busca
+- ✅ **UI Hacker:** Cabeçalho de navegação com links gerados dinamicamente e seção de serviços com cards interativos
 
 ### 🏗️ Arquitetura
 
@@ -54,8 +55,8 @@ graph TB
 ### Frontend
 - **Framework:** Next.js 14 (App Router)
 - **Language:** TypeScript 5.4+
-- **UI Library:** React 18.3+ 
-- **Styling:** Tailwind CSS 3.4+
+- **UI Library:** React 18.3+
+- **Styling:** Tailwind CSS 3.4+ (processado via PostCSS com Autoprefixer)
 - **Animations:** Framer Motion 11+
 - **3D Graphics:** Three.js + React Three Fiber
 - **Icons:** Lucide React
