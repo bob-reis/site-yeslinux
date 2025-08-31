@@ -27,4 +27,11 @@ describe('ServicesSection', () => {
     expect(html).toContain('Consultoria')
     expect(html).toContain('Treinamentos')
   })
+
+  it('uses a responsive grid layout', () => {
+    const html = renderToString(<ServicesSection />)
+    expect(html).toContain('grid-cols-1')
+    expect(html).toContain('sm:grid-cols-2')
+    expect(html).toContain('md:grid-cols-3')
+  })
 })

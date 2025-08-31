@@ -24,12 +24,12 @@ const ServicesSection = () => (
     title="Serviços"
     description="Soluções completas em segurança digital e software livre"
   >
-    <div className="grid gap-8 md:grid-cols-3">
-      {services.map(({ title, description }) => (
-        <HackerCard key={title} title={title} description={description} />
-      ))}
-    </div>
-  </Section>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+        {services.map(({ title, description }) => (
+          <HackerCard key={title} title={title} description={description} />
+        ))}
+      </div>
+    </Section>
 )
 
 export default ServicesSection

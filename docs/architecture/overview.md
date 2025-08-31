@@ -21,18 +21,20 @@ graph TD
 
 ### Camada de Apresentação
 ```mermaid
-graph LR
-    A[React 18] --> B[TypeScript]
-    B --> C[Tailwind CSS]
-    C --> D[Framer Motion]
-    D --> E[Three.js]
+  graph LR
+      A[React 18] --> B[TypeScript]
+      B --> C[Tailwind CSS]
+      C --> D[Framer Motion]
+      D --> E[Three.js]
     
-    subgraph "UI Components"
-        F[Lucide Icons]
-        G[Custom Components]
-        H[Responsive Design]
-    end
-```
+      subgraph "UI Components"
+          F[Lucide Icons]
+          G[Custom Components]
+          H[Responsive Design]
+      end
+  ```
+
+A seção de serviços usa o componente `HackerCard` disposto em uma grade responsiva.
 
 ## 🏛️ Arquitetura de Componentes
 
