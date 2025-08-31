@@ -2,24 +2,23 @@ import { renderToString } from 'react-dom/server'
 import GamificationSection from './GamificationSection'
 
 describe('GamificationSection', () => {
-  it('renders the section heading', () => {
+  it('renders as a simple placeholder div', () => {
     const html = renderToString(<GamificationSection />)
-    expect(html).toContain('Security')
-    expect(html).toContain('Challenge')
+    expect(html).toContain('<div')
   })
 
-  it('renders the description', () => {
+  it('has placeholder styling classes', () => {
     const html = renderToString(<GamificationSection />)
-    expect(html).toContain('Teste seus conhecimentos em segurança digital')
+    expect(html).toContain('text-center text-gray-500 py-4')
   })
 
-  it('renders placeholder content', () => {
+  it('renders without errors', () => {
     const html = renderToString(<GamificationSection />)
-    expect(html).toContain('[Seção de Gamificação será desenvolvida]')
+    expect(html.length).toBeGreaterThan(0)
   })
 
-  it('includes a section element', () => {
+  it('is a minimal component for future development', () => {
     const html = renderToString(<GamificationSection />)
-    expect(html).toContain('<section')
+    expect(html).toContain('class="text-center text-gray-500 py-4"')
   })
 })

@@ -2,24 +2,24 @@ import { renderToString } from 'react-dom/server'
 import ContactSection from './ContactSection'
 
 describe('ContactSection', () => {
-  it('renders the section heading', () => {
+  it('renders the call to action heading', () => {
     const html = renderToString(<ContactSection />)
-    expect(html).toContain('Entre em')
-    expect(html).toContain('Contato')
+    expect(html).toContain('Pronto para')
+    expect(html).toContain('fortalecer')
   })
 
-  it('renders the description', () => {
+  it('renders the CTA button', () => {
     const html = renderToString(<ContactSection />)
-    expect(html).toContain('Pronto para fortalecer sua segurança digital?')
+    expect(html).toContain('Falar com Especialista')
   })
 
-  it('renders placeholder content', () => {
+  it('has proper section id', () => {
     const html = renderToString(<ContactSection />)
-    expect(html).toContain('[Formulário de Contato será desenvolvido]')
+    expect(html).toContain('id="contato"')
   })
 
-  it('includes a section element', () => {
+  it('has proper button styling', () => {
     const html = renderToString(<ContactSection />)
-    expect(html).toContain('<section')
+    expect(html).toContain('bg-green-400 text-black')
   })
 })

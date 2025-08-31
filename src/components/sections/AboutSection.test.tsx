@@ -1,54 +1,32 @@
 import { renderToString } from 'react-dom/server'
 import AboutSection from './AboutSection'
 
-// Mock framer-motion
-vi.mock('framer-motion', () => ({
-  motion: {
-    div: ({ children, ...props }: any) => <div {...props}>{children}</div>,
-  }
-}))
-
-// Mock lucide-react icons
-vi.mock('lucide-react', () => ({
-  Shield: () => <div data-testid="shield-icon" />,
-  Users: () => <div data-testid="users-icon" />,
-  Award: () => <div data-testid="award-icon" />,
-  Target: () => <div data-testid="target-icon" />,
-}))
-
 describe('AboutSection', () => {
-  it('renders the section heading', () => {
+  it('renders the main heading', () => {
     const html = renderToString(<AboutSection />)
     expect(html).toContain('Sobre')
     expect(html).toContain('Nós')
   })
 
-  it('renders all value cards with icons and descriptions', () => {
+  it('renders company mission and story', () => {
     const html = renderToString(<AboutSection />)
-
-    // Security
-    expect(html).toContain('data-testid="shield-icon"')
-    expect(html).toContain('Segurança')
-    expect(html).toContain('Proteção é nossa prioridade número um em cada projeto.')
-
-    // Transparency
-    expect(html).toContain('data-testid="users-icon"')
-    expect(html).toContain('Transparência')
-    expect(html).toContain('Software livre significa código aberto e confiança total.')
-
-    // Excellence
-    expect(html).toContain('data-testid="award-icon"')
-    expect(html).toContain('Excelência')
-    expect(html).toContain('Padrões elevados em desenvolvimento e consultoria.')
-
-    // Focus
-    expect(html).toContain('data-testid="target-icon"')
-    expect(html).toContain('Foco')
-    expect(html).toContain('Soluções direcionadas para suas necessidades específicas.')
+    expect(html).toContain('YesLinux')
+    expect(html).toContain('democratizar a segurança digital')
+    expect(html).toContain('software livre')
+    expect(html).toContain('desenvolvimento seguro')
+    expect(html).toContain('investigação cibernética')
+    expect(html).toContain('defesa de infraestruturas críticas')
   })
 
-  it('has section id', () => {
+  it('has proper semantic structure', () => {
     const html = renderToString(<AboutSection />)
-    expect(html).toContain('id="about"')
+    expect(html).toContain('id="sobre"')
+    expect(html).toContain('<section')
+  })
+
+  it('renders complete company description', () => {
+    const html = renderToString(<AboutSection />)
+    expect(html).toContain('transparência, inovação e proteção')
+    expect(html).toContain('soluções robustas')
   })
 })

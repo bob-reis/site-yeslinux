@@ -1,28 +1,31 @@
 import { renderToString } from 'react-dom/server'
 import ServicesSection from './ServicesSection'
 
-// Mock the Section component
-vi.mock('../ui/Section', () => ({
-  default: ({ highlight, title, description, children }: any) => (
-    <div>
-      <span>{highlight}</span>
-      <span>{title}</span>
-      <p>{description}</p>
-      {children}
-    </div>
-  ),
-}))
-
 describe('ServicesSection', () => {
-  it('renders with correct props passed to Section component', () => {
+  it('renders services section with heading', () => {
     const html = renderToString(<ServicesSection />)
     expect(html).toContain('Nossos')
     expect(html).toContain('Serviços')
-    expect(html).toContain('Soluções completas em segurança digital e software livre')
   })
 
-  it('renders placeholder content', () => {
+  it('renders all four service cards', () => {
     const html = renderToString(<ServicesSection />)
-    expect(html).toContain('[Seção de Serviços será desenvolvida]')
+    expect(html).toContain('Consultoria DevSecOps')
+    expect(html).toContain('Investigação Cibernética')
+    expect(html).toContain('Defesa Cibernética')
+    expect(html).toContain('Pentest &amp; Vulnerabilidades')
+  })
+
+  it('has proper section id', () => {
+    const html = renderToString(<ServicesSection />)
+    expect(html).toContain('id="servicos"')
+  })
+
+  it('includes service descriptions and commands', () => {
+    const html = renderToString(<ServicesSection />)
+    expect(html).toContain('$ secure-pipeline --deploy')
+    expect(html).toContain('$ osint --trace --deep-web')
+    expect(html).toContain('$ defense-matrix --active')
+    expect(html).toContain('$ pentest --advanced --report')
   })
 })

@@ -16,7 +16,7 @@ describe('RootLayout', () => {
 
   it('applies correct body styling classes', () => {
     const html = renderToString(<RootLayout>{mockChildren}</RootLayout>)
-    expect(html).toContain('bg-darker text-text-light antialiased overflow-x-hidden')
+    expect(html).toContain('bg-black text-white antialiased overflow-x-hidden')
   })
 
   it('renders children content', () => {

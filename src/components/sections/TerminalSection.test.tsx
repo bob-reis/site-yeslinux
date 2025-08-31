@@ -2,30 +2,29 @@ import { renderToString } from 'react-dom/server'
 import TerminalSection from './TerminalSection'
 
 describe('TerminalSection', () => {
-  it('renders with correct props passed to Section component', () => {
+  it('renders the InfoSec universe section', () => {
     const html = renderToString(<TerminalSection />)
-    expect(html).toContain('YesLinux')
-    expect(html).toContain('Shell')
+    expect(html).toContain('Universo')
+    expect(html).toContain('InfoSec')
   })
 
   it('displays the correct description', () => {
     const html = renderToString(<TerminalSection />)
-    expect(html).toContain('Explore nossa empresa através do terminal')
+    expect(html).toContain('Explore o ecossistema completo da segurança da informação')
   })
 
-  it('shows placeholder for future terminal development', () => {
+  it('shows placeholder for 3D visualization', () => {
     const html = renderToString(<TerminalSection />)
-    expect(html).toContain('[Terminal Interativo será desenvolvido]')
-  })
-
-  it('uses the Section wrapper component', () => {
-    const html = renderToString(<TerminalSection />)
-    // Since it uses Section component, it should have section structure
-    expect(html).toContain('<section')
+    expect(html).toContain('Visualização 3D do Universo InfoSec será implementada')
   })
 
   it('has proper styling classes', () => {
     const html = renderToString(<TerminalSection />)
-    expect(html).toContain('text-center text-text-muted')
+    expect(html).toContain('text-center text-gray-400')
+  })
+
+  it('has section id', () => {
+    const html = renderToString(<TerminalSection />)
+    expect(html).toContain('id="universo"')
   })
 })
