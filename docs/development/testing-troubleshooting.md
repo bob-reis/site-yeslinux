@@ -33,23 +33,42 @@ Warning: useLayoutEffect does nothing on the server, because its effect cannot b
 **✅ Solução:** Mock do Framer Motion em `vitest.setup.ts`:
 
 ```typescript
+import React from 'react'
+import { vi } from 'vitest'
+
 // Mock Framer Motion para evitar warnings de SSR
-vi.mock('framer-motion', () => ({
-  motion: {
-    div: 'div',
-    section: 'section',
-    h1: 'h1',
-    h2: 'h2',
-    p: 'p',
-    button: 'button',
-    span: 'span'
-  },
-  AnimatePresence: ({ children }: { children: React.ReactNode }) => children,
-  useAnimation: () => ({
-    start: vi.fn(),
-    set: vi.fn()
-  })
-}))
+vi.mock('framer-motion', () => {
+  const mock = (tag: keyof JSX.IntrinsicElements) =>
+    ({ children, ...props }: any) => {
+      const {
+        whileInView,
+        initial,
+        animate,
+        exit,
+        transition,
+        viewport,
+        ...rest
+      } = props
+      return React.createElement(tag, rest, children)
+    }
+
+  return {
+    motion: {
+      div: mock('div'),
+      section: mock('section'),
+      h1: mock('h1'),
+      h2: mock('h2'),
+      p: mock('p'),
+      button: mock('button'),
+      span: mock('span')
+    },
+    AnimatePresence: ({ children }: { children: React.ReactNode }) => <>{children}</>,
+    useAnimation: () => ({
+      start: vi.fn(),
+      set: vi.fn()
+    })
+  }
+})
 ```
 
 ### 3. ❌ "expected 6850 to be less than -1"
@@ -82,6 +101,7 @@ it('renders components without errors', () => {
 ## 🛠️ Configuração Completa do vitest.setup.ts
 
 ```typescript
+import React from 'react'
 import '@testing-library/jest-dom'
 import { vi } from 'vitest'
 
@@ -96,22 +116,38 @@ vi.mock('next/font/google', () => ({
 vi.mock('./src/app/globals.css', () => ({}))
 
 // Mock Framer Motion para evitar warnings de SSR
-vi.mock('framer-motion', () => ({
-  motion: {
-    div: 'div',
-    section: 'section',
-    h1: 'h1',
-    h2: 'h2',
-    p: 'p',
-    button: 'button',
-    span: 'span'
-  },
-  AnimatePresence: ({ children }: { children: React.ReactNode }) => children,
-  useAnimation: () => ({
-    start: vi.fn(),
-    set: vi.fn()
-  })
-}))
+vi.mock('framer-motion', () => {
+  const mock = (tag: keyof JSX.IntrinsicElements) =>
+    ({ children, ...props }: any) => {
+      const {
+        whileInView,
+        initial,
+        animate,
+        exit,
+        transition,
+        viewport,
+        ...rest
+      } = props
+      return React.createElement(tag, rest, children)
+    }
+
+  return {
+    motion: {
+      div: mock('div'),
+      section: mock('section'),
+      h1: mock('h1'),
+      h2: mock('h2'),
+      p: mock('p'),
+      button: mock('button'),
+      span: mock('span')
+    },
+    AnimatePresence: ({ children }: { children: React.ReactNode }) => <>{children}</>,
+    useAnimation: () => ({
+      start: vi.fn(),
+      set: vi.fn()
+    })
+  }
+})
 
 // Mock window methods
 Object.defineProperty(window, 'matchMedia', {

@@ -4,7 +4,8 @@ import Navbar from './Navbar'
 describe('Navbar', () => {
   it('renders the site logo', () => {
     const html = renderToString(<Navbar />)
-    expect(html).toContain('YESLINUX')
+    expect(html).toContain('<span class="text-primary">YES</span>')
+    expect(html).toContain('<span class="text-white">LINUX</span>')
   })
 
   it('contains navigation links', () => {

@@ -18,6 +18,8 @@ O formato é baseado em [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 - Cards de serviços exibidos agora em grade responsiva
 - Reescrita removida para servir o app Next.js em vez de `index.html` estático
 - Plugin `tailwindcss` reativado no PostCSS para gerar estilos corretamente
+- Teste da Navbar ajustado para validar logo dividido em múltiplos elementos
+- Mock do Framer Motion atualizado para suprimir avisos de propriedades inválidas
 
 ### Planejado
 - Sistema de blog completo
