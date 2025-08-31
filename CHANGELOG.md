@@ -20,6 +20,7 @@ O formato é baseado em [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 - Plugin `tailwindcss` reativado no PostCSS para gerar estilos corretamente
 - Teste da Navbar ajustado para validar logo dividido em múltiplos elementos
 - Mock do Framer Motion atualizado para suprimir avisos de propriedades inválidas
+- Mock do Framer Motion corrigido para compatibilidade de tipagem no build
 
 ### Planejado
 - Sistema de blog completo

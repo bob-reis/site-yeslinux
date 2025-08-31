@@ -38,7 +38,8 @@ vi.mock('framer-motion', () => {
       button: mock('button'),
       span: mock('span')
     },
-    AnimatePresence: ({ children }: { children: React.ReactNode }) => <>{children}</>,
+    AnimatePresence: ({ children }: { children: React.ReactNode }) =>
+      React.createElement(React.Fragment, null, children),
     useAnimation: () => ({
       start: vi.fn(),
       set: vi.fn()
