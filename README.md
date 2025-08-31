@@ -28,6 +28,7 @@ Site institucional da **YesLinux**, empresa especializada em **software livre**,
 - ✅ **Performance:** Otimização extrema para velocidade e experiência do usuário
 - ✅ **Acessibilidade:** Compliance total com WCAG 2.1 AA
 - ✅ **SEO:** Otimização avançada para motores de busca
+- ✅ **UI Hacker:** Seção de serviços com cards interativos
 
 ### 🏗️ Arquitetura
 

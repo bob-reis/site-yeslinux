@@ -476,11 +476,6 @@
         </div>
     </header>
     
-    <!-- Matrix Background Animation -->
-    <div class="fixed inset-0 pointer-events-none opacity-10 z-0">
-        <canvas id="matrix-canvas" class="w-full h-full"></canvas>
-    </div>
-    
     <!-- Main Content -->
     <div class="relative z-10 min-h-screen">
         
@@ -692,52 +687,8 @@
         </footer>
     </div>
     
-    <!-- Matrix Animation Script -->
+    <!-- Interaction Script -->
     <script>
-        // Matrix Rain Effect
-        const canvas = document.getElementById('matrix-canvas');
-        const ctx = canvas.getContext('2d');
-        
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-        
-        const chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%^&*(){}[]';
-        const charArray = chars.split('');
-        
-        const fontSize = 14;
-        const columns = canvas.width / fontSize;
-        
-        const drops = [];
-        for (let x = 0; x < columns; x++) {
-            drops[x] = 1;
-        }
-        
-        function draw() {
-            ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-            
-            ctx.fillStyle = '#00ff41';
-            ctx.font = fontSize + 'px JetBrains Mono, monospace';
-            
-            for (let i = 0; i < drops.length; i++) {
-                const text = charArray[Math.floor(Math.random() * charArray.length)];
-                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-                
-                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-                    drops[i] = 0;
-                }
-                drops[i]++;
-            }
-        }
-        
-        setInterval(draw, 100);
-        
-        // Responsive canvas
-        window.addEventListener('resize', () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        });
-        
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -747,7 +698,7 @@
                 });
             });
         });
-        
+
         // 3D Network Visualization
         class NetworkVisualization {
             constructor() {

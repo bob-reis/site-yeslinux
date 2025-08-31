@@ -46,27 +46,6 @@ body {
   background: #00cc36;
 }
 
-/* Matrix Rain Animation */
-.matrix-rain {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: -1;
-  opacity: 0.1;
-}
-
-.matrix-char {
-  position: absolute;
-  color: var(--primary);
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 14px;
-  font-weight: 500;
-  animation: matrixRain linear infinite;
-}
-
 /* Glow Effects */
 .glow-primary {
   box-shadow: 0 0 10px var(--primary);
@@ -183,10 +162,6 @@ body {
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .matrix-char {
-    font-size: 12px;
-  }
-  
   .btn-cyber {
     padding: 10px 20px;
     font-size: 14px;
@@ -195,12 +170,11 @@ body {
 
 /* Accessibility */
 @media (prefers-reduced-motion: reduce) {
-  .matrix-char,
   .typing-animation,
   .btn-cyber::before {
     animation: none;
   }
-  
+
   .card-cyber:hover {
     transform: none;
   }

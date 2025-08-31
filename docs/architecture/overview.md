@@ -45,7 +45,7 @@ App Layout
 │   ├── Section Components (Hero, Services, Contact)
 │   │   ├── UI Components (Button, Card, Modal)
 │   │   └── Utility Components (Loading, Error)
-│   └── Feature Components (Terminal, Matrix, 3D)
+│   └── Feature Components (Terminal, 3D)
 └── Provider Components (Theme, State, Analytics)
 ```
 

@@ -20,9 +20,11 @@ describe('ServicesSection', () => {
     expect(html).toContain('Serviços')
     expect(html).toContain('Soluções completas em segurança digital e software livre')
   })
-
-  it('renders placeholder content', () => {
+  
+  it('renders hacker cards with services', () => {
     const html = renderToString(<ServicesSection />)
-    expect(html).toContain('[Seção de Serviços será desenvolvida]')
+    expect(html).toContain('Pentest')
+    expect(html).toContain('Consultoria')
+    expect(html).toContain('Treinamentos')
   })
 })
