@@ -37,6 +37,7 @@ graph TD
 A seção de serviços usa o componente `HackerCard` disposto em uma grade responsiva.
 
 Um componente global `Navbar` provê navegação fixa no topo com links essenciais e informações de contato.
+Os links são declarados em uma estrutura de dados e mapeados em tempo de execução, reduzindo duplicação de código.
 
 As classes utilitárias são geradas via plugin `tailwindcss` no PostCSS, garantindo o tema hacker consistente em todos os componentes.
 

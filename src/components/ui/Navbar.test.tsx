@@ -1,24 +1,24 @@
-import { renderToString } from 'react-dom/server'
+import render from '@/test-utils/render'
 import Navbar from './Navbar'
 
 describe('Navbar', () => {
+  let html: string
+
+  beforeAll(() => {
+    html = render(<Navbar />)
+  })
+
   it('renders the site logo', () => {
-    const html = renderToString(<Navbar />)
     expect(html).toContain('<span class="text-primary">YES</span>')
     expect(html).toContain('<span class="text-white">LINUX</span>')
   })
 
   it('contains navigation links', () => {
-    const html = renderToString(<Navbar />)
-    expect(html).toContain('Início')
-    expect(html).toContain('Universo InfoSec')
-    expect(html).toContain('Serviços')
-    expect(html).toContain('Sobre Nós')
-    expect(html).toContain('Contato')
+    const links = ['Início', 'Universo InfoSec', 'Serviços', 'Sobre Nós', 'Contato']
+    links.forEach(link => expect(html).toContain(link))
   })
 
   it('shows contact information', () => {
-    const html = renderToString(<Navbar />)
     expect(html).toContain('contato@yeslinux.com.br')
     expect(html).toContain('+55 (11) 96160-0500')
   })

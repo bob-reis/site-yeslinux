@@ -1,4 +1,4 @@
-import { renderToString } from 'react-dom/server'
+import render from '@/test-utils/render'
 import ServicesSection from './ServicesSection'
 
 // Mock the Section component
@@ -14,24 +14,27 @@ vi.mock('../ui/Section', () => ({
 }))
 
 describe('ServicesSection', () => {
+  let html: string
+
+  beforeAll(() => {
+    html = render(<ServicesSection />)
+  })
+
   it('renders with correct props passed to Section component', () => {
-    const html = renderToString(<ServicesSection />)
     expect(html).toContain('Nossos')
     expect(html).toContain('Serviços')
     expect(html).toContain('Soluções completas em segurança digital e software livre')
   })
-  
+
   it('renders hacker cards with services', () => {
-    const html = renderToString(<ServicesSection />)
-    expect(html).toContain('Pentest')
-    expect(html).toContain('Consultoria')
-    expect(html).toContain('Treinamentos')
+    ;['Pentest', 'Consultoria', 'Treinamentos'].forEach(service =>
+      expect(html).toContain(service)
+    )
   })
 
   it('uses a responsive grid layout', () => {
-    const html = renderToString(<ServicesSection />)
-    expect(html).toContain('grid-cols-1')
-    expect(html).toContain('sm:grid-cols-2')
-    expect(html).toContain('md:grid-cols-3')
+    ;['grid-cols-1', 'sm:grid-cols-2', 'md:grid-cols-3'].forEach(className =>
+      expect(html).toContain(className)
+    )
   })
 })

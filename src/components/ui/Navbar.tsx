@@ -2,6 +2,19 @@
 
 import { useState } from 'react'
 
+interface NavLink {
+  href: string
+  label: string
+}
+
+const NAV_LINKS: NavLink[] = [
+  { href: '#inicio', label: 'Início' },
+  { href: '#universo', label: 'Universo InfoSec' },
+  { href: '#servicos', label: 'Serviços' },
+  { href: '#sobre', label: 'Sobre Nós' },
+  { href: '#contato', label: 'Contato' },
+]
+
 const Navbar = () => {
   const [open, setOpen] = useState(false)
 
@@ -24,16 +37,18 @@ const Navbar = () => {
         <div
           className={`${open ? 'flex' : 'hidden'} flex-col md:flex md:flex-row md:items-center md:space-x-6 font-mono text-sm text-text-light`}
         >
-          <a href="#inicio" className="py-2 md:py-0 hover:text-primary" onClick={() => setOpen(false)}>Início</a>
-          <a href="#universo" className="py-2 md:py-0 hover:text-primary" onClick={() => setOpen(false)}>Universo InfoSec</a>
-          <a href="#servicos" className="py-2 md:py-0 hover:text-primary" onClick={() => setOpen(false)}>Serviços</a>
-          <a href="#sobre" className="py-2 md:py-0 hover:text-primary" onClick={() => setOpen(false)}>Sobre Nós</a>
-          <a href="#contato" className="py-2 md:py-0 hover:text-primary" onClick={() => setOpen(false)}>Contato</a>
-          <div className="py-2 md:py-0 md:ml-6 flex flex-col md:flex-row md:space-x-3 text-xs text-text-muted">
+          {NAV_LINKS.map(({ href, label }) => (
             <a
-              href="mailto:contato@yeslinux.com.br"
-              className="hover:text-primary"
+              key={href}
+              href={href}
+              className="py-2 md:py-0 hover:text-primary"
+              onClick={() => setOpen(false)}
             >
+              {label}
+            </a>
+          ))}
+          <div className="py-2 md:py-0 md:ml-6 flex flex-col md:flex-row md:space-x-3 text-xs text-text-muted">
+            <a href="mailto:contato@yeslinux.com.br" className="hover:text-primary">
               contato@yeslinux.com.br
             </a>
             <span className="hidden md:inline">|</span>
