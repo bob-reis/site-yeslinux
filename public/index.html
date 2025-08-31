@@ -117,24 +117,29 @@
         .max-w-6xl { max-width: 72rem; }
         .mx-auto { margin-left: auto; margin-right: auto; }
         .pointer-events-none { pointer-events: none; }
-        
+
         /* Backgrounds and effects */
         .backdrop-blur-sm { backdrop-filter: blur(4px); }
         .bg-opacity-50 { background-color: rgba(0, 0, 0, 0.5); }
         .bg-opacity-80 { background-color: rgba(0, 0, 0, 0.8); }
-        
+
         /* Responsive */
+        @media (min-width: 640px) {
+            .sm\\:grid-cols-2 { grid-template-columns: repeat(2, 1fr); }
+        }
+
         @media (min-width: 768px) {
             .md\\:text-3xl { font-size: 1.875rem; }
             .md\\:text-8xl { font-size: 6rem; }
             .md\\:grid-cols-2 { grid-template-columns: repeat(2, 1fr); }
+            .md\\:grid-cols-3 { grid-template-columns: repeat(3, 1fr); }
             .md\\:grid-cols-4 { grid-template-columns: repeat(4, 1fr); }
         }
-        
+
         @media (min-width: 1024px) {
             .lg\\:grid-cols-2 { grid-template-columns: repeat(2, 1fr); }
         }
-        
+
         @media (max-width: 640px) {
             .text-6xl { font-size: 3rem; }
             .text-8xl { font-size: 4rem; }
@@ -577,7 +582,7 @@
                     <span class="text-cyber-green">Nossos</span> Serviços
                 </h2>
                 
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
                     
                     <!-- Consultoria DevSecOps -->
                     <div class="card-hover bg-gray-900-50 border border-gray-600 rounded-lg p-8 backdrop-blur-sm">

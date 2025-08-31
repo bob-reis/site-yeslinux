@@ -15,6 +15,7 @@ O formato é baseado em [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 ### Corrigido
 - Dependências de CSS movidas para produção para garantir estilos em deploy
 - Cards de serviços exibidos agora em grade responsiva
+- Grid de serviços no `index.html` estático atualizado para suportar múltiplas colunas
 
 ### Planejado
 - Sistema de blog completo

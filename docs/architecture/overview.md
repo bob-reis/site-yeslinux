@@ -34,7 +34,7 @@ graph TD
       end
   ```
 
-A seção de serviços usa o componente `HackerCard` disposto em uma grade responsiva.
+A seção de serviços usa o componente `HackerCard` disposto em uma grade responsiva. O `index.html` estático de fallback replica essa mesma disposição para manter a consistência visual.
 
 ## 🏛️ Arquitetura de Componentes
 
