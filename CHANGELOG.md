@@ -17,6 +17,7 @@ O formato é baseado em [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 - Dependências de CSS movidas para produção para garantir estilos em deploy
 - Cards de serviços exibidos agora em grade responsiva
 - Reescrita removida para servir o app Next.js em vez de `index.html` estático
+- Plugin `tailwindcss` reativado no PostCSS para gerar estilos corretamente
 
 ### Planejado
 - Sistema de blog completo

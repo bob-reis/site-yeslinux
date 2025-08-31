@@ -14,7 +14,7 @@ git clone https://github.com/bob-reis/site-yeslinux.git
 cd site-yeslinux
 
 # 2. Instale as dependências
-npm ci # inclui Tailwind CSS, PostCSS e Autoprefixer para geração de estilos
+npm ci # inclui Tailwind CSS processado via PostCSS e Autoprefixer para geração de estilos
 
 # 3. Configure o ambiente
 cp .env.example .env.local

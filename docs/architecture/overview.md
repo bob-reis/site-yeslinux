@@ -38,6 +38,8 @@ A seção de serviços usa o componente `HackerCard` disposto em uma grade respo
 
 Um componente global `Navbar` provê navegação fixa no topo com links essenciais e informações de contato.
 
+As classes utilitárias são geradas via plugin `tailwindcss` no PostCSS, garantindo o tema hacker consistente em todos os componentes.
+
 ## 🏛️ Arquitetura de Componentes
 
 ### Hierarquia de Componentes

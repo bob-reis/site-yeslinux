@@ -56,7 +56,7 @@ graph TB
 - **Framework:** Next.js 14 (App Router)
 - **Language:** TypeScript 5.4+
 - **UI Library:** React 18.3+
-- **Styling:** Tailwind CSS 3.4+ (inclui PostCSS e Autoprefixer como dependências de produção)
+- **Styling:** Tailwind CSS 3.4+ (processado via PostCSS com Autoprefixer)
 - **Animations:** Framer Motion 11+
 - **3D Graphics:** Three.js + React Three Fiber
 - **Icons:** Lucide React
