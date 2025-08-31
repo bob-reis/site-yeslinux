@@ -12,6 +12,9 @@ O formato é baseado em [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 - PWA (Progressive Web App)
 - Integração com CMS headless
 
+### Corrigido
+- Corrigido z-index do efeito Matrix Rain que sobrepunha o conteúdo da página inicial
+
 ---
 
 ## [1.0.0] - 2025-08-29

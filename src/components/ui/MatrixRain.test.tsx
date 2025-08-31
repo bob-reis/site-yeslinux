@@ -9,7 +9,7 @@ describe('MatrixRain', () => {
 
   it('has correct CSS classes for matrix background', () => {
     const html = renderToString(<MatrixRain />)
-    expect(html).toContain('fixed inset-0 pointer-events-none z-0 overflow-hidden')
+    expect(html).toContain('fixed inset-0 pointer-events-none -z-10 overflow-hidden')
   })
 
   it('is positioned as a fixed overlay', () => {
@@ -20,7 +20,7 @@ describe('MatrixRain', () => {
 
   it('has proper z-index for background positioning', () => {
     const html = renderToString(<MatrixRain />)
-    expect(html).toContain('z-0')
+    expect(html).toContain('-z-10')
   })
 
   it('is non-interactive with pointer-events-none', () => {

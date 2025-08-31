@@ -59,13 +59,13 @@ const MatrixRain = () => {
     return () => window.removeEventListener('resize', handleResize)
   }, [])
 
-  return (
-    <div 
-      ref={containerRef}
-      className="fixed inset-0 pointer-events-none z-0 overflow-hidden"
-      aria-hidden="true"
-    />
-  )
-}
+    return (
+      <div
+        ref={containerRef}
+        className="fixed inset-0 pointer-events-none -z-10 overflow-hidden"
+        aria-hidden="true"
+      />
+    )
+  }
 
-export default MatrixRain
+  export default MatrixRain
