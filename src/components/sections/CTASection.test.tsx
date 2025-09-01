@@ -11,12 +11,12 @@ vi.mock('framer-motion', () => ({
 }))
 
 describe('CTASection', () => {
-  it('renders the CTA button correctly', () => {
+  it('renders the CTA link correctly', () => {
     render(<CTASection />)
-    
-    const ctaButton = screen.getByRole('button', { name: /fale com um especialista/i })
-    expect(ctaButton).toBeInTheDocument()
-    expect(ctaButton).toHaveClass('btn-cyber')
+
+    const ctaLink = screen.getByRole('link', { name: /fale com um especialista/i })
+    expect(ctaLink).toBeInTheDocument()
+    expect(ctaLink).toHaveClass('btn-cyber')
   })
 
   it('renders with correct section structure', () => {
@@ -24,7 +24,9 @@ describe('CTASection', () => {
     
     const section = container.querySelector('section')
     expect(section).toBeInTheDocument()
-    expect(section).toHaveClass('py-16', 'relative', 'bg-darker/30')
+    // Section default styles from shared Section component
+    expect(section).toHaveClass('py-20')
+    expect(section).toHaveClass('bg-darker')
   })
 
   it('has proper container structure', () => {

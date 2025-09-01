@@ -52,13 +52,9 @@ describe('AboutSection', () => {
   })
 
 
-  it('renders timeline section', () => {
+  it('renders mission callout', () => {
     const html = renderToString(<AboutSection />)
-    expect(html).toContain('Nossa')
-    expect(html).toContain('Jornada')
-    expect(html).toContain('2020')
-    expect(html).toContain('Fundação')
-    expect(html).toContain('2024')
-    expect(html).toContain('Inovação')
+    expect(html).toContain('Nossa Missão')
+    expect(html).toContain('Tornar a segurança digital acessível')
   })
 })
