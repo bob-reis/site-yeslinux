@@ -9,7 +9,6 @@
   [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=bob-reis_site-yeslinux&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=bob-reis_site-yeslinux)
   [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=bob-reis_site-yeslinux&metric=coverage)](https://sonarcloud.io/summary/new_code?id=bob-reis_site-yeslinux)
   [![Tests](https://github.com/bob-reis/site-yeslinux/actions/workflows/test.yml/badge.svg)](https://github.com/bob-reis/site-yeslinux/actions/workflows/test.yml)
-  [![Deploy](https://github.com/bob-reis/site-yeslinux/actions/workflows/deploy.yml/badge.svg)](https://github.com/bob-reis/site-yeslinux/actions/workflows/deploy.yml)
   [![Security](https://github.com/bob-reis/site-yeslinux/actions/workflows/security.yml/badge.svg)](https://github.com/bob-reis/site-yeslinux/actions/workflows/security.yml)
 
   [🌐 Site ao Vivo](https://site-yeslinux.vercel.app) • [📚 Documentação](./docs) • [🐛 Reportar Bug](https://github.com/bob-reis/site-yeslinux/issues/new?template=bug_report.md) • [✨ Solicitar Feature](https://github.com/bob-reis/site-yeslinux/issues/new?template=feature_request.md)
