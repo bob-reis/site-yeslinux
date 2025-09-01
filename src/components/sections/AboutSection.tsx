@@ -167,6 +167,7 @@ const AboutSection = () => {
             </div>
           </div>
         </motion.div>
+
       </div>
     </section>
   )

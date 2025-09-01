@@ -51,4 +51,15 @@ describe('AboutSection', () => {
     const html = renderToString(<AboutSection />)
     expect(html).toContain('id="about"')
   })
+
+
+  it('renders timeline section', () => {
+    const html = renderToString(<AboutSection />)
+    expect(html).toContain('Nossa')
+    expect(html).toContain('Jornada')
+    expect(html).toContain('2020')
+    expect(html).toContain('Fundação')
+    expect(html).toContain('2024')
+    expect(html).toContain('Inovação')
+  })
 })

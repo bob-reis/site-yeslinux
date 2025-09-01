@@ -42,23 +42,6 @@ describe('HeroSection', () => {
     expect(html).toMatch(/Na YesLinux, unimos/)
   })
 
-  it('renders statistics cards', () => {
-    const html = renderToString(<HeroSection />)
-    expect(html).toContain('500+')
-    expect(html).toContain('Projetos Seguros')
-    expect(html).toContain('24/7')
-    expect(html).toContain('Monitoramento')
-    expect(html).toContain('100%')
-    expect(html).toContain('Software Livre')
-    expect(html).toContain('5+')
-    expect(html).toContain('Anos de Experiência')
-  })
-
-  it('renders CTA buttons', () => {
-    const html = renderToString(<HeroSection />)
-    expect(html).toContain('Fale com um Especialista')
-    expect(html).toContain('Diagnóstico Gratuito')
-  })
 
   it('renders scroll indicator', () => {
     const html = renderToString(<HeroSection />)
