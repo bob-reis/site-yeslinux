@@ -1,18 +1,9 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-
-interface NavLink {
-  href: string
-  label: string
-}
-
-const NAV_LINKS: NavLink[] = [
-  { href: '#inicio', label: 'Início' },
-  { href: '#universo', label: 'Nossos Números' },
-  { href: '#servicos', label: 'Serviços' },
-  { href: '#sobre', label: 'Sobre' },
-]
+import Logo from './Logo'
+import { NAV_LINKS } from '@/constants/nav'
+import { SITE } from '@/lib/site'
 
 const Navbar = () => {
   const [open, setOpen] = useState(false)
@@ -53,10 +44,7 @@ const Navbar = () => {
   return (
     <header className="bg-darker/90 backdrop-blur-md border-b border-primary/20 sticky top-0 z-50">
       <nav className="container mx-auto px-4 py-4 flex items-center justify-between">
-        <a href="#inicio" className="font-mono text-2xl font-bold" aria-label="YesLinux home">
-          <span className="text-primary">YES</span>
-          <span className="text-white">LINUX</span>
-        </a>
+        <Logo aria-label="YesLinux home" />
 
         <button
           className="md:hidden text-text-light focus:outline-none"
@@ -84,11 +72,11 @@ const Navbar = () => {
             </a>
           ))}
           <div className="py-2 md:py-0 md:ml-6 flex flex-col md:flex-row md:space-x-3 text-xs text-text-muted">
-            <a href="mailto:contato@yeslinux.com.br" className="hover:text-primary">
-              contato@yeslinux.com.br
+            <a href={`mailto:${SITE.email}`} className="hover:text-primary">
+              {SITE.email}
             </a>
             <span className="hidden md:inline">|</span>
-            <span>+55 (11) 96160-0500</span>
+            <span>{SITE.phone}</span>
           </div>
         </div>
       </nav>

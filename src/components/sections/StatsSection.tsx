@@ -1,42 +1,28 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import Section from '@/components/ui/Section'
+import { fadeInUp } from '@/lib/motion'
+
+const stats = [
+  { value: '500+', label: 'Projetos Seguros', color: 'text-primary' },
+  { value: '24/7', label: 'Monitoramento', color: 'text-secondary' },
+  { value: '100%', label: 'Software Livre', color: 'text-accent' },
+  { value: '5+', label: 'Anos de Experiência', color: 'text-primary' },
+]
 
 const StatsSection = () => {
   return (
-    <section id="universo" className="py-16 relative bg-darker/30">
-      <div className="container mx-auto px-4">
-        {/* Stats Cards */}
-        <motion.div 
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center"
-        >
-          <div className="card-cyber p-4 rounded-lg">
-            <div className="text-2xl font-bold text-primary font-mono">500+</div>
-            <div className="text-sm text-text-muted">Projetos Seguros</div>
+    <Section id="universo" highlight="Nossos" title="Números">
+      <motion.div {...fadeInUp()} className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+        {stats.map((s) => (
+          <div key={s.label} className="card-cyber p-4 rounded-lg">
+            <div className={`text-2xl font-bold ${s.color} font-mono`}>{s.value}</div>
+            <div className="text-sm text-text-muted">{s.label}</div>
           </div>
-          
-          <div className="card-cyber p-4 rounded-lg">
-            <div className="text-2xl font-bold text-secondary font-mono">24/7</div>
-            <div className="text-sm text-text-muted">Monitoramento</div>
-          </div>
-          
-          <div className="card-cyber p-4 rounded-lg">
-            <div className="text-2xl font-bold text-accent font-mono">100%</div>
-            <div className="text-sm text-text-muted">Software Livre</div>
-          </div>
-          
-          <div className="card-cyber p-4 rounded-lg">
-            <div className="text-2xl font-bold text-primary font-mono">5+</div>
-            <div className="text-sm text-text-muted">Anos de Experiência</div>
-          </div>
-        </motion.div>
-
-      </div>
-    </section>
+        ))}
+      </motion.div>
+    </Section>
   )
 }
 

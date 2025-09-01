@@ -1,4 +1,7 @@
 import React from 'react'
+import Logo from './Logo'
+import { NAV_LINKS } from '@/constants/nav'
+import { SITE } from '@/lib/site'
 
 const Footer: React.FC = () => {
   const year = new Date().getFullYear()
@@ -6,10 +9,7 @@ const Footer: React.FC = () => {
     <footer id="contato" className="bg-black/60 border-t border-primary/20 mt-20" role="contentinfo">
       <div className="container mx-auto px-4 py-12 grid grid-cols-1 md:grid-cols-3 gap-8">
         <div>
-          <a href="#inicio" className="font-mono text-2xl font-bold" aria-label="YesLinux home">
-            <span className="text-primary">YES</span>
-            <span className="text-white">LINUX</span>
-          </a>
+          <Logo aria-label="YesLinux home" />
           <p className="text-text-muted mt-3 max-w-xs">
             Segurança, liberdade e inovação em cada linha de código.
           </p>
@@ -18,10 +18,9 @@ const Footer: React.FC = () => {
         <nav aria-label="Links rápidos" className="text-sm">
           <h3 className="font-bold text-text-light mb-3">Navegação</h3>
           <ul className="space-y-2 text-text-muted">
-            <li><a className="hover:text-primary" href="#inicio">Início</a></li>
-            <li><a className="hover:text-primary" href="#universo">Nossos Números</a></li>
-            <li><a className="hover:text-primary" href="#servicos">Serviços</a></li>
-            <li><a className="hover:text-primary" href="#sobre">Sobre</a></li>
+            {NAV_LINKS.map(({ href, label }) => (
+              <li key={href}><a className="hover:text-primary" href={href}>{label}</a></li>
+            ))}
           </ul>
         </nav>
 
@@ -29,15 +28,15 @@ const Footer: React.FC = () => {
           <h3 className="font-bold text-text-light mb-3">Contato</h3>
           <ul className="space-y-2 text-text-muted">
             <li>
-              <a className="hover:text-primary" href="mailto:contato@yeslinux.com.br">contato@yeslinux.com.br</a>
+              <a className="hover:text-primary" href={`mailto:${SITE.email}`}>{SITE.email}</a>
             </li>
             <li>
-              <span>+55 (11) 96160-0500</span>
+              <span>{SITE.phone}</span>
             </li>
             <li className="pt-2 flex gap-4">
-              <a className="hover:text-primary" href="https://linkedin.com/company/yeslinux" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-              <a className="hover:text-primary" href="https://github.com/bob-reis/site-yeslinux" target="_blank" rel="noopener noreferrer">GitHub</a>
-              <a className="hover:text-primary" href="https://yeslinux.org" target="_blank" rel="noopener noreferrer">Website</a>
+              <a className="hover:text-primary" href={SITE.socials.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
+              <a className="hover:text-primary" href={SITE.socials.github} target="_blank" rel="noopener noreferrer">GitHub</a>
+              <a className="hover:text-primary" href={SITE.socials.website} target="_blank" rel="noopener noreferrer">Website</a>
             </li>
           </ul>
         </div>
