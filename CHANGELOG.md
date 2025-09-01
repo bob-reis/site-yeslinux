@@ -7,11 +7,21 @@ O formato é baseado em [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 ## [Unreleased]
 
 ### Adicionado
-- Seção de serviços agora utiliza cards em estilo hacker
-- Cabeçalho de navegação com visual hacker e informações de contato
+- Rodapé completo com navegação rápida, contatos e redes sociais
+- Seção de serviços expandida para 6 categorias com listas detalhadas
+- Destaque automático do menu ativo via IntersectionObserver (acessível com `aria-current`)
+- Seleção automática de agentes (CLI `agent:select`)
+
+### Alterado
+- Navegação padronizada: Início, Nossos Números, Serviços, Sobre
+- Âncoras das seções alinhadas: `#inicio`, `#universo`, `#servicos`, `#sobre` (Contato no footer)
+- Refactor DRY: `Logo` compartilhado, `NAV_LINKS` centralizado, `SITE` (contatos) centralizado
+- `Section` flexibilizado (título/descrição opcionais) e `fadeInUp` util para animações
+- `ServicesSection` agora consome dados de `src/data/services.ts` (parser de conteúdo)
 
 ### Removido
 - Efeito de background Matrix Rain
+- Seção de "Entre em Contato" (substituída pelo rodapé com contato)
 
 ### Corrigido
 - Dependências de CSS movidas para produção para garantir estilos em deploy
@@ -23,6 +33,8 @@ O formato é baseado em [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 - Mock do Framer Motion corrigido para compatibilidade de tipagem no build
 - Navegação refatorada para mapear links dinamicamente e reduzir duplicação de código
 - Testes de UI consolidados com HTML pré-gerado para minimizar linhas repetidas
+- Ajustes de testes (CTA e About) para refletir novas estruturas e roles
+- Redução da duplicação reportada pelo SonarCloud (≤ 3% em New Code)
 
 ### Planejado
 - Sistema de blog completo
