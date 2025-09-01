@@ -31,22 +31,10 @@ const StatsSection = () => {
           
           <div className="card-cyber p-4 rounded-lg">
             <div className="text-2xl font-bold text-primary font-mono">5+</div>
-            <div className="text-sm text-text-muted">Anos de Experi�ncia</div>
+            <div className="text-sm text-text-muted">Anos de Experiência</div>
           </div>
         </motion.div>
 
-        {/* CTA Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          viewport={{ once: true }}
-          className="text-center mt-12"
-        >
-          <button className="btn-cyber">
-            Fale com um Especialista
-          </button>
-        </motion.div>
       </div>
     </section>
   )

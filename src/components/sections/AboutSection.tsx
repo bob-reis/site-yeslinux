@@ -54,19 +54,17 @@ const AboutSection = () => {
           >
             <div className="space-y-6">
               <p className="text-lg text-text-muted leading-relaxed">
-                A <span className="text-primary font-semibold">YesLinux</span> nasceu com a missão de 
-                democratizar a segurança digital por meio do software livre.
+                A <span className="text-primary font-semibold">YesLinux</span> nasceu para democratizar a segurança digital com tecnologia de ponta e software livre.
               </p>
               
               <p className="text-lg text-text-muted leading-relaxed">
-                Somos especialistas em <span className="text-secondary">desenvolvimento seguro</span>, 
+                Somos especialistas em <span className="text-secondary">desenvolvimento seguro (DevSecOps)</span>, 
                 {' '}<span className="text-accent">investigação cibernética</span> e{' '}
-                <span className="text-primary">defesa de infraestruturas críticas</span>.
+                <span className="text-primary">defesa de infraestruturas críticas</span>. Atuamos lado a lado com pequenas e médias empresas, oferecendo soluções robustas, acessíveis e sustentáveis.
               </p>
               
               <p className="text-lg text-text-muted leading-relaxed">
-                Atuamos lado a lado com empresas e pessoas para oferecer soluções robustas, 
-                acessíveis e sustentáveis, sempre com foco em transparência, inovação e proteção.
+                Nosso compromisso é com a <span className="text-secondary">transparência</span>, a <span className="text-accent">inovação</span> e a <span className="text-primary">proteção real</span> de dados, sistemas e pessoas.
               </p>
 
               <div className="bg-darker/50 border border-primary/20 rounded-lg p-6 mt-8">
