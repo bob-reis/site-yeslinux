@@ -111,60 +111,6 @@ const AboutSection = () => {
           </motion.div>
         </div>
 
-        {/* Timeline Section */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          viewport={{ once: true }}
-          className="mt-20"
-        >
-          <h3 className="text-2xl font-bold text-center mb-12">
-            <span className="text-primary">Nossa</span> Jornada
-          </h3>
-          
-          <div className="relative">
-            {/* Timeline Line */}
-            <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-primary via-secondary to-accent"></div>
-            
-            <div className="space-y-12">
-              {[
-                { year: '2020', title: 'Fundação', description: 'YesLinux é criada com foco em software livre' },
-                { year: '2021', title: 'Primeiros Projetos', description: 'Desenvolvimento de soluções de segurança' },
-                { year: '2022', title: 'Expansão', description: 'Crescimento da equipe e serviços' },
-                { year: '2023', title: 'Reconhecimento', description: 'Consolidação no mercado de cibersegurança' },
-                { year: '2024', title: 'Inovação', description: 'Novas tecnologias e parcerias estratégicas' }
-              ].map((item, index) => (
-                <motion.div
-                  key={item.year}
-                  initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                  className={`flex items-center ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'}`}
-                >
-                  <div className="w-1/2 px-8">
-                    <div className={`card-cyber p-6 ${index % 2 === 0 ? 'text-right' : 'text-left'}`}>
-                      <div className="text-2xl font-bold text-primary font-mono mb-2">
-                        {item.year}
-                      </div>
-                      <h4 className="text-lg font-semibold text-white mb-2">
-                        {item.title}
-                      </h4>
-                      <p className="text-text-muted text-sm">
-                        {item.description}
-                      </p>
-                    </div>
-                  </div>
-                  
-                  <div className="w-4 h-4 bg-primary rounded-full border-4 border-darker z-10"></div>
-                  
-                  <div className="w-1/2"></div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </motion.div>
 
       </div>
     </section>
