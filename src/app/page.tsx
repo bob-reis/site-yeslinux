@@ -1,21 +1,18 @@
 import AboutSection from '@/components/sections/AboutSection'
-import BlogSection from '@/components/sections/BlogSection'
-import ContactSection from '@/components/sections/ContactSection'
-import GamificationSection from '@/components/sections/GamificationSection'
+import CTASection from '@/components/sections/CTASection'
 import HeroSection from '@/components/sections/HeroSection'
 import ServicesSection from '@/components/sections/ServicesSection'
-import TerminalSection from '@/components/sections/TerminalSection'
+import StatsSection from '@/components/sections/StatsSection'
 
 export default function HomePage() {
   return (
     <main className="relative">
       <HeroSection />
       <AboutSection />
+      <StatsSection />
+      <CTASection />
       <ServicesSection />
-      <TerminalSection />
-      <GamificationSection />
-      <BlogSection />
-      <ContactSection />
+      {/* Contact section removed; Footer contains contact info */}
     </main>
   )
 }

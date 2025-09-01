@@ -27,9 +27,23 @@ describe('ServicesSection', () => {
   })
 
   it('renders hacker cards with services', () => {
-    ;['Pentest', 'Consultoria', 'Treinamentos'].forEach(service =>
-      expect(html).toContain(service)
-    )
+    ;[
+      'Desenvolvimento Seguro e DevSecOps',
+      'Investigação Cibernética',
+      'Defesa Cibernética e Infraestruturas',
+      'Testes de Segurança',
+      'Treinamentos e Capacitação',
+      'Desenvolvimento de Soluções',
+    ].forEach(service => expect(html).toContain(service))
+
+    ;[
+      'Integração de segurança em pipelines CI/CD',
+      'Análise forense digital em dispositivos e sistemas',
+      'Hardening de servidores, redes e aplicações',
+      'Pentest digital (aplicações web, APIs, redes)',
+      'Formação em DevSecOps e desenvolvimento seguro',
+      'Integração de dashboards de monitoramento (ELK, Grafana, Kibana)',
+    ].forEach(item => expect(html).toContain(item))
   })
 
   it('uses a responsive grid layout', () => {

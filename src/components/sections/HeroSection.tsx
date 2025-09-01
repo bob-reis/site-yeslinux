@@ -1,11 +1,9 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { useState } from 'react'
 import { Shield, Code, Zap, ChevronDown } from 'lucide-react'
 
 const HeroSection = () => {
-  const [isVideoPlaying, setIsVideoPlaying] = useState(false)
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -31,7 +29,7 @@ const HeroSection = () => {
   }
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section id="inicio" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* 3D Background Placeholder - será substituído por componente Three.js */}
       <div className="absolute inset-0 bg-gradient-to-br from-darker via-dark to-darker">
         <div className="absolute inset-0 opacity-20">
@@ -92,74 +90,6 @@ const HeroSection = () => {
             e impulsionar sua transformação digital.
           </motion.p>
 
-          {/* Video Section */}
-          <motion.div variants={itemVariants} className="mb-12">
-            <div className="relative max-w-2xl mx-auto">
-              {!isVideoPlaying ? (
-                <div className="relative bg-dark/80 border border-primary/30 rounded-lg p-8 backdrop-blur-sm">
-                  <div className="aspect-video bg-darker rounded-lg flex items-center justify-center border border-primary/20">
-                    <button
-                      onClick={() => setIsVideoPlaying(true)}
-                      className="btn-cyber flex items-center space-x-2 group"
-                    >
-                      <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
-                        <div className="w-0 h-0 border-l-[8px] border-l-white border-y-[6px] border-y-transparent ml-1" />
-                      </div>
-                      <span>Assistir Vídeo Institucional</span>
-                    </button>
-                  </div>
-                  <div className="absolute -top-2 -right-2 w-4 h-4 bg-accent rounded-full animate-pulse" />
-                  <div className="absolute -bottom-2 -left-2 w-3 h-3 bg-secondary rounded-full animate-ping" />
-                </div>
-              ) : (
-                <div className="aspect-video bg-darker rounded-lg flex items-center justify-center border border-primary">
-                  <p className="text-text-muted font-mono">
-                    [Vídeo será carregado aqui - placeholder para desenvolvimento]
-                  </p>
-                </div>
-              )}
-            </div>
-          </motion.div>
-
-          {/* CTA Buttons */}
-          <motion.div 
-            variants={itemVariants}
-            className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6 mb-16"
-          >
-            <button className="btn-cyber w-full sm:w-auto">
-              Fale com um Especialista
-            </button>
-            
-            <button className="btn-cyber bg-transparent border-secondary text-secondary hover:bg-secondary/10 w-full sm:w-auto">
-              Diagnóstico Gratuito
-            </button>
-          </motion.div>
-
-          {/* Stats */}
-          <motion.div 
-            variants={itemVariants}
-            className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center"
-          >
-            <div className="card-cyber p-4 rounded-lg">
-              <div className="text-2xl font-bold text-primary font-mono">500+</div>
-              <div className="text-sm text-text-muted">Projetos Seguros</div>
-            </div>
-            
-            <div className="card-cyber p-4 rounded-lg">
-              <div className="text-2xl font-bold text-secondary font-mono">24/7</div>
-              <div className="text-sm text-text-muted">Monitoramento</div>
-            </div>
-            
-            <div className="card-cyber p-4 rounded-lg">
-              <div className="text-2xl font-bold text-accent font-mono">100%</div>
-              <div className="text-sm text-text-muted">Software Livre</div>
-            </div>
-            
-            <div className="card-cyber p-4 rounded-lg">
-              <div className="text-2xl font-bold text-primary font-mono">5+</div>
-              <div className="text-sm text-text-muted">Anos de Experiência</div>
-            </div>
-          </motion.div>
         </motion.div>
 
         {/* Scroll Indicator */}

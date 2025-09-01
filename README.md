@@ -183,7 +183,7 @@ npm run test:security    # Auditoria de segurança
 
 ---
 
-### 2. Sobre Nós
+### 2. Sobre
 > A YesLinux nasceu com a missão de democratizar a segurança digital por meio do software livre.  
 > Somos especialistas em desenvolvimento seguro, investigação cibernética e defesa de infraestruturas críticas.  
 > Atuamos lado a lado com empresas e pessoas para oferecer soluções robustas, acessíveis e sustentáveis, sempre com foco em transparência, inovação e proteção.
@@ -241,27 +241,11 @@ Integrações, automações e APIs que fortalecem seu ecossistema digital.
 
 ---
 
-### 6. Contato
-**Texto de chamada:**
-> Pronto para fortalecer sua segurança digital?  
-> Fale com a YesLinux e descubra como podemos ajudar.
-
-**Formulário:**
-- Nome  
-- Empresa  
-- E-mail  
-- Telefone  
-- Mensagem  
-
-**Botão:** Enviar mensagem
-
----
-
-### 7. Rodapé
+### 6. Rodapé (Contato)
 - Logo da empresa  
-- Links rápidos (Home, Sobre, Serviços, Blog, Contato)  
-- Contato (email, telefone, endereço)  
-- Redes sociais (LinkedIn, YouTube, etc.)  
+- Links rápidos (Início, Nossos Números, Serviços, Sobre)  
+- Contato (email, telefone)  
+- Redes sociais (LinkedIn, GitHub, Website)  
 
 ---
 
@@ -281,16 +265,27 @@ site-yeslinux/
 │   │   ├── ui/            # Componentes de interface
 │   │   ├── 3d/            # Componentes Three.js
 │   │   └── terminal/      # Simulador de terminal
+│   ├── constants/         # Constantes compartilhadas (ex.: navegação)
 │   ├── hooks/             # Custom React Hooks
 │   ├── lib/               # Utilitários e helpers
+│   │   ├── motion.ts      # Variantes framer-motion reutilizáveis
+│   │   └── site.ts        # Contatos e links sociais
+│   ├── data/              # Conteúdo estruturado (ex.: serviços)
 │   ├── stores/            # Gerenciamento de estado
 │   └── types/             # TypeScript type definitions
+├── agents/                # Agentes e manifesto (seleção automática)
+├── scripts/               # Scripts utilitários (ex.: select-agent)
 ├── coverage/              # Relatórios de cobertura
 ├── vitest.config.ts       # Configuração de testes
 ├── tailwind.config.js     # Configuração do Tailwind
 ├── next.config.js         # Configuração do Next.js
 └── sonar-project.properties # Configuração SonarCloud
 ```
+
+## 🧭 Navegação
+- Menu com destaque automático da seção ativa usando `IntersectionObserver`.
+- Links apontam para `#inicio`, `#universo`, `#servicos`, `#sobre` (contato no rodapé).
+- Acessibilidade: link ativo recebe `aria-current="page"` e destaque visual (`text-primary`).
 
 ## 🤝 Contribuição
 
@@ -324,26 +319,21 @@ site-yeslinux/
 ## 🔄 Scripts Disponíveis
 
 ```bash
-# Desenvolvimento
-npm run dev              # Servidor de desenvolvimento
-npm run dev:turbo        # Desenvolvimento com Turbopack
+## Desenvolvimento
+npm run dev               # Servidor de desenvolvimento (http://localhost:3000)
 
-# Build e Deploy  
-npm run build            # Build de produção
-npm run start            # Servidor de produção
-npm run preview          # Preview do build
+## Build e Produção
+npm run build             # Build de produção
+npm start                 # Servidor de produção
 
-# Testes e Qualidade
-npm test                 # Testes com cobertura
-npm run test:watch       # Testes em modo watch
-npm run test:ui          # Interface visual dos testes
-npm run lint             # Verificação de lint
-npm run lint:fix         # Correção automática de lint
-npm run type-check       # Verificação de tipos TS
+## Testes e Qualidade
+npm test                  # Testes com cobertura (Vitest)
+npm run test:watch        # Modo watch
+npm run test:ui           # Vitest UI
+npm run lint              # ESLint
 
-# Utilitários
-npm run clean            # Limpeza de cache/build
-npm run analyze          # Análise do bundle
+## Agentes (seleção automática)
+npm run agent:select -- "<descrição da tarefa>"
 ```
 
 ## 🔧 Configuração de Ambiente
