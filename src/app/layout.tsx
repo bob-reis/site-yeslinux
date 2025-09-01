@@ -22,9 +22,9 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode
-}) {
+}>) {
   return (
     <html lang="pt-BR" className="scroll-smooth">
       <body className={`${inter.className} bg-darker text-text-light antialiased overflow-x-hidden`}>
