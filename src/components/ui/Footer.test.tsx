@@ -14,7 +14,7 @@ describe('Footer', () => {
   })
 
   it('contains quick navigation links', () => {
-    ;['Início', 'Universo InfoSec', 'Serviços', 'Sobre Nós', 'Contato'].forEach(label =>
+    ;['Início', 'Nossos Números', 'Serviços', 'Sobre', 'Contato'].forEach(label =>
       expect(html).toContain(label)
     )
   })
@@ -30,4 +30,3 @@ describe('Footer', () => {
     expect(html).toContain(year)
   })
 })
-

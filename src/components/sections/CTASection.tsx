@@ -13,9 +13,9 @@ const CTASection = () => {
           viewport={{ once: true }}
           className="text-center"
         >
-          <button className="btn-cyber">
+          <a href="#contato" className="btn-cyber">
             Fale com um Especialista
-          </button>
+          </a>
         </motion.div>
       </div>
     </section>

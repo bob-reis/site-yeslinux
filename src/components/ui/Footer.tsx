@@ -19,9 +19,9 @@ const Footer: React.FC = () => {
           <h3 className="font-bold text-text-light mb-3">Navegação</h3>
           <ul className="space-y-2 text-text-muted">
             <li><a className="hover:text-primary" href="#inicio">Início</a></li>
-            <li><a className="hover:text-primary" href="#universo">Universo InfoSec</a></li>
+            <li><a className="hover:text-primary" href="#universo">Nossos Números</a></li>
             <li><a className="hover:text-primary" href="#servicos">Serviços</a></li>
-            <li><a className="hover:text-primary" href="#sobre">Sobre Nós</a></li>
+            <li><a className="hover:text-primary" href="#sobre">Sobre</a></li>
             <li><a className="hover:text-primary" href="#contato">Contato</a></li>
           </ul>
         </nav>
@@ -57,4 +57,3 @@ const Footer: React.FC = () => {
 }
 
 export default Footer
-

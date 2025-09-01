@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 
 const StatsSection = () => {
   return (
-    <section className="py-16 relative bg-darker/30">
+    <section id="universo" className="py-16 relative bg-darker/30">
       <div className="container mx-auto px-4">
         {/* Stats Cards */}
         <motion.div 

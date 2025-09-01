@@ -29,7 +29,7 @@ const HeroSection = () => {
   }
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section id="inicio" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* 3D Background Placeholder - será substituído por componente Three.js */}
       <div className="absolute inset-0 bg-gradient-to-br from-darker via-dark to-darker">
         <div className="absolute inset-0 opacity-20">

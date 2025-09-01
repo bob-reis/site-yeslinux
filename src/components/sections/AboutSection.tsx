@@ -28,7 +28,7 @@ const AboutSection = () => {
   ]
 
   return (
-    <section id="about" className="py-20 relative bg-dark/50">
+    <section id="sobre" className="py-20 relative bg-dark/50">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -38,8 +38,7 @@ const AboutSection = () => {
           className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-5xl font-bold mb-6">
-            <span className="text-primary">Sobre</span>{' '}
-            <span className="text-white">Nós</span>
+            <span className="text-primary">Sobre</span>
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-primary to-secondary mx-auto mb-8"></div>
         </motion.div>

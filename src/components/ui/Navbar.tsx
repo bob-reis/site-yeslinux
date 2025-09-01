@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 interface NavLink {
   href: string
@@ -9,14 +9,47 @@ interface NavLink {
 
 const NAV_LINKS: NavLink[] = [
   { href: '#inicio', label: 'Início' },
-  { href: '#universo', label: 'Universo InfoSec' },
+  { href: '#universo', label: 'Nossos Números' },
   { href: '#servicos', label: 'Serviços' },
-  { href: '#sobre', label: 'Sobre Nós' },
+  { href: '#sobre', label: 'Sobre' },
   { href: '#contato', label: 'Contato' },
 ]
 
 const Navbar = () => {
   const [open, setOpen] = useState(false)
+  const [active, setActive] = useState<string>('#inicio')
+
+  useEffect(() => {
+    const ids = NAV_LINKS
+      .map(l => (l.href.startsWith('#') ? l.href.slice(1) : ''))
+      .filter(Boolean)
+
+    const sections = ids
+      .map(id => document.getElementById(id))
+      .filter((el): el is HTMLElement => Boolean(el))
+
+    if (!('IntersectionObserver' in window) || sections.length === 0) return
+
+    const observer = new IntersectionObserver(
+      entries => {
+        // Pick the first intersecting entry to set as active
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            setActive(`#${entry.target.id}`)
+          }
+        })
+      },
+      {
+        root: null,
+        // Trigger when section passes roughly the middle of the viewport
+        rootMargin: '-45% 0px -50% 0px',
+        threshold: 0.1,
+      }
+    )
+
+    sections.forEach(el => observer.observe(el))
+    return () => observer.disconnect()
+  }, [])
 
   return (
     <header className="bg-darker/90 backdrop-blur-md border-b border-primary/20 sticky top-0 z-50">
@@ -41,8 +74,12 @@ const Navbar = () => {
             <a
               key={href}
               href={href}
-              className="py-2 md:py-0 hover:text-primary"
-              onClick={() => setOpen(false)}
+              className={`py-2 md:py-0 hover:text-primary ${active === href ? 'text-primary font-semibold' : ''}`}
+              aria-current={active === href ? 'page' : undefined}
+              onClick={() => {
+                setOpen(false)
+                setActive(href)
+              }}
             >
               {label}
             </a>

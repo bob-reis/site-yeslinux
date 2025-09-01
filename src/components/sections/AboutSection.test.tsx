@@ -20,7 +20,6 @@ describe('AboutSection', () => {
   it('renders the section heading', () => {
     const html = renderToString(<AboutSection />)
     expect(html).toContain('Sobre')
-    expect(html).toContain('Nós')
   })
 
   it('renders all value cards with icons and descriptions', () => {
@@ -49,7 +48,7 @@ describe('AboutSection', () => {
 
   it('has section id', () => {
     const html = renderToString(<AboutSection />)
-    expect(html).toContain('id="about"')
+    expect(html).toContain('id="sobre"')
   })
 
 
