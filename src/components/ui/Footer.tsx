@@ -3,7 +3,7 @@ import React from 'react'
 const Footer: React.FC = () => {
   const year = new Date().getFullYear()
   return (
-    <footer className="bg-black/60 border-t border-primary/20 mt-20" role="contentinfo">
+    <footer id="contato" className="bg-black/60 border-t border-primary/20 mt-20" role="contentinfo">
       <div className="container mx-auto px-4 py-12 grid grid-cols-1 md:grid-cols-3 gap-8">
         <div>
           <a href="#inicio" className="font-mono text-2xl font-bold" aria-label="YesLinux home">
@@ -22,7 +22,6 @@ const Footer: React.FC = () => {
             <li><a className="hover:text-primary" href="#universo">Nossos Números</a></li>
             <li><a className="hover:text-primary" href="#servicos">Serviços</a></li>
             <li><a className="hover:text-primary" href="#sobre">Sobre</a></li>
-            <li><a className="hover:text-primary" href="#contato">Contato</a></li>
           </ul>
         </nav>
 

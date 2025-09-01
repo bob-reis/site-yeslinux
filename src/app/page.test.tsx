@@ -13,8 +13,7 @@ describe('HomePage', () => {
     // Check for content from each section component
     expect(html).toContain('YesLinux') // From HeroSection
     expect(html).toContain('Nossa Missão') // From AboutSection  
-    expect(html).toContain('Blog') // From BlogSection
-    expect(html).toContain('Contato') // From ContactSection
+    expect(html).toContain('Serviços') // From ServicesSection
   })
 
   it('renders components without errors', () => {

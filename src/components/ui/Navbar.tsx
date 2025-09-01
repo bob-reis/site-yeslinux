@@ -12,7 +12,6 @@ const NAV_LINKS: NavLink[] = [
   { href: '#universo', label: 'Nossos Números' },
   { href: '#servicos', label: 'Serviços' },
   { href: '#sobre', label: 'Sobre' },
-  { href: '#contato', label: 'Contato' },
 ]
 
 const Navbar = () => {
