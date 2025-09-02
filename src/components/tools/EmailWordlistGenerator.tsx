@@ -1,9 +1,12 @@
 "use client"
 import { useState } from 'react'
 import { generateEmails, generateWordlist, generateUsernames, preview, limits, EmailWordlistInput } from '@/lib/tools/emailWordlist'
+import { isValidDomain } from '@/lib/tools/validation'
 import EthicsNotice from './EthicsNotice'
 
 const defaultProviders = ['gmail.com', 'hotmail.com', 'yahoo.com']
+
+// Domain validation moved to lib/tools/validation for testability
 
 const EmailWordlistGenerator = () => {
   const [form, setForm] = useState<EmailWordlistInput>({ providers: defaultProviders })
@@ -41,8 +44,9 @@ const EmailWordlistGenerator = () => {
       .filter(Boolean)
     const customDomains = customDomainsText
       .split(/[\s,;]+/)
-      .map(s => s.trim())
+      .map(s => s.trim().toLowerCase())
       .filter(Boolean)
+      .filter(d => isValidDomain(d))
 
     const input: EmailWordlistInput = {
       ...form,
@@ -82,69 +86,73 @@ const EmailWordlistGenerator = () => {
         <div className="md:col-span-1 space-y-4">
           <div>
             <label htmlFor="firstName" className="block text-sm mb-1">Primeiro nome</label>
-            <input id="firstName" className="w-full px-3 py-2 bg-dark border border-primary/20 rounded" onChange={e => update('firstName', e.target.value)} />
+            <input id="firstName" type="text" maxLength={64} className="w-full px-3 py-2 bg-dark border border-primary/20 rounded" onChange={e => update('firstName', e.target.value)} />
           </div>
           <div>
             <label htmlFor="nickname" className="block text-sm mb-1">Apelido</label>
-            <input id="nickname" className="w-full px-3 py-2 bg-dark border border-primary/20 rounded" onChange={e => update('nickname', e.target.value)} />
+            <input id="nickname" type="text" maxLength={64} className="w-full px-3 py-2 bg-dark border border-primary/20 rounded" onChange={e => update('nickname', e.target.value)} />
           </div>
           <div className="grid grid-cols-2 gap-4">
             <div>
               <label htmlFor="middleInitial" className="block text-sm mb-1">Inicial do meio</label>
-              <input id="middleInitial" className="w-full px-3 py-2 bg-dark border border-primary/20 rounded" maxLength={1} onChange={e => update('middleInitial', e.target.value)} />
+              <input id="middleInitial" type="text" className="w-full px-3 py-2 bg-dark border border-primary/20 rounded" maxLength={1} onChange={e => update('middleInitial', e.target.value)} />
             </div>
             <div>
               <label htmlFor="lastName" className="block text-sm mb-1">Sobrenome</label>
-              <input id="lastName" className="w-full px-3 py-2 bg-dark border border-primary/20 rounded" onChange={e => update('lastName', e.target.value)} />
+              <input id="lastName" type="text" maxLength={64} className="w-full px-3 py-2 bg-dark border border-primary/20 rounded" onChange={e => update('lastName', e.target.value)} />
             </div>
           </div>
           <div>
             <label htmlFor="middleName" className="block text-sm mb-1">Nome do meio (completo)</label>
-            <input id="middleName" className="w-full px-3 py-2 bg-dark border border-primary/20 rounded" onChange={e => update('middleName', e.target.value)} />
+            <input id="middleName" type="text" maxLength={64} className="w-full px-3 py-2 bg-dark border border-primary/20 rounded" onChange={e => update('middleName', e.target.value)} />
           </div>
           <div>
             <label htmlFor="maidenName" className="block text-sm mb-1">Nome de solteira da mãe</label>
-            <input id="maidenName" className="w-full px-3 py-2 bg-dark border border-primary/20 rounded" onChange={e => update('maidenName', e.target.value)} />
+            <input id="maidenName" type="text" maxLength={64} className="w-full px-3 py-2 bg-dark border border-primary/20 rounded" onChange={e => update('maidenName', e.target.value)} />
           </div>
           <div>
             <label htmlFor="fatherName" className="block text-sm mb-1">Nome do pai</label>
-            <input id="fatherName" className="w-full px-3 py-2 bg-dark border border-primary/20 rounded" onChange={e => update('fatherName', e.target.value)} />
+            <input id="fatherName" type="text" maxLength={64} className="w-full px-3 py-2 bg-dark border border-primary/20 rounded" onChange={e => update('fatherName', e.target.value)} />
           </div>
           <div>
             <label htmlFor="spouseName" className="block text-sm mb-1">Nome da esposa/namorada</label>
-            <input id="spouseName" className="w-full px-3 py-2 bg-dark border border-primary/20 rounded" value={spouseName} onChange={e => setSpouseName(e.target.value)} />
+            <input id="spouseName" type="text" maxLength={64} className="w-full px-3 py-2 bg-dark border border-primary/20 rounded" value={spouseName} onChange={e => setSpouseName(e.target.value)} />
           </div>
           <div>
             <label htmlFor="knownUsernames" className="block text-sm mb-1">Usernames conhecidos (separe por vírgulas ou espaço)</label>
-            <textarea id="knownUsernames" className="w-full px-3 py-2 bg-dark border border-primary/20 rounded" rows={2} value={usernamesText} onChange={e => setUsernamesText(e.target.value)} />
+            <textarea id="knownUsernames" className="w-full px-3 py-2 bg-dark border border-primary/20 rounded" rows={2} maxLength={512} value={usernamesText} onChange={e => setUsernamesText(e.target.value)} />
           </div>
           <div className="grid grid-cols-2 gap-4">
             <div>
               <label htmlFor="birthDate" className="block text-sm mb-1">Data de nascimento (dd/mm/aaaa)</label>
               <input
                 id="birthDate"
+                type="text"
                 placeholder="01/01/1990"
                 value={dob}
                 onChange={e => setDob(applyDobMask(e.target.value))}
+                inputMode="numeric"
+                pattern="\d{2}/\d{2}/\d{4}"
+                maxLength={10}
                 className="w-full px-3 py-2 bg-dark border border-primary/20 rounded"
               />
             </div>
             <div>
               <label htmlFor="extraYearOrNumber" className="block text-sm mb-1">Ano/Número extra</label>
-              <input id="extraYearOrNumber" className="w-full px-3 py-2 bg-dark border border-primary/20 rounded" onChange={e => update('extraYearOrNumber', e.target.value)} />
+              <input id="extraYearOrNumber" type="text" inputMode="numeric" pattern="\d{1,6}" maxLength={6} className="w-full px-3 py-2 bg-dark border border-primary/20 rounded" onChange={e => update('extraYearOrNumber', e.target.value)} />
             </div>
           </div>
           <div>
             <label htmlFor="petNames" className="block text-sm mb-1">Nomes dos pets (separe por vírgulas)</label>
-            <textarea id="petNames" className="w-full px-3 py-2 bg-dark border border-primary/20 rounded" rows={2} value={petsText} onChange={e => setPetsText(e.target.value)} />
+            <textarea id="petNames" className="w-full px-3 py-2 bg-dark border border-primary/20 rounded" rows={2} maxLength={512} value={petsText} onChange={e => setPetsText(e.target.value)} />
           </div>
           <div>
             <label htmlFor="childrenNames" className="block text-sm mb-1">Nomes dos filhos (separe por vírgulas)</label>
-            <textarea id="childrenNames" className="w-full px-3 py-2 bg-dark border border-primary/20 rounded" rows={2} value={childrenText} onChange={e => setChildrenText(e.target.value)} />
+            <textarea id="childrenNames" className="w-full px-3 py-2 bg-dark border border-primary/20 rounded" rows={2} maxLength={512} value={childrenText} onChange={e => setChildrenText(e.target.value)} />
           </div>
           <div>
             <label htmlFor="favoriteTeam" className="block text-sm mb-1">Time do coração</label>
-            <input id="favoriteTeam" className="w-full px-3 py-2 bg-dark border border-primary/20 rounded" value={favoriteTeam} onChange={e => setFavoriteTeam(e.target.value)} />
+            <input id="favoriteTeam" type="text" maxLength={64} className="w-full px-3 py-2 bg-dark border border-primary/20 rounded" value={favoriteTeam} onChange={e => setFavoriteTeam(e.target.value)} />
           </div>
           <div>
             <p className="text-sm mb-1">Provedores</p>
@@ -161,8 +169,10 @@ const EmailWordlistGenerator = () => {
             <label htmlFor="customDomains" className="block text-sm mb-1">Domínios personalizados (separe por vírgulas ou espaço)</label>
             <input
               id="customDomains"
+              type="text"
               className="w-full px-3 py-2 bg-dark border border-primary/20 rounded"
               placeholder="empresa.com, corp.com.br"
+              maxLength={256}
               value={customDomainsText}
               onChange={e => setCustomDomainsText(e.target.value)}
             />
