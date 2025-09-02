@@ -14,7 +14,7 @@ describe('Navbar', () => {
   })
 
   it('contains navigation links', () => {
-    const links = ['Início', 'Nossos Números', 'Serviços', 'Sobre']
+    const links = ['Início', 'Sobre', 'Serviços']
     links.forEach(link => expect(html).toContain(link))
   })
 

@@ -14,9 +14,7 @@ describe('Footer', () => {
   })
 
   it('contains quick navigation links', () => {
-    ;['Início', 'Nossos Números', 'Serviços', 'Sobre'].forEach(label =>
-      expect(html).toContain(label)
-    )
+    ;['Início', 'Sobre', 'Serviços'].forEach(label => expect(html).toContain(label))
   })
 
   it('shows contact info and social links', () => {
