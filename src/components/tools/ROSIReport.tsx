@@ -15,7 +15,15 @@ export default function ROSIReport() {
   }, [currentResult, currentInput, calculate])
 
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen report-document">
+      {/* YesLinux Report Header (print-friendly) */}
+      <div className="report-header bg-darker text-text-light border-b border-primary/30">
+        <div className="container mx-auto px-6 py-4 flex items-center justify-between">
+          <div className="text-xl font-bold tracking-wide">YesLinux</div>
+          <div className="text-xs text-text-muted">Relatório de ROSI</div>
+        </div>
+      </div>
+
       {/* Cover */}
       <section className="container mx-auto px-6 py-16 print:py-10">
         <div className="card-cyber rounded-xl p-8 print:border print:rounded-none print:shadow-none">
@@ -48,7 +56,13 @@ export default function ROSIReport() {
         <div className="page-break" />
         <ROSICharts />
       </section>
+
+      {/* YesLinux Footer (print-friendly) */}
+      <div className="report-footer text-center text-sm text-text-muted">
+        <div className="container mx-auto px-6 py-3">
+          <span className="font-semibold text-text-light">O maior ROI em segurança é alcançado na YesLinux.</span>
+        </div>
+      </div>
     </main>
   )
 }
-
