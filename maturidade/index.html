@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avaliação de Maturidade em Segurança da Informação</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1>🛡️ Avaliação de Maturidade em Segurança</h1>
+                <p>Descubra o nível de maturidade em segurança da informação da sua organização</p>
+                <!-- sem links no header -->
+            </div>
+        </header>
+
+        <!-- Progress Bar -->
+        <div class="progress-container" id="progressContainer" style="display: none;">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <div class="progress-text" id="progressText">Domínio 1 de 8</div>
+        </div>
+
+        <!-- Questionnaire Section -->
+        <div class="questionnaire-section" id="questionnaireSection" style="display: none;">
+            <!-- Domain Navigation -->
+            <div class="domain-navigation">
+                <div class="domain-tabs" id="domainTabs"></div>
+            </div>
+
+            <!-- Current Domain -->
+            <div class="current-domain" id="currentDomain">
+                <div class="domain-header">
+                    <h2 id="domainTitle"></h2>
+                    <p id="domainDescription"></p>
+                </div>
+                <div class="questions-container" id="questionsContainer"></div>
+                
+                <div class="navigation-buttons">
+                    <button class="btn btn-secondary" id="prevBtn" onclick="previousDomain()">
+                        ← Anterior
+                    </button>
+                    <button class="btn btn-primary" id="nextBtn" onclick="nextDomain()">
+                        Próximo →
+                    </button>
+                    <button class="btn btn-success" id="finishBtn" onclick="showResults()" style="display: none;">
+                        Ver Resultados 📊
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Results Section -->
+        <div class="results-section" id="resultsSection" style="display: none;">
+            <div class="results-header">
+                <h2>📊 Seus Resultados de Maturidade</h2>
+                <div class="overall-score" id="overallScore">
+                    <div class="score-circle">
+                        <span id="scoreValue">0.0</span>
+                        <div class="score-label">Pontuação Geral</div>
+                    </div>
+                    <div class="maturity-level" id="maturityLevel">
+                        <span id="levelText">Inicial</span>
+                        <div class="level-description" id="levelDescription">Processos ad-hoc e não documentados</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="results-grid">
+                <!-- Radar Chart -->
+                <div class="chart-container">
+                    <h3>Radar de Maturidade por Domínio</h3>
+                    <canvas id="radarChart"></canvas>
+                </div>
+
+                <!-- Bar Chart -->
+                <div class="chart-container">
+                    <h3>Pontuação por Domínio</h3>
+                    <canvas id="barChart"></canvas>
+                </div>
+
+                <!-- Domain Cards -->
+                <div class="domain-cards" id="domainCards"></div>
+
+                <!-- Top Gaps -->
+                <div class="top-gaps">
+                    <h3>🎯 Top 5 Prioridades</h3>
+                    <div class="gaps-list" id="gapsList"></div>
+                </div>
+
+                <!-- Recommendations -->
+                <div class="recommendations" id="recommendations">
+                    <h3>💡 Recomendações Personalizadas</h3>
+                    <div class="recommendations-list" id="recommendationsList"></div>
+                </div>
+
+            </div>
+
+            <div class="actions">
+                <button class="btn btn-primary" onclick="generatePDF()">
+                    📄 Baixar Relatório PDF
+                </button>
+            </div>
+        </div>
+
+        <!-- Methodology Section (landing) -->
+        <div class="methodology-section" id="methodologySection" style="display: block;">
+            <div class="methodology-content" id="methodologyContent">
+                <div class="methodology-card">
+                    <div id="mdHint" class="hint" style="text-align:center; margin-bottom:12px;">Carregando conteúdo…</div>
+                    <div id="methodologyMd" class="content"></div>
+                </div>
+                <div style="text-align:center; margin-top: 24px;">
+                    <button class="btn btn-primary" onclick="startAssessment()">🚀 FAÇA O TESTE</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+    <script id="md-source" type="text/plain">
+# Metodologia de Avaliação de Maturidade em Segurança da Informação
+
+## 🎯 Por que avaliar a maturidade em segurança
+
+Segurança da informação não é apenas tecnologia. Ela envolve **processos, pessoas e cultura**.
+Avaliar a maturidade permite responder a duas perguntas-chave:
+- Onde estamos hoje?
+- Onde precisamos chegar?
+
+Com isso, a empresa consegue planejar ações concretas, priorizar investimentos e reduzir riscos de forma estruturada.
+
+---
+
+## 📚 Frameworks de referência
+
+Este questionário foi elaborado com base em práticas reconhecidas mundialmente, combinando elementos de diferentes frameworks:
+
+- **NIST Cybersecurity Framework 2.0** – Estrutura para identificar, proteger, detectar, responder e recuperar.
+- **ISO/IEC 27001** – Gestão de segurança da informação.
+- **CIS Critical Security Controls** – Controles técnicos priorizados para reduzir riscos.
+- **OWASP SAMM / OWASP Top 10** – Melhores práticas para segurança de software e desenvolvimento seguro.
+- **LGPD / GDPR** – Conformidade legal e proteção de dados pessoais.
+
+---
+
+## 📊 Níveis de maturidade
+
+O modelo usa uma escala de **0 a 5** para medir a maturidade em cada domínio.
+
+| Nível | Nome        | Descrição rápida | Exemplo prático |
+|-------|-------------|------------------|-----------------|
+| 0     | Inicial     | Não existe processo formal. | Cada time faz do seu jeito, sem padrão. |
+| 1     | Repetível   | Já existe prática, mas não padronizada. | Alguns times usam MFA, outros não. |
+| 2     | Definido    | Processo documentado e divulgado. | Política de senhas publicada, mas sem auditoria contínua. |
+| 3     | Gerenciado  | Medido, auditado, acompanhado pela gestão. | MFA obrigatório em 100% das contas, relatórios trimestrais. |
+| 4–5   | Otimizado   | Automatizado e em melhoria contínua. | Pipeline com SAST/DAST automatizado e métricas de risco integradas ao board. |
+
+---
+
+## 📝 Como funciona o questionário
+
+- São **48 perguntas** organizadas em 8 domínios críticos de segurança:
+  Governança & Risco, Identidades & Acessos, Dados & LGPD, AppSec/DevSecOps, Infra/Cloud, Detecção & Resposta, Conscientização, Continuidade & Resiliência.
+- Cada pergunta tem um **peso** de acordo com sua criticidade.
+- A escala de respostas é simples: **Não (0), Parcial (2), Sim (5)**.
+- O sistema calcula:
+  - **Score por domínio** → mostra pontos fortes e fracos.
+  - **Score global** → consolida a maturidade geral.
+  - **Nível de maturidade** → de Inicial até Otimizado.
+- Além do score, são exibidas **recomendações práticas** para evoluir a maturidade.
+
+---
+
+## ✅ Por que confiar neste modelo
+
+- Baseado em **frameworks globais consolidados**.
+- Metodologia **simples de entender**, mas profunda para gerar insights reais.
+- Não coleta dados sem consentimento → **100% ético e transparente**.
+
+---
+
+A avaliação de maturidade é um ponto de partida essencial para qualquer empresa que queira estruturar sua segurança.
+O objetivo não é apenas mostrar um placar, mas sim **indicar caminhos claros para evolução**.
+    </script>
+    <script>
+      (function() {
+        function mdInline(text){
+          return text
+            .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+            .replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>')
+            .replace(/`([^`]+)`/g,'<code>$1</code>');
+        }
+        function renderTable(rows){
+          if(rows.length<2){return '<pre>'+rows.map(r=>r.replace(/</g,'&lt;')).join('\n')+'</pre>';}
+          const header=rows[0].split('|').slice(1,-1).map(s=>s.trim());
+          const body=rows.slice(2).map(r=>r.split('|').slice(1,-1).map(s=>s.trim()));
+          let h='<table><thead><tr>'+header.map(h=>'<th>'+mdInline(h)+'</th>').join('')+'</tr></thead><tbody>';
+          body.forEach(c=>{h+='<tr>'+c.map(x=>'<td>'+mdInline(x)+'</td>').join('')+'</tr>';});
+          return h+'</tbody></table>';
+        }
+        function mdToHtml(md){
+          const lines=md.replace(/\r\n?/g,'\n').split('\n');
+          let html=''; let i=0; let para=null;
+          function flushPara(){ if(para && para.trim().length){ html += '<p>'+mdInline(para.trim())+'</p>'; } para=null; }
+          while(i<lines.length){
+            const raw=lines[i];
+            const line=raw; const trimmed=line.trim();
+            if(trimmed.startsWith('|')){ flushPara(); const t=[]; while(i<lines.length&&lines[i].trim().startsWith('|')){t.push(lines[i]);i++;} html+=renderTable(t); continue; }
+            if(/^\s*---+\s*$/.test(trimmed)){ flushPara(); html+='<hr />'; i++; continue; }
+            if(line.startsWith('### ')){ flushPara(); html+='<h3>'+mdInline(line.slice(4))+'</h3>'; i++; continue; }
+            if(line.startsWith('## ')){ flushPara(); html+='<h2>'+mdInline(line.slice(3))+'</h2>'; i++; continue; }
+            if(line.startsWith('# ')){ flushPara(); html+='<h1>'+mdInline(line.slice(2))+'</h1>'; i++; continue; }
+            if(/^\s*-\s+/.test(line)){
+              flushPara(); html+='<ul>';
+              while(i<lines.length && /^\s*-\s+/.test(lines[i])){ html+='<li>'+mdInline(lines[i].replace(/^\s*-\s+/,''))+'</li>'; i++; }
+              html+='</ul>'; continue;
+            }
+            if(trimmed.length===0){ flushPara(); i++; continue; }
+            para = (para? para+' ' : '') + line;
+            i++;
+          }
+          flushPara();
+          return html;
+        }
+        document.addEventListener('DOMContentLoaded', function(){
+          const src=document.getElementById('md-source');
+          const tgt=document.getElementById('methodologyMd');
+          if(src && tgt){tgt.innerHTML=mdToHtml(src.textContent||'');}
+          const hint=document.getElementById('mdHint'); if(hint) hint.style.display='none';
+        });
+      })();
+    </script>
+</body>
+</html>
