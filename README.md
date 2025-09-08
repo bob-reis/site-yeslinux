@@ -1,13 +1,11 @@
 # 🛡️ YesLinux – Tecnologia em Software Livre
 
 <div align="center">
-  <img src="public/logo-yeslinux.png" alt="YesLinux Logo" width="200"/>
   
   **Segurança, liberdade e inovação em cada linha de código**
   
   [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=bob-reis_site-yeslinux&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=bob-reis_site-yeslinux)
   [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=bob-reis_site-yeslinux&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=bob-reis_site-yeslinux)
-  [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=bob-reis_site-yeslinux&metric=coverage)](https://sonarcloud.io/summary/new_code?id=bob-reis_site-yeslinux)
   [![Tests](https://github.com/bob-reis/site-yeslinux/actions/workflows/test.yml/badge.svg)](https://github.com/bob-reis/site-yeslinux/actions/workflows/test.yml)
   [![Security](https://github.com/bob-reis/site-yeslinux/actions/workflows/security.yml/badge.svg)](https://github.com/bob-reis/site-yeslinux/actions/workflows/security.yml)
 
@@ -41,7 +39,6 @@ graph TB
     E --> G[Testing Library]
     
     H[CI/CD] --> I[GitHub Actions]
-    H --> J[SonarCloud]
     H --> K[Vercel]
     
     L[Monitoramento] --> M[Analytics]
@@ -71,7 +68,6 @@ graph TB
 ### CI/CD & Deployment  
 - **CI/CD:** GitHub Actions
 - **Hosting:** Vercel
-- **Monitoring:** SonarCloud
 - **Security:** CodeQL + OWASP Dependency Check
 - **Coverage:** Codecov
 
@@ -160,7 +156,6 @@ npm run test:security    # Auditoria de segurança
 - **Bundle Size:** < 500KB inicial
 
 ### Qualidade
-- **SonarCloud Quality Gate:** A
 - **Test Coverage:** 80%+
 - **TypeScript Coverage:** 100%
 - **Zero vulnerabilidades conhecidas**

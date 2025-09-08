@@ -38,6 +38,18 @@ export default function ToolsIndexPage() {
               <li className="opacity-70">Em breve</li>
             </ul>
           </div>
+          <div className="p-5 border border-primary/10 rounded">
+            <h2 className="font-semibold mb-2">Gestão & Conformidade</h2>
+            <ul className="text-sm space-y-2">
+              <li>
+                <div className="flex flex-col">
+                  <span className="font-medium">Avaliação de Maturidade em Segurança</span>
+                  <span className="text-text-muted">Questionário ponderado por domínio com resultados e recomendações.</span>
+                  <Link className="text-primary hover:underline w-fit" href="/tools/maturidade">Abrir ferramenta →</Link>
+                </div>
+              </li>
+            </ul>
+          </div>
         </div>
       </section>
     </main>
