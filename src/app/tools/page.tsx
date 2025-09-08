@@ -48,6 +48,13 @@ export default function ToolsIndexPage() {
                   <Link className="text-primary hover:underline w-fit" href="/tools/maturidade">Abrir ferramenta →</Link>
                 </div>
               </li>
+              <li>
+                <div className="flex flex-col">
+                  <span className="font-medium">ROSI Calculator</span>
+                  <span className="text-text-muted">Calcule retorno do investimento em segurança com entradas simples.</span>
+                  <Link className="text-primary hover:underline w-fit" href="/tools/rosi-calculator">Abrir ferramenta →</Link>
+                </div>
+              </li>
             </ul>
           </div>
         </div>

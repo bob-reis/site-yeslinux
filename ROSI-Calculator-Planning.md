@@ -1,28 +1,28 @@
-# = ROSI Calculator: Technical Planning Document
+# ROSI Calculator: Technical Planning Document
 
-## 1. Introdu��o ao ROSI (Return on Security Investment)
+## 1. Introdução ao ROSI (Return on Security Investment)
 
-### 1.1 Defini��o Estrat�gica
-ROSI � uma m�trica financeira cr�tica que quantifica o valor econ�mico real dos investimentos em seguran�a cibern�tica. Diferentemente de m�tricas tradicionais, o ROSI traduz prote��o t�cnica em linguagem de neg�cios: retorno financeiro.
+### 1.1 Definição Estratégica
+ROSI é uma métrica financeira crítica que quantifica o valor econômico real dos investimentos em segurança cibernética. Diferentemente de métricas tradicionais, o ROSI traduz proteção técnica em linguagem de negócios: retorno financeiro.
 
-### 1.2 Componentes da F�rmula de C�lculo
+### 1.2 Componentes da Fórmula de Cálculo
 ```
-ROSI = [(Benef�cio Financeiro da Seguran�a - Custo do Investimento) / Custo do Investimento] * 100%
+ROSI = [(Benefício Financeiro da Segurança - Custo do Investimento) / Custo do Investimento] * 100%
 ```
 
-#### Vari�veis Chave:
-- **Custo Potencial de Incidentes**: Estimativa de perdas sem prote��o
-- **Custos de Implementa��o de Seguran�a**: Investimento direto
-- **Redu��o Percentual de Risco**: Efic�cia das medidas de seguran�a
-- **Economia Anualizada**: Valor econ�mico gerado pela preven��o
+#### Variáveis Chave:
+- Custo Potencial de Incidentes: estimativa de perdas sem proteção
+- Custos de Implementação de Segurança: investimento direto
+- Redução Percentual de Risco: eficácia das medidas de segurança
+- Economia Anualizada: valor econômico gerado pela prevenção
 
 ### 1.3 Casos de Uso Empresariais
-- **Justificativa de Investimentos de Seguran�a**
-- **Compara��o de Estrat�gias de Mitiga��o**
-- **Comunica��o com Stakeholders N�o-T�cnicos**
-- **Planejamento Or�ament�rio de Ciberseguran�a**
+- Justificativa de investimentos de segurança
+- Comparação de estratégias de mitigação
+- Comunicação com stakeholders não-técnicos
+- Planejamento orçamentário de cibersegurança
 
-## 2. Arquitetura T�cnica Detalhada
+## 2. Arquitetura Técnica Detalhada
 
 ### 2.1 Estrutura de Componentes React
 ```typescript
@@ -44,7 +44,7 @@ const ROSICalculator: React.FC<ROSICalculatorProps> = ({
   potentialLoss, 
   riskReductionPercentage 
 }) => {
-  // Implementa��o do c�lculo
+  // Implementação do cálculo
 }
 ```
 
@@ -65,10 +65,10 @@ const useROSIStore = create<ROSIStore>((set) => ({
     scenarios: [...state.scenarios, scenario]
   })),
   calculateROSI: (input) => {
-    // L�gica de c�lculo complexa
+    // Lógica de cálculo complexa
   },
   exportReport: () => {
-    // Gera��o de relat�rio
+    // Geração de relatório
   }
 }));
 ```
@@ -92,12 +92,12 @@ interface ROSIScenario {
 }
 ```
 
-## 3. Especifica��o da Interface
+## 3. Especificação da Interface
 
 ### 3.1 Wireframe Terminal/Matrix
 ```
 +-----------------------------------------------------+
-|  = ROSI CALCULATOR [Hacker Mode Enabled]           |
+|  ROSI CALCULATOR [Hacker Mode Enabled]              |
 +-----------------------------------------------------+
 | Investment Amount [$]: [___________________]        |
 | Potential Annual Loss [$]: [__________________]     |
@@ -106,23 +106,23 @@ interface ROSIScenario {
 | [CALCULATE] [SIMULATE] [EXPORT REPORT]              |
 |                                                     |
 | RESULTS:                                            |
-| ROI: =� 125.34%                                     |
-| Annual Savings: $=� 342,500.00                      |
-| Risk Mitigation Score: �  [����������] 95%         |
+| ROI: 125.34%                                        |
+| Annual Savings: $342,500.00                         |
+| Risk Mitigation Score: [##########] 95%             |
 +-----------------------------------------------------+
 ```
 
-### 3.2 Fluxo de Usu�rio
+### 3.2 Fluxo de Usuário
 1. Inserir dados de investimento
 2. Definir potencial de perda
-3. Estimar redu��o de risco
+3. Estimar redução de risco
 4. Calcular ROSI
 5. Visualizar resultados
-6. Opcional: Salvar cen�rio, exportar relat�rio
+6. Opcional: salvar cenário, exportar relatório
 
-## 4. Engine de C�lculo
+## 4. Engine de Cálculo
 
-### 4.1 F�rmulas Matem�ticas
+### 4.1 Fórmulas Matemáticas
 ```typescript
 function calculateROSI(
   initialInvestment: number, 
@@ -148,55 +148,55 @@ function calculateROSI(
 }
 ```
 
-### 4.2 Algoritmos de Valida��o
-- Verifica��o de limites de entrada
-- Preven��o de divis�o por zero
-- C�lculo de intervalo de confian�a estat�stico
-- Valida��o de consist�ncia de dados
+### 4.2 Algoritmos de Validação
+- Verificação de limites de entrada
+- Prevenção de divisão por zero
+- Cálculo de intervalo de confiança estatístico
+- Validação de consistência de dados
 
-## 5. Funcionalidades Avan�adas
+## 5. Funcionalidades Avançadas
 
-### 5.1 Compara��o de Benchmarks
+### 5.1 Comparação de Benchmarks
 - Dados de ROSI por setor
-- Compara��o com m�dias de mercado
-- Identifica��o de outliers
+- Comparação com médias de mercado
+- Identificação de outliers
 
-### 5.2 Gera��o de Relat�rios
+### 5.2 Geração de Relatórios
 - PDF executivo
-- Gr�ficos comparativos
-- An�lise de tend�ncias
-- Recomenda��es personalizadas
+- Gráficos comparativos
+- Análise de tendências
+- Recomendações personalizadas
 
-### 5.3 Exporta��o de Dados
+### 5.3 Exportação de Dados
 - Formatos: CSV, JSON, XLSX
-- Integra��o com ferramentas de BI
+- Integração com ferramentas de BI
 - Compatibilidade com planilhas corporativas
 
-## 6. Roadmap de Implementa��o
+## 6. Roadmap de Implementação
 
-### Fase 1: Funda��o (Sprint 1-2)
+### Fase 1: Fundação (Sprint 1-2)
 - [x] Arquitetura base
-- [x] C�lculo core do ROSI
+- [x] Cálculo core do ROSI
 - [x] Interface inicial de terminal
-- [ ] Valida��es de entrada
+- [ ] Validações de entrada
 
 ### Fase 2: Refinamento (Sprint 3-4)
-- [ ] Visualiza��es de dados
-- [ ] Sistema de armazenamento de cen�rios
-- [ ] Exporta��o de relat�rios
-- [ ] Testes unit�rios e de integra��o
+- [ ] Visualizações de dados
+- [ ] Sistema de armazenamento de cenários
+- [ ] Exportação de relatórios
+- [ ] Testes unitários e de integração
 
-### Fase 3: Avan�ado (Sprint 5-6)
-- [ ] Benchmarking din�mico
-- [ ] Machine learning para predi��es
-- [ ] Integra��o com dashboards
-- [ ] M�dulo de recomenda��es
+### Fase 3: Avançado (Sprint 5-6)
+- [ ] Benchmarking dinâmico
+- [ ] Machine learning para predições
+- [ ] Integração com dashboards
+- [ ] Módulo de recomendações
 
-### Crit�rios de Sucesso
+### Critérios de Sucesso
 - 95%+ cobertura de testes
-- Performance de c�lculo < 50ms
+- Performance de cálculo < 50ms
 - UX intuitiva e hacker-themed
-- Precis�o estat�stica comprovada
+- Precisão estatística comprovada
 
 ## 7. Modelagem de Ameaças e Controles de Segurança
 
