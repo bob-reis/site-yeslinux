@@ -179,3 +179,32 @@ body {
     transform: none;
   }
 }
+
+/* Print styles for PDF export */
+@media print {
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+  header, nav, footer, .print\:hidden {
+    display: none !important;
+  }
+  .report-header, .report-footer {
+    position: fixed;
+    left: 0; right: 0;
+    background: #ffffff !important;
+    color: #000000 !important;
+    border-color: #cccccc !important;
+    z-index: 9999;
+  }
+  .report-header { top: 0; }
+  .report-footer { bottom: 0; }
+  .report-document { padding-top: 70px; padding-bottom: 50px; }
+  .card-cyber {
+    background: #ffffff !important;
+    border: 1px solid #ccc !important;
+    box-shadow: none !important;
+  }
+  a { color: #000000 !important; text-decoration: none !important; }
+  .page-break { page-break-before: always; }
+}
