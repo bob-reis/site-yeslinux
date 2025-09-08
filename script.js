@@ -481,11 +481,7 @@ async function renderResultsProgressively(results) {
         // OTIMIZAÇÃO: Usar requestAnimationFrame para renderização suave
         await new Promise(resolve => {
             requestAnimationFrame(() => {
-                try {
-                    renderSteps[i]();
-                } catch (err) {
-                    console.error('Erro ao renderizar etapa', i + 1, err);
-                }
+                renderSteps[i]();
                 resolve();
             });
         });
