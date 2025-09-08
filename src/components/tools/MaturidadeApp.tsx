@@ -91,26 +91,23 @@ export default function MaturidadeApp() {
 
       {/* Resultados */}
       <section id="resultsSection" className="hidden mt-10 space-y-8">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
-          <div className="card-cyber p-6 rounded">
-            <div className="text-center">
-              <div className="mx-auto w-32 h-32 rounded-full border-2 border-primary flex items-center justify-center glow-primary">
-                <span id="scoreValue" className="text-4xl font-bold">-</span>
-              </div>
-              <h4 id="levelText" className="text-xl font-semibold mt-3">-</h4>
-              <p id="levelDescription" className="text-text-muted mt-2">&nbsp;</p>
-            </div>
+        <div className="card-cyber p-8 rounded text-center">
+          <div className="mx-auto w-32 h-32 rounded-full border-2 border-primary flex items-center justify-center glow-primary">
+            <span id="scoreValue" className="text-4xl font-bold">-</span>
           </div>
+          <h4 id="levelText" className="text-2xl font-semibold mt-3">-</h4>
+          <p id="levelDescription" className="text-text-muted mt-2">&nbsp;</p>
+        </div>
 
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
           <div className="card-cyber p-6 rounded">
-            <h5 className="font-semibold mb-3">Radar por Domínio</h5>
+            <h5 className="font-semibold mb-3 text-center">Radar por Domínio</h5>
             <div className="w-full h-[400px] flex items-center justify-center">
               <canvas id="radarChart" />
             </div>
           </div>
-
           <div className="card-cyber p-6 rounded">
-            <h5 className="font-semibold mb-3">Comparativo de Pontuações</h5>
+            <h5 className="font-semibold mb-3 text-center">Comparativo de Pontuações</h5>
             <div className="w-full h-[400px] flex items-center justify-center">
               <canvas id="barChart" />
             </div>
@@ -148,14 +145,29 @@ export default function MaturidadeApp() {
         .domain-tab.completed { box-shadow: 0 0 10px rgba(0,255,65,0.3) inset; }
 
         /* Questions */
-        .question-card { background: rgba(13,17,23,0.8); border: 1px solid rgba(0,255,65,0.25); border-radius: 10px; padding: 16px; }
+        .question-card { background: rgba(13,17,23,0.85); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 18px; margin-bottom: 20px; }
         .question-text { display: flex; justify-content: space-between; align-items: baseline; font-weight: 600; }
         .question-weight { color: var(--text-muted); font-size: 12px; margin-left: 12px; }
-        .answer-options { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
-        .answer-option { text-align: center; padding: 12px; border: 1px solid rgba(0,255,65,0.25); border-radius: 8px; cursor: pointer; background: rgba(1,4,9,0.6); }
+        .answer-options { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; }
+        .answer-option { min-width: 150px; text-align: center; padding: 14px 16px; border: 1px solid rgba(0,255,65,0.25); border-radius: 10px; cursor: pointer; background: rgba(1,4,9,0.7); font-size: 0.95rem; }
         .answer-option:hover { border-color: var(--primary); transform: translateY(-1px); transition: 0.15s; }
         .answer-option.selected { background: rgba(0,255,65,0.08); border-color: var(--primary); }
-        .answer-value { display: inline-block; font-weight: 700; color: var(--primary); margin-bottom: 4px; }
+        .answer-value { display: inline-block; font-weight: 700; color: var(--primary); margin-bottom: 6px; font-size: 1rem; }
+
+        /* Methodology content formatting */
+        .methodology-content .content { max-width: 820px; margin: 0 auto; font-size: 16px; line-height: 1.75; letter-spacing: 0.2px; }
+        .methodology-content .content h1 { font-size: 2rem; margin: 10px 0 12px; }
+        .methodology-content .content h2 { font-size: 1.5rem; margin: 18px 0 10px; }
+        .methodology-content .content h3 { font-size: 1.25rem; margin: 16px 0 8px; }
+        .methodology-content .content p { margin: 10px 0; }
+        .methodology-content .content ul { list-style: disc inside; margin: 8px 0 16px; padding-left: 0; }
+        .methodology-content .content li { margin: 6px 0; }
+        .methodology-content .content hr { border: none; border-top: 1px solid rgba(255,255,255,0.12); margin: 18px 0; }
+        .methodology-content .content table { width: 100%; border-collapse: collapse; margin: 12px 0 16px; overflow-x: auto; display: block; }
+        .methodology-content .content th, .methodology-content .content td { border: 1px solid rgba(255,255,255,0.12); padding: 10px; text-align: left; }
+        .methodology-content .content thead th { background: rgba(255,255,255,0.06); }
+        .methodology-content .content tbody tr:nth-child(even) { background: rgba(255,255,255,0.03); }
+        .methodology-content .content code { background: rgba(255,255,255,0.08); padding: 0 4px; border-radius: 4px; }
 
         /* Loading overlay */
         .loading-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.6); display: none; align-items: center; justify-content: center; z-index: 60; }

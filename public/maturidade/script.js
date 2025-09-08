@@ -716,10 +716,10 @@ function toggleTheme() {
 
 function updateChartTheme(theme) {
     const isDark = theme === 'dark';
-    const tick = isDark ? '#f0f6fc' : '#212529';
-    const grid = isDark ? 'rgba(240,246,252,0.18)' : 'rgba(0,0,0,0.1)';
+    const tick = isDark ? '#ffffff' : '#212529';
+    const grid = isDark ? 'rgba(255,255,255,0.28)' : 'rgba(0,0,0,0.1)';
     const tooltipBg = isDark ? 'rgba(10,14,20,0.98)' : 'rgba(255,255,255,0.95)';
-    const tooltipTxt = isDark ? '#f0f6fc' : '#212529';
+    const tooltipTxt = isDark ? '#ffffff' : '#212529';
 
     if (chartInstances.radarChart) {
         const r = chartInstances.radarChart.options.scales.r;
@@ -728,6 +728,10 @@ function updateChartTheme(theme) {
         r.angleLines = Object.assign({}, r.angleLines || {}, { color: grid });
         r.pointLabels.color = tick;
         r.beginAtZero = true;
+        // Legend/tooltip colors
+        chartInstances.radarChart.options.plugins.legend = Object.assign({}, chartInstances.radarChart.options.plugins.legend || {}, {
+            labels: Object.assign({}, (chartInstances.radarChart.options.plugins.legend||{}).labels || {}, { color: tick })
+        });
         chartInstances.radarChart.options.plugins.tooltip = Object.assign({}, chartInstances.radarChart.options.plugins.tooltip || {}, {
             backgroundColor: tooltipBg,
             titleColor: tooltipTxt,
@@ -740,6 +744,9 @@ function updateChartTheme(theme) {
         const y = chartInstances.barChart.options.scales.y;
         x.ticks.color = tick; x.grid.color = grid; x.border = Object.assign({}, x.border || {}, { color: grid });
         y.ticks.color = tick; y.grid.color = grid; y.border = Object.assign({}, y.border || {}, { color: grid });
+        chartInstances.barChart.options.plugins.legend = Object.assign({}, chartInstances.barChart.options.plugins.legend || {}, {
+            labels: Object.assign({}, (chartInstances.barChart.options.plugins.legend||{}).labels || {}, { color: tick })
+        });
         chartInstances.barChart.options.plugins.tooltip = Object.assign({}, chartInstances.barChart.options.plugins.tooltip || {}, {
             backgroundColor: tooltipBg,
             titleColor: tooltipTxt,
