@@ -1,4 +1,4 @@
-import { render, screen, fireEvent } from '@/test-utils/render'
+import { render, screen, fireEvent } from '@testing-library/react'
 import { describe, it, expect } from 'vitest'
 import ROSICalculator from './ROSICalculator'
 

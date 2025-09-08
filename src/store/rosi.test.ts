@@ -10,7 +10,7 @@ beforeEach(() => {
 
 describe('ROSI store', () => {
   it('calculates and saves a scenario', () => {
-    const { calculate, saveScenario, scenarios, currentResult } = useROSIStore.getState()
+    const { calculate, saveScenario } = useROSIStore.getState()
     const res = calculate({ initialInvestment: 50000, potentialLoss: 300000, riskReductionPercentage: 40 })
     expect(res.annualizedSavings).toBe(70000)
     expect(useROSIStore.getState().currentResult).not.toBeNull()
@@ -27,4 +27,3 @@ describe('ROSI store', () => {
     expect(s.result.annualizedSavings).toBe(70000)
   })
 })
-

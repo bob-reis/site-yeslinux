@@ -18,7 +18,7 @@ export function calculateRiskScore(
   const rr = clamp(riskReductionPercentage, 0, 100)
   const avoidedLoss = potentialLoss * (rr / 100)
 
-  let efficiency = 0
+  let efficiency: number
   if (initialInvestment > 0) {
     efficiency = avoidedLoss / initialInvestment
   } else if (avoidedLoss > 0) {
