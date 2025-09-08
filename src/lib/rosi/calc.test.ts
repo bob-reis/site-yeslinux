@@ -36,5 +36,10 @@ describe('ROSI calc', () => {
     expect(calculateRiskScore(0, 0, 0)).toBeGreaterThanOrEqual(0)
     expect(calculateRiskScore(100, 1, 1_000_000)).toBeLessThanOrEqual(100)
   })
-})
 
+  it('risk score handles avoided loss with zero investment', () => {
+    // Triggers the branch where initialInvestment === 0 but avoidedLoss > 0
+    const score = calculateRiskScore(50, 0, 100000)
+    expect(score).toBeGreaterThan(0)
+  })
+})
