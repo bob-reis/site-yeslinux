@@ -14,16 +14,10 @@ export default function MaturidadeApp() {
       {/* Metodologia (primeira tela) */}
       <section id="methodologySection" className="space-y-5">
         <h3 className="text-2xl font-semibold">Metodologia de Avaliação</h3>
-        <p className="text-text-muted">
-          A avaliação considera 8 domínios (Governança & Risco, Identidades & Acessos, Dados & LGPD, AppSec/DevSecOps, Infra/Cloud,
-          Detecção & Resposta, Conscientização e Continuidade & Resiliência) com pesos relativos e questões de múltipla escolha (0, 2, 5).
-          O resultado calcula a pontuação por domínio e um índice global entre 0 e 5, classificando o nível de maturidade entre Inicial → Otimizado.
-        </p>
-        <ul className="list-disc pl-5 text-text-muted">
-          <li>Classificações: 0 = Não, 2 = Parcial, 5 = Sim.</li>
-          <li>Pesos por questão e por domínio ponderam o resultado.</li>
-          <li>Relatório com gaps prioritários e recomendações.</li>
-        </ul>
+        <div className="methodology-content">
+          <div id="mdHint" className="text-text-muted text-center">Carregando conteúdo…</div>
+          <div id="methodologyMd" className="content" />
+        </div>
         <div className="mt-4">
           <button
             id="startBtn"
@@ -54,7 +48,7 @@ export default function MaturidadeApp() {
           <p id="domainDescription" className="text-text-muted mt-1" />
         </div>
 
-        <div id="questionsContainer" className="grid gap-4 mt-4" />
+        <div id="questionsContainer" className="gap-4 mt-4" />
 
         <div className="flex items-center justify-center mt-6">
           <div className="flex gap-3">
@@ -125,18 +119,17 @@ export default function MaturidadeApp() {
 
         <div>
           <h5 className="font-semibold mb-3">Resumo por Domínio</h5>
-          <div id="domainCards" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" />
+          <div id="domainCards" className="domain-cards" />
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="card-cyber p-6 rounded">
-            <h5 className="font-semibold mb-3">Maiores Gaps</h5>
-            <ul id="gapsList" className="space-y-2" />
-          </div>
-          <div className="card-cyber p-6 rounded">
-            <h5 className="font-semibold mb-3">Recomendações Prioritárias</h5>
-            <ul id="recommendationsList" className="space-y-2" />
-          </div>
+        <div className="recommendations">
+          <h5 className="font-semibold mb-3">Recomendações Prioritárias</h5>
+          <div id="recommendationsList" className="recommendations-list" />
+        </div>
+
+        <div className="top-gaps">
+          <h5 className="font-semibold mb-3">Maiores Gaps</h5>
+          <div id="gapsList" className="gaps-list" />
         </div>
       </section>
 
@@ -158,7 +151,7 @@ export default function MaturidadeApp() {
         .question-card { background: rgba(13,17,23,0.8); border: 1px solid rgba(0,255,65,0.25); border-radius: 10px; padding: 16px; }
         .question-text { display: flex; justify-content: space-between; align-items: baseline; font-weight: 600; }
         .question-weight { color: var(--text-muted); font-size: 12px; margin-left: 12px; }
-        .answer-options { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 12px; margin-top: 12px; }
+        .answer-options { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
         .answer-option { text-align: center; padding: 12px; border: 1px solid rgba(0,255,65,0.25); border-radius: 8px; cursor: pointer; background: rgba(1,4,9,0.6); }
         .answer-option:hover { border-color: var(--primary); transform: translateY(-1px); transition: 0.15s; }
         .answer-option.selected { background: rgba(0,255,65,0.08); border-color: var(--primary); }
@@ -170,6 +163,23 @@ export default function MaturidadeApp() {
         .spinner { width: 28px; height: 28px; border: 3px solid rgba(0,255,65,0.25); border-top-color: var(--primary); border-radius: 50%; margin: 0 auto 8px; animation: spin 0.8s linear infinite; }
         .loading-text { color: var(--text-light); }
         @keyframes spin { to { transform: rotate(360deg); } }
+        /* Original-like cards */
+        .domain-cards { display: grid; grid-template-columns: repeat(auto-fit,minmax(250px,1fr)); gap: 20px; }
+        .domain-card { background: rgba(30,30,30,0.6); padding: 20px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.5); border-left: 4px solid var(--primary); position: relative; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); }
+        .domain-card h4 { color: var(--text-light); margin-bottom: 10px; font-size: 1.1rem; }
+        .domain-score { font-size: 1.5rem; font-weight: 700; }
+        .domain-level { color: var(--text-muted); font-size: 0.9rem; }
+
+        .recommendations-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        .recommendation-card { background: rgba(1,4,9,0.8); padding: 20px; border-radius: 10px; border-left: 4px solid var(--primary); position: relative; overflow: hidden; }
+        .recommendation-title { font-weight: 700; color: var(--text-light); margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px; }
+        .recommendation-text { color: var(--text-muted); line-height: 1.5; }
+
+        .top-gaps { background: rgba(30,30,30,0.6); padding: 25px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1); }
+        .gaps-list { display: flex; flex-direction: column; gap: 15px; }
+        .gap-item { background: rgba(1,4,9,0.8); padding: 15px; border-radius: 10px; border-left: 4px solid #45b7d1; }
+        .gap-priority { font-weight: 700; color: #45b7d1; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; }
+        .gap-text { margin-top: 5px; color: var(--text-light); }
       `}</style>
     </Section>
 
@@ -181,6 +191,46 @@ export default function MaturidadeApp() {
       src="/maturidade/script.js"
       strategy="afterInteractive"
       onLoad={() => {
+        // Load methodology markdown dynamically
+        fetch('/maturidade/metodologia.md')
+          .then((r: Response) => r.text())
+          .then((md: string) => {
+            const mdEl = document.getElementById('methodologyMd');
+            const hint = document.getElementById('mdHint');
+            if (hint) hint.style.display = 'none';
+            if (mdEl) {
+              const mdInline = (t: string): string => t
+                .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+                .replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>')
+                .replace(/`([^`]+)`/g,'<code>$1</code>');
+              const renderTable = (rows: string[]): string => {
+                if(rows.length<2){return '<pre>'+rows.map(r=>r.replace(/</g,'&lt;')).join('\n')+'</pre>'}
+                const header=rows[0].split('|').slice(1,-1).map(s=>s.trim());
+                const body=rows.slice(2).map(r=>r.split('|').slice(1,-1).map(s=>s.trim()));
+                let h='<table><thead><tr>'+header.map(h=>'<th>'+mdInline(h)+'</th>').join('')+'</tr></thead><tbody>';
+                body.forEach(c=>{h+='<tr>'+c.map(x=>'<td>'+mdInline(x)+'</td>').join('')+'</tr>'});
+                return h+'</tbody></table>';
+              };
+              const mdToHtml = (src: string): string => {
+                const lines=src.replace(/\r\n?/g,'\n').split('\n');
+                let html=''; let i=0; let para: string | null = null; const flush=()=>{ if(para && para.trim().length){ html+='<p>'+mdInline(para.trim())+'</p>'; } para=null; };
+                while(i<lines.length){
+                  const line = lines[i]; const t=line.trim();
+                  if(t.startsWith('|')){ flush(); const tbl: string[] = []; while(i<lines.length && lines[i].trim().startsWith('|')){ tbl.push(lines[i]); i++; } html+=renderTable(tbl); continue; }
+                  if(/^\s*---+\s*$/.test(t)){ flush(); html+='<hr />'; i++; continue; }
+                  if(line.startsWith('### ')){ flush(); html+='<h3>'+mdInline(line.slice(4))+'</h3>'; i++; continue; }
+                  if(line.startsWith('## ')){ flush(); html+='<h2>'+mdInline(line.slice(3))+'</h2>'; i++; continue; }
+                  if(line.startsWith('# ')){ flush(); html+='<h1>'+mdInline(line.slice(2))+'</h1>'; i++; continue; }
+                  if(/^\s*-\s+/.test(line)){ flush(); html+='<ul>'; while(i<lines.length && /^\s*-\s+/.test(lines[i])){ html+='<li>'+mdInline(lines[i].replace(/^\s*-\s+/,''))+'</li>'; i++; } html+='</ul>'; continue; }
+                  if(t.length===0){ flush(); i++; continue; }
+                  para = (para? para+' ' : '') + line; i++;
+                }
+                flush(); return html;
+              };
+              mdEl.innerHTML = mdToHtml(md);
+            }
+          })
+          .catch(() => { const hint = document.getElementById('mdHint'); if (hint) hint.textContent = 'Conteúdo indisponível.' })
         // Ensure initialization when script is loaded after DOMContentLoaded
         // @ts-ignore - defined by the loaded script
         if (typeof window !== 'undefined' && typeof (window as any).initializeApplication === 'function') {

@@ -716,16 +716,18 @@ function toggleTheme() {
 
 function updateChartTheme(theme) {
     const isDark = theme === 'dark';
-    const tick = isDark ? '#e0e0e0' : '#212529';
-    const grid = isDark ? 'rgba(255,255,255,0.2)' : 'rgba(0,0,0,0.1)';
-    const tooltipBg = isDark ? 'rgba(20,20,20,0.95)' : 'rgba(255,255,255,0.95)';
-    const tooltipTxt = isDark ? '#e0e0e0' : '#212529';
+    const tick = isDark ? '#f0f6fc' : '#212529';
+    const grid = isDark ? 'rgba(240,246,252,0.18)' : 'rgba(0,0,0,0.1)';
+    const tooltipBg = isDark ? 'rgba(10,14,20,0.98)' : 'rgba(255,255,255,0.95)';
+    const tooltipTxt = isDark ? '#f0f6fc' : '#212529';
 
     if (chartInstances.radarChart) {
         const r = chartInstances.radarChart.options.scales.r;
         r.ticks.color = tick;
         r.grid.color = grid;
+        r.angleLines = Object.assign({}, r.angleLines || {}, { color: grid });
         r.pointLabels.color = tick;
+        r.beginAtZero = true;
         chartInstances.radarChart.options.plugins.tooltip = Object.assign({}, chartInstances.radarChart.options.plugins.tooltip || {}, {
             backgroundColor: tooltipBg,
             titleColor: tooltipTxt,
@@ -736,8 +738,8 @@ function updateChartTheme(theme) {
     if (chartInstances.barChart) {
         const x = chartInstances.barChart.options.scales.x;
         const y = chartInstances.barChart.options.scales.y;
-        x.ticks.color = tick; x.grid.color = grid;
-        y.ticks.color = tick; y.grid.color = grid;
+        x.ticks.color = tick; x.grid.color = grid; x.border = Object.assign({}, x.border || {}, { color: grid });
+        y.ticks.color = tick; y.grid.color = grid; y.border = Object.assign({}, y.border || {}, { color: grid });
         chartInstances.barChart.options.plugins.tooltip = Object.assign({}, chartInstances.barChart.options.plugins.tooltip || {}, {
             backgroundColor: tooltipBg,
             titleColor: tooltipTxt,
@@ -1423,5 +1425,17 @@ function startAssessment() {
     if (methodology) methodology.style.display = 'none';
     if (progress) progress.style.display = 'block';
     if (questionnaire) questionnaire.style.display = 'block';
+
+    // Garantir renderização inicial do questionário
+    try {
+        renderDomainTabs();
+        renderCurrentDomain();
+        updateProgress();
+        updateNavigation();
+    } catch (e) {
+        // fallback: re-inicializar fluxo
+        try { initializeApplication(); } catch {}
+    }
+
     document.getElementById('questionnaireSection').scrollIntoView({ behavior: 'smooth' });
 }
