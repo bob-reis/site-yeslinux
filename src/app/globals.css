@@ -118,8 +118,8 @@ body {
 
 .card-cyber:hover {
   border-color: var(--primary);
-  box-shadow: 0 10px 30px rgba(0, 255, 65, 0.2);
-  transform: translateY(-5px);
+  box-shadow: 0 0 18px rgba(0, 255, 65, 0.15), 0 8px 20px rgba(0, 0, 0, 0.35);
+  transform: translateY(-3px);
 }
 
 /* Loading Animation */

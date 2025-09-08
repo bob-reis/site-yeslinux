@@ -1,6 +1,8 @@
-'use client'
+"use client"
 
 import { useEffect, useState } from 'react'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import Logo from './Logo'
 import { NAV_LINKS } from '@/constants/nav'
 import { SITE } from '@/lib/site'
@@ -8,6 +10,7 @@ import { SITE } from '@/lib/site'
 const Navbar = () => {
   const [open, setOpen] = useState(false)
   const [active, setActive] = useState<string>('#inicio')
+  const pathname = usePathname()
 
   useEffect(() => {
     const ids = NAV_LINKS
@@ -57,20 +60,24 @@ const Navbar = () => {
         <div
           className={`${open ? 'flex' : 'hidden'} flex-col md:flex md:flex-row md:items-center md:space-x-6 font-mono text-sm text-text-light`}
         >
-          {NAV_LINKS.map(({ href, label }) => (
-            <a
-              key={href}
-              href={href}
-              className={`py-2 md:py-0 hover:text-primary ${active === href ? 'text-primary font-semibold' : ''}`}
-              aria-current={active === href ? 'page' : undefined}
-              onClick={() => {
-                setOpen(false)
-                setActive(href)
-              }}
-            >
-              {label}
-            </a>
-          ))}
+          {NAV_LINKS.map(({ href, label }) => {
+            const computedHref = href.startsWith('#') ? `/${href}` : href
+            const isActive = active === href || (computedHref === '/tools' && pathname === '/tools')
+            return (
+              <Link
+                key={href}
+                href={computedHref}
+                className={`py-2 md:py-0 hover:text-primary ${isActive ? 'text-primary font-semibold' : ''}`}
+                aria-current={isActive ? 'page' : undefined}
+                onClick={() => {
+                  setOpen(false)
+                  setActive(href)
+                }}
+              >
+                {label}
+              </Link>
+            )
+          })}
           <div className="py-2 md:py-0 md:ml-6 flex flex-col md:flex-row md:space-x-3 text-xs text-text-muted">
             <a href={`mailto:${SITE.email}`} className="hover:text-primary">
               {SITE.email}
