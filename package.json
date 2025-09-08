@@ -9,6 +9,8 @@
     "lint": "next lint",
     "agent:select": "node scripts/select-agent.js",
     "test": "vitest run --coverage",
+    "coverage:maturidade": "vitest run --coverage && node scripts/check-coverage.js src/components/tools src/app/tools/maturidade 80",
+    "ci:maturidade-coverage": "npm run coverage:maturidade",
     "test:watch": "vitest",
     "test:ui": "vitest --ui"
   },

@@ -74,3 +74,8 @@ Object.defineProperty(window, 'innerHeight', {
   configurable: true,
   value: 768,
 })
+// Mock next/script for SSR-friendly tests
+vi.mock('next/script', () => ({
+  __esModule: true,
+  default: () => null,
+}))
