@@ -846,7 +846,7 @@ async function renderRadarChartOptimized(domainScores) {
                         label: 'Pontuação de Maturidade',
                         data: data,
                         borderColor: '#667eea',
-                        backgroundColor: 'rgba(102, 126, 234, 0.2)',
+                        backgroundColor: 'rgba(102, 126, 234, 0.12)',
                         pointBackgroundColor: '#667eea',
                         pointBorderColor: '#fff',
                         pointHoverBackgroundColor: '#fff',
@@ -965,7 +965,7 @@ async function renderBarChartOptimized(domainScores) {
             const colors = data.map(score => {
                 const level = getMaturityLevel(score);
                 return {
-                    background: level.color + '80',
+                    background: level.color + '40',
                     border: level.color
                 };
             });

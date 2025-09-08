@@ -13,15 +13,14 @@ export default function MaturidadeApp() {
     >
       {/* Metodologia (primeira tela) */}
       <section id="methodologySection" className="space-y-5">
-        <h3 className="text-2xl font-semibold">Metodologia de Avaliação</h3>
         <div className="methodology-content">
           <div id="mdHint" className="text-text-muted text-center">Carregando conteúdo…</div>
           <div id="methodologyMd" className="content" />
         </div>
-        <div className="mt-4">
+        <div className="mt-4 text-center">
           <button
             id="startBtn"
-            className="btn-cyber px-5 py-2 rounded"
+            className="btn-cyber px-6 py-3 rounded mx-auto"
             onClick={() => {
               // @ts-ignore
               if (typeof (window as any).startAssessment === 'function') (window as any).startAssessment()
@@ -100,13 +99,13 @@ export default function MaturidadeApp() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
-          <div className="card-cyber p-6 rounded">
+          <div className="chart-card card-cyber p-6 rounded">
             <h5 className="font-semibold mb-3 text-center">Radar por Domínio</h5>
             <div className="w-full h-[400px] flex items-center justify-center">
               <canvas id="radarChart" />
             </div>
           </div>
-          <div className="card-cyber p-6 rounded">
+          <div className="chart-card card-cyber p-6 rounded">
             <h5 className="font-semibold mb-3 text-center">Comparativo de Pontuações</h5>
             <div className="w-full h-[400px] flex items-center justify-center">
               <canvas id="barChart" />
@@ -192,6 +191,9 @@ export default function MaturidadeApp() {
         .gap-item { background: rgba(1,4,9,0.8); padding: 15px; border-radius: 10px; border-left: 4px solid #45b7d1; }
         .gap-priority { font-weight: 700; color: #45b7d1; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; }
         .gap-text { margin-top: 5px; color: var(--text-light); }
+
+        /* Chart cards with higher transparency */
+        .chart-card { background: rgba(13,17,23,0.5) !important; border-color: rgba(255,255,255,0.08) !important; }
       `}</style>
     </Section>
 
