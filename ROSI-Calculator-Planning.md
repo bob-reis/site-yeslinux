@@ -1,28 +1,28 @@
 # = ROSI Calculator: Technical Planning Document
 
-## 1. Introdução ao ROSI (Return on Security Investment)
+## 1. Introduï¿½ï¿½o ao ROSI (Return on Security Investment)
 
-### 1.1 Definição Estratégica
-ROSI é uma métrica financeira crítica que quantifica o valor econômico real dos investimentos em segurança cibernética. Diferentemente de métricas tradicionais, o ROSI traduz proteção técnica em linguagem de negócios: retorno financeiro.
+### 1.1 Definiï¿½ï¿½o Estratï¿½gica
+ROSI ï¿½ uma mï¿½trica financeira crï¿½tica que quantifica o valor econï¿½mico real dos investimentos em seguranï¿½a cibernï¿½tica. Diferentemente de mï¿½tricas tradicionais, o ROSI traduz proteï¿½ï¿½o tï¿½cnica em linguagem de negï¿½cios: retorno financeiro.
 
-### 1.2 Componentes da Fórmula de Cálculo
+### 1.2 Componentes da Fï¿½rmula de Cï¿½lculo
 ```
-ROSI = [(Benefício Financeiro da Segurança - Custo do Investimento) / Custo do Investimento] * 100%
+ROSI = [(Benefï¿½cio Financeiro da Seguranï¿½a - Custo do Investimento) / Custo do Investimento] * 100%
 ```
 
-#### Variáveis Chave:
-- **Custo Potencial de Incidentes**: Estimativa de perdas sem proteção
-- **Custos de Implementação de Segurança**: Investimento direto
-- **Redução Percentual de Risco**: Eficácia das medidas de segurança
-- **Economia Anualizada**: Valor econômico gerado pela prevenção
+#### Variï¿½veis Chave:
+- **Custo Potencial de Incidentes**: Estimativa de perdas sem proteï¿½ï¿½o
+- **Custos de Implementaï¿½ï¿½o de Seguranï¿½a**: Investimento direto
+- **Reduï¿½ï¿½o Percentual de Risco**: Eficï¿½cia das medidas de seguranï¿½a
+- **Economia Anualizada**: Valor econï¿½mico gerado pela prevenï¿½ï¿½o
 
 ### 1.3 Casos de Uso Empresariais
-- **Justificativa de Investimentos de Segurança**
-- **Comparação de Estratégias de Mitigação**
-- **Comunicação com Stakeholders Não-Técnicos**
-- **Planejamento Orçamentário de Cibersegurança**
+- **Justificativa de Investimentos de Seguranï¿½a**
+- **Comparaï¿½ï¿½o de Estratï¿½gias de Mitigaï¿½ï¿½o**
+- **Comunicaï¿½ï¿½o com Stakeholders Nï¿½o-Tï¿½cnicos**
+- **Planejamento Orï¿½amentï¿½rio de Ciberseguranï¿½a**
 
-## 2. Arquitetura Técnica Detalhada
+## 2. Arquitetura Tï¿½cnica Detalhada
 
 ### 2.1 Estrutura de Componentes React
 ```typescript
@@ -44,7 +44,7 @@ const ROSICalculator: React.FC<ROSICalculatorProps> = ({
   potentialLoss, 
   riskReductionPercentage 
 }) => {
-  // Implementação do cálculo
+  // Implementaï¿½ï¿½o do cï¿½lculo
 }
 ```
 
@@ -65,10 +65,10 @@ const useROSIStore = create<ROSIStore>((set) => ({
     scenarios: [...state.scenarios, scenario]
   })),
   calculateROSI: (input) => {
-    // Lógica de cálculo complexa
+    // Lï¿½gica de cï¿½lculo complexa
   },
   exportReport: () => {
-    // Geração de relatório
+    // Geraï¿½ï¿½o de relatï¿½rio
   }
 }));
 ```
@@ -92,7 +92,7 @@ interface ROSIScenario {
 }
 ```
 
-## 3. Especificação da Interface
+## 3. Especificaï¿½ï¿½o da Interface
 
 ### 3.1 Wireframe Terminal/Matrix
 ```
@@ -106,23 +106,23 @@ interface ROSIScenario {
 | [CALCULATE] [SIMULATE] [EXPORT REPORT]              |
 |                                                     |
 | RESULTS:                                            |
-| ROI: =â 125.34%                                     |
-| Annual Savings: $=° 342,500.00                      |
-| Risk Mitigation Score: ”  [ˆˆˆˆˆˆˆˆˆˆ] 95%         |
+| ROI: =ï¿½ 125.34%                                     |
+| Annual Savings: $=ï¿½ 342,500.00                      |
+| Risk Mitigation Score: ï¿½  [ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½] 95%         |
 +-----------------------------------------------------+
 ```
 
-### 3.2 Fluxo de Usuário
+### 3.2 Fluxo de Usuï¿½rio
 1. Inserir dados de investimento
 2. Definir potencial de perda
-3. Estimar redução de risco
+3. Estimar reduï¿½ï¿½o de risco
 4. Calcular ROSI
 5. Visualizar resultados
-6. Opcional: Salvar cenário, exportar relatório
+6. Opcional: Salvar cenï¿½rio, exportar relatï¿½rio
 
-## 4. Engine de Cálculo
+## 4. Engine de Cï¿½lculo
 
-### 4.1 Fórmulas Matemáticas
+### 4.1 Fï¿½rmulas Matemï¿½ticas
 ```typescript
 function calculateROSI(
   initialInvestment: number, 
@@ -148,58 +148,207 @@ function calculateROSI(
 }
 ```
 
-### 4.2 Algoritmos de Validação
-- Verificação de limites de entrada
-- Prevenção de divisão por zero
-- Cálculo de intervalo de confiança estatístico
-- Validação de consistência de dados
+### 4.2 Algoritmos de Validaï¿½ï¿½o
+- Verificaï¿½ï¿½o de limites de entrada
+- Prevenï¿½ï¿½o de divisï¿½o por zero
+- Cï¿½lculo de intervalo de confianï¿½a estatï¿½stico
+- Validaï¿½ï¿½o de consistï¿½ncia de dados
 
-## 5. Funcionalidades Avançadas
+## 5. Funcionalidades Avanï¿½adas
 
-### 5.1 Comparação de Benchmarks
+### 5.1 Comparaï¿½ï¿½o de Benchmarks
 - Dados de ROSI por setor
-- Comparação com médias de mercado
-- Identificação de outliers
+- Comparaï¿½ï¿½o com mï¿½dias de mercado
+- Identificaï¿½ï¿½o de outliers
 
-### 5.2 Geração de Relatórios
+### 5.2 Geraï¿½ï¿½o de Relatï¿½rios
 - PDF executivo
-- Gráficos comparativos
-- Análise de tendências
-- Recomendações personalizadas
+- Grï¿½ficos comparativos
+- Anï¿½lise de tendï¿½ncias
+- Recomendaï¿½ï¿½es personalizadas
 
-### 5.3 Exportação de Dados
+### 5.3 Exportaï¿½ï¿½o de Dados
 - Formatos: CSV, JSON, XLSX
-- Integração com ferramentas de BI
+- Integraï¿½ï¿½o com ferramentas de BI
 - Compatibilidade com planilhas corporativas
 
-## 6. Roadmap de Implementação
+## 6. Roadmap de Implementaï¿½ï¿½o
 
-### Fase 1: Fundação (Sprint 1-2)
+### Fase 1: Fundaï¿½ï¿½o (Sprint 1-2)
 - [x] Arquitetura base
-- [x] Cálculo core do ROSI
+- [x] Cï¿½lculo core do ROSI
 - [x] Interface inicial de terminal
-- [ ] Validações de entrada
+- [ ] Validaï¿½ï¿½es de entrada
 
 ### Fase 2: Refinamento (Sprint 3-4)
-- [ ] Visualizações de dados
-- [ ] Sistema de armazenamento de cenários
-- [ ] Exportação de relatórios
-- [ ] Testes unitários e de integração
+- [ ] Visualizaï¿½ï¿½es de dados
+- [ ] Sistema de armazenamento de cenï¿½rios
+- [ ] Exportaï¿½ï¿½o de relatï¿½rios
+- [ ] Testes unitï¿½rios e de integraï¿½ï¿½o
 
-### Fase 3: Avançado (Sprint 5-6)
-- [ ] Benchmarking dinâmico
-- [ ] Machine learning para predições
-- [ ] Integração com dashboards
-- [ ] Módulo de recomendações
+### Fase 3: Avanï¿½ado (Sprint 5-6)
+- [ ] Benchmarking dinï¿½mico
+- [ ] Machine learning para prediï¿½ï¿½es
+- [ ] Integraï¿½ï¿½o com dashboards
+- [ ] Mï¿½dulo de recomendaï¿½ï¿½es
 
-### Critérios de Sucesso
+### Critï¿½rios de Sucesso
 - 95%+ cobertura de testes
-- Performance de cálculo < 50ms
+- Performance de cï¿½lculo < 50ms
 - UX intuitiva e hacker-themed
-- Precisão estatística comprovada
+- Precisï¿½o estatï¿½stica comprovada
 
-## Considerações Finais
+## 7. Modelagem de AmeaÃ§as e Controles de SeguranÃ§a
 
-Este projeto não é apenas uma calculadora, mas uma ferramenta estratégica que transforma segurança cibernética em uma decisão financeira inteligente.
+### 7.1 Threat Model: ROSI Calculator
 
-=€ **Transformando Segurança em Valor Mensurável** =
+#### Ativos CrÃ­ticos
+- Dados financeiros sensÃ­veis de investimento
+- CÃ¡lculos de ROSI e projeÃ§Ãµes de seguranÃ§a
+- HistÃ³rico de cenÃ¡rios de seguranÃ§a
+- Metadados de configuraÃ§Ãµes de seguranÃ§a
+
+#### Vetores de Ataque EspecÃ­ficos
+1. **ManipulaÃ§Ã£o de Dados de Entrada**
+   - InjeÃ§Ã£o de valores maliciosos para distorcer resultados
+   - Overflow de campos numÃ©ricos
+   - InserÃ§Ã£o de scripts ou comandos em campos de texto
+
+2. **ExposiÃ§Ã£o de InformaÃ§Ãµes Confidenciais**
+   - Vazamento de dados financeiros estratÃ©gicos
+   - ExposiÃ§Ã£o de mÃ©tricas de seguranÃ§a internas
+   - Riscos de engenharia social atravÃ©s de relatÃ³rios
+
+3. **AdulteraÃ§Ã£o de CÃ¡lculos**
+   - ModificaÃ§Ã£o de algoritmos de ROSI
+   - ManipulaÃ§Ã£o de fÃ³rmulas de reduÃ§Ã£o de risco
+   - GeraÃ§Ã£o de relatÃ³rios fraudulentos
+
+4. **Ataques de Disponibilidade**
+   - Sobrecarga de cÃ¡lculos complexos
+   - NegaÃ§Ã£o de serviÃ§o por processamento excessivo
+   - Indisponibilidade durante exportaÃ§Ã£o de relatÃ³rios
+
+### 7.2 Controles de SeguranÃ§a
+
+#### ValidaÃ§Ã£o e SanitizaÃ§Ã£o de Inputs
+```typescript
+function validateFinancialInput(input: number): boolean {
+  // ValidaÃ§Ãµes rigorosas de input financeiro
+  if (input < 0 || input > 1_000_000_000) return false;
+  if (Number.isNaN(input) || !Number.isFinite(input)) return false;
+  
+  // ProteÃ§Ã£o contra overflow e underflow
+  const sanitizedInput = Math.max(0, Math.min(input, Number.MAX_SAFE_INTEGER));
+  return true;
+}
+```
+
+#### Criptografia de Dados SensÃ­veis
+```typescript
+// Criptografia de dados em repouso usando AES-256
+const encryptScenario = (scenario: ROSIScenario): EncryptedScenario => {
+  const key = deriveSecureKey(); // GeraÃ§Ã£o segura de chave
+  return {
+    encryptedData: encrypt(JSON.stringify(scenario), key),
+    metadata: {
+      version: '1.0',
+      encryptionMethod: 'AES-256-GCM'
+    }
+  };
+}
+```
+
+#### Auditoria e Logging Seguro
+```typescript
+interface AuditLog {
+  timestamp: Date;
+  userHash: string;  // Hash anonimizado
+  action: 'CALCULATE' | 'EXPORT' | 'SCENARIO_SAVE';
+  sensitivityLevel: 'LOW' | 'MEDIUM' | 'HIGH';
+}
+
+class SecureAuditor {
+  private static anonymizeUser(userId: string): string {
+    return createHash('sha256').update(userId).digest('hex');
+  }
+
+  logAction(action: AuditLog) {
+    // Logging seguro sem expor dados sensÃ­veis
+    this.secureStorage.append(sanitizeLog(action));
+  }
+}
+```
+
+#### Controles de Privacidade
+- **AnonimizaÃ§Ã£o por PadrÃ£o**: 
+  - NÃ£o armazenar identificadores diretos
+  - Hash de usuÃ¡rios e organizaÃ§Ãµes
+  - AgregaÃ§Ã£o de dados para benchmarking
+
+- **Conformidade RegulatÃ³ria**:
+  - LGPD (Lei Geral de ProteÃ§Ã£o de Dados)
+  - GDPR (Regulamento Geral de ProteÃ§Ã£o de Dados)
+  - PrincÃ­pios de Privacy by Design
+
+### 7.3 PrÃ¡ticas de Desenvolvimento Seguro
+
+#### PadrÃµes de ValidaÃ§Ã£o
+```typescript
+class InputValidator {
+  static validateROSIInput(props: ROSICalculatorProps): boolean {
+    const { 
+      initialInvestment, 
+      potentialLoss, 
+      riskReductionPercentage 
+    } = props;
+
+    // ValidaÃ§Ãµes mÃºltiplas
+    const checks = [
+      initialInvestment > 0 && initialInvestment < 1_000_000_000,
+      potentialLoss >= 0 && potentialLoss < 10_000_000_000,
+      riskReductionPercentage >= 0 && riskReductionPercentage <= 100
+    ];
+
+    return checks.every(Boolean);
+  }
+}
+```
+
+#### Error Handling Seguro
+- NÃ£o revelar detalhes tÃ©cnicos em erros
+- Mensagens genÃ©ricas para usuÃ¡rios
+- Logging detalhado para equipe de seguranÃ§a
+
+#### ProteÃ§Ã£o Contra Ataques
+- Rate limiting para cÃ¡lculos
+- Timeout em processamentos longos
+- ValidaÃ§Ã£o de origem das requisiÃ§Ãµes
+
+### 7.4 Monitoramento e Resposta
+
+#### Indicadores de SeguranÃ§a
+- Tentativas de input invÃ¡lido
+- PadrÃµes suspeitos de uso
+- Anomalias nos cÃ¡lculos
+- ExportaÃ§Ãµes frequentes de relatÃ³rios
+
+#### Plano de Resposta a Incidentes
+1. DetecÃ§Ã£o de anomalias
+2. Isolamento de sessÃ£o/usuÃ¡rio
+3. Coleta de evidÃªncias
+4. NotificaÃ§Ã£o de stakeholders
+5. RestauraÃ§Ã£o de integridade
+
+### 7.5 Roadmap de SeguranÃ§a
+- [ ] Implementar validaÃ§Ãµes rigorosas de input
+- [ ] Desenvolver sistema de criptografia
+- [ ] Configurar auditoria de seguranÃ§a
+- [ ] Realizar testes de penetraÃ§Ã£o
+- [ ] Estabelecer monitoramento contÃ­nuo
+
+## Consideraï¿½ï¿½es Finais
+
+Este projeto nï¿½o ï¿½ apenas uma calculadora, mas uma ferramenta estratï¿½gica que transforma seguranï¿½a cibernï¿½tica em uma decisï¿½o financeira inteligente, com foco absoluto em proteÃ§Ã£o, privacidade e conformidade.
+
+=ï¿½ **Transformando Seguranï¿½a em Valor Mensurï¿½vel e Seguro** =
