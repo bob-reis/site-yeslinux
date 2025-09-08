@@ -3,14 +3,11 @@
 import { useMemo } from 'react'
 import Section from '@/components/ui/Section'
 import { useROSIStore } from '@/store/rosi'
-
-function formatCurrency(n: number) {
-  return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(n)
-}
+import { formatCurrencyBRL, formatPercent } from '@/lib/format'
 
 function formatRoi(roi: number | 'infinite') {
   if (roi === 'infinite') return '∞'
-  return `${roi.toFixed(2)}%`
+  return formatPercent(roi)
 }
 
 export default function ROSIResults() {
@@ -30,11 +27,11 @@ export default function ROSIResults() {
         </div>
         <div className="card-cyber p-4 rounded">
           <h4 className="text-sm text-text-muted">Economia Anual</h4>
-          <div className="text-2xl font-bold">{formatCurrency(annualizedSavings)}</div>
+          <div className="text-2xl font-bold">{formatCurrencyBRL(annualizedSavings)}</div>
         </div>
         <div className="card-cyber p-4 rounded">
           <h4 className="text-sm text-text-muted">Perda Evitada</h4>
-          <div className="text-2xl font-bold">{formatCurrency(avoidedLoss)}</div>
+          <div className="text-2xl font-bold">{formatCurrencyBRL(avoidedLoss)}</div>
         </div>
         <div className="card-cyber p-4 rounded">
           <h4 className="text-sm text-text-muted">Mitigação de Risco</h4>
@@ -60,4 +57,3 @@ export default function ROSIResults() {
     </Section>
   )
 }
-

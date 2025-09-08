@@ -10,10 +10,24 @@ export function calculatePaybackPeriodYears(initialInvestment: number, annualize
   return initialInvestment / annualizedSavings
 }
 
-export function calculateRiskScore(riskReductionPercentage: number, initialInvestment: number, potentialLoss: number): number {
+export function calculateRiskScore(
+  riskReductionPercentage: number,
+  initialInvestment: number,
+  potentialLoss: number
+): number {
   const rr = clamp(riskReductionPercentage, 0, 100)
   const avoidedLoss = potentialLoss * (rr / 100)
-  const efficiency = initialInvestment > 0 ? avoidedLoss / initialInvestment : (avoidedLoss > 0 ? 10 : 0)
+
+  let efficiency = 0
+  if (initialInvestment > 0) {
+    efficiency = avoidedLoss / initialInvestment
+  } else if (avoidedLoss > 0) {
+    // When there is avoided loss without upfront cost we assign a high efficiency
+    efficiency = 10
+  } else {
+    efficiency = 0
+  }
+
   // Normalize efficiency to 0..100 using a smooth log curve
   const efficiencyScore = clamp(Math.log10(1 + efficiency) * 100, 0, 100)
   // Weighted blend: primary driver is the risk reduction itself
@@ -47,4 +61,3 @@ export function calculateROSI(input: BasicROSIInput): BasicROSIResult {
     riskMitigationScore,
   }
 }
-

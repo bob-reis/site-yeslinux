@@ -63,7 +63,7 @@ graph TB
 - **Type Checking:** TypeScript (strict mode)
 - **Linting:** ESLint + Next.js config
 - **Code Formatting:** Prettier (via ESLint)
-- **Git Hooks:** Husky + lint-staged
+- **Git Hooks:** (opcional) Husky + lint-staged
 
 ### CI/CD & Deployment  
 - **CI/CD:** GitHub Actions
@@ -87,7 +87,7 @@ git clone https://github.com/bob-reis/site-yeslinux.git
 cd site-yeslinux
 
 # Instale as dependências
-npm ci
+npm install
 
 # Configure o ambiente
 cp .env.example .env.local
@@ -127,9 +127,7 @@ npm run test:ui          # Interface visual dos testes
 ### Verificações de Qualidade
 ```bash
 npm run lint             # ESLint
-npm run lint:fix         # ESLint com correção automática
-npm run type-check       # TypeScript
-npm run test:security    # Auditoria de segurança
+npm run build            # Garante que o projeto compila (type-check via Next)
 ```
 
 ## 🔒 Segurança
@@ -156,9 +154,33 @@ npm run test:security    # Auditoria de segurança
 - **Bundle Size:** < 500KB inicial
 
 ### Qualidade
-- **Test Coverage:** 80%+
-- **TypeScript Coverage:** 100%
-- **Zero vulnerabilidades conhecidas**
+- **Test Coverage:** 80%+ (branches, functions, lines, statements)
+- **Lint:** zero erros; avisos revisados
+
+---
+
+## 🧰 Tools
+
+- Gerador de E-mails e Wordlists: `/tools/gerador-emails-wordlists`
+- Avaliação de Maturidade: `/tools/maturidade`
+- ROSI Calculator (MVP): `/tools/rosi-calculator`
+  - O que é ROSI: `/docs/rosi`
+
+### ROSI Calculator (MVP)
+- Cálculos: ROI (%), economia anual, perda evitada, payback e score de mitigação.
+- Estado: cenários salvos (localStorage) via Zustand.
+- Privacidade: 100% client-side; nada é enviado ao servidor.
+
+### Scripts úteis
+```bash
+npm run dev           # Next.js dev server
+npm run build         # Build de produção
+npm start             # Servidor de produção
+npm run lint          # ESLint
+npm test              # Vitest com cobertura
+npm run test:watch    # Vitest em watch mode
+npm run test:ui       # Runner UI
+```
 
 ---
 
