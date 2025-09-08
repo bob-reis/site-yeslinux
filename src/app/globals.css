@@ -179,3 +179,21 @@ body {
     transform: none;
   }
 }
+
+/* Print styles for PDF export */
+@media print {
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+  header, nav, footer, .print\:hidden {
+    display: none !important;
+  }
+  .card-cyber {
+    background: #ffffff !important;
+    border: 1px solid #ccc !important;
+    box-shadow: none !important;
+  }
+  a { color: #000000 !important; text-decoration: none !important; }
+  .page-break { page-break-before: always; }
+}
