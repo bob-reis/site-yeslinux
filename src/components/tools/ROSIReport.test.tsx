@@ -5,8 +5,9 @@ import ROSIReport from './ROSIReport'
 describe('ROSIReport', () => {
   it('renders the report header', () => {
     render(<ROSIReport />)
-    expect(screen.getByText(/YesLinux/i)).toBeInTheDocument()
-    expect(screen.getByText(/Relatório de ROSI/i)).toBeInTheDocument()
+    // Header markers
+    expect(screen.getByText('Relatório de ROSI')).toBeInTheDocument()
+    // Brand appears at least once (header or footer tagline)
+    expect(screen.getAllByText(/YesLinux/i).length).toBeGreaterThan(0)
   })
 })
-
