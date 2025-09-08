@@ -7,18 +7,20 @@ import { validateInput } from '@/lib/rosi/validation'
 
 export default function ROSIForm() {
   const { currentInput, calculate, saveScenario } = useROSIStore()
-  const [investment, setInvestment] = useState<number>(currentInput.initialInvestment)
-  const [loss, setLoss] = useState<number>(currentInput.potentialLoss)
-  const [risk, setRisk] = useState<number>(currentInput.riskReductionPercentage)
+  const [investment, setInvestment] = useState<string>(String(currentInput.initialInvestment))
+  const [loss, setLoss] = useState<string>(String(currentInput.potentialLoss))
+  const [risk, setRisk] = useState<string>(String(currentInput.riskReductionPercentage))
   const [errors, setErrors] = useState<Record<string, string>>({})
   const [scenarioName, setScenarioName] = useState('')
+
+  const onlyDigits = (v: string) => v.replace(/\D+/g, '')
 
   function onSubmit(e: React.FormEvent) {
     e.preventDefault()
     const input = {
-      initialInvestment: Number(investment),
-      potentialLoss: Number(loss),
-      riskReductionPercentage: Number(risk),
+      initialInvestment: Number(investment || '0'),
+      potentialLoss: Number(loss || '0'),
+      riskReductionPercentage: Number(risk || '0'),
     }
     const validation = validateInput(input)
     if (validation.length) {
@@ -44,15 +46,14 @@ export default function ROSIForm() {
     >
       <form onSubmit={onSubmit} className="grid grid-cols-1 md:grid-cols-3 gap-5">
         <div>
-          <label className="block text-sm mb-1">Investimento Inicial (R$)</label>
+          <label htmlFor="rosi-investment" className="block text-sm mb-1">Investimento Inicial (R$)</label>
           <input
-            type="number"
-            inputMode="decimal"
+            id="rosi-investment"
+            type="text"
+            inputMode="numeric"
             value={investment}
-            onChange={(e) => setInvestment(Number(e.target.value))}
+            onChange={(e) => setInvestment(onlyDigits(e.target.value))}
             className="w-full px-3 py-2 bg-dark/60 border border-primary/30 rounded outline-none focus:border-primary"
-            min={0}
-            step={100}
           />
           {errors.initialInvestment && (
             <p className="text-red-400 text-xs mt-1">{errors.initialInvestment}</p>
@@ -60,15 +61,14 @@ export default function ROSIForm() {
         </div>
 
         <div>
-          <label className="block text-sm mb-1">Perda Potencial Anual (R$)</label>
+          <label htmlFor="rosi-loss" className="block text-sm mb-1">Perda Potencial Anual (R$)</label>
           <input
-            type="number"
-            inputMode="decimal"
+            id="rosi-loss"
+            type="text"
+            inputMode="numeric"
             value={loss}
-            onChange={(e) => setLoss(Number(e.target.value))}
+            onChange={(e) => setLoss(onlyDigits(e.target.value))}
             className="w-full px-3 py-2 bg-dark/60 border border-primary/30 rounded outline-none focus:border-primary"
-            min={0}
-            step={100}
           />
           {errors.potentialLoss && (
             <p className="text-red-400 text-xs mt-1">{errors.potentialLoss}</p>
@@ -76,16 +76,14 @@ export default function ROSIForm() {
         </div>
 
         <div>
-          <label className="block text-sm mb-1">Redução de Risco (%)</label>
+          <label htmlFor="rosi-risk" className="block text-sm mb-1">Redução de Risco (%)</label>
           <input
-            type="number"
-            inputMode="decimal"
+            id="rosi-risk"
+            type="text"
+            inputMode="numeric"
             value={risk}
-            onChange={(e) => setRisk(Number(e.target.value))}
+            onChange={(e) => setRisk(onlyDigits(e.target.value))}
             className="w-full px-3 py-2 bg-dark/60 border border-primary/30 rounded outline-none focus:border-primary"
-            min={0}
-            max={100}
-            step={1}
           />
           {errors.riskReductionPercentage && (
             <p className="text-red-400 text-xs mt-1">{errors.riskReductionPercentage}</p>
@@ -95,6 +93,7 @@ export default function ROSIForm() {
         <div className="md:col-span-3 flex items-end gap-3">
           <button type="submit" className="btn-cyber px-6 py-2 rounded">Calcular</button>
           <div className="flex items-center gap-2">
+            <button type="button" onClick={onSaveScenario} className="btn-cyber px-4 py-2 rounded">Salvar cenário</button>
             <input
               type="text"
               placeholder="Nome do cenário"
@@ -102,13 +101,9 @@ export default function ROSIForm() {
               onChange={(e) => setScenarioName(e.target.value)}
               className="px-3 py-2 bg-dark/60 border border-primary/30 rounded outline-none focus:border-primary"
             />
-            <button type="button" onClick={onSaveScenario} className="btn-cyber px-4 py-2 rounded">
-              Salvar cenário
-            </button>
           </div>
         </div>
       </form>
     </Section>
   )
 }
-
