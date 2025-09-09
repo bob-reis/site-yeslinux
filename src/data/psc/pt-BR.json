@@ -59,5 +59,53 @@
       }
     ]
   }
+  ,
+  {
+    "title": "Navegação e Privacidade",
+    "slug": "navegacao-privacidade",
+    "description": "Reduza rastreamento e colete menos pegadas digitais ao navegar",
+    "intro": "Ajuste o navegador e hábitos de uso para minimizar coleta de dados, reduzir fingerprinting e bloquear rastreadores comuns.",
+    "icon": "browser",
+    "color": "blue",
+    "checklist": [
+      { "point": "Mantenha o navegador atualizado", "priority": "essential", "details": "Atualizações trazem correções críticas. Ative as atualizações automáticas e reinicie periodicamente." },
+      { "point": "Ative bloqueio de rastreadores", "priority": "essential", "details": "Use proteção nativa de rastreio e considere listas de bloqueio confiáveis. Evite listas agressivas que quebrem sites críticos." },
+      { "point": "Revise permissões e cookies", "priority": "optional", "details": "Limite cookies de terceiros, isole sites sensíveis e limpe dados periodicamente." },
+      { "point": "Evite extensões desnecessárias", "priority": "optional", "details": "Extensões ampliam superfície de ataque e privacidade. Desinstale as que não usa e mantenha as restantes atualizadas." },
+      { "point": "Separe contextos", "priority": "advanced", "details": "Use perfis/containers para separar atividades (pessoal, trabalho, banco) e reduzir correlação entre sessões." }
+    ]
+  }
+  ,
+  {
+    "title": "Dispositivos",
+    "slug": "dispositivos",
+    "description": "Endureça configurações de segurança em computadores e celulares",
+    "intro": "Configurações simples elevam significativamente a segurança de dispositivos pessoais.",
+    "icon": "device",
+    "color": "purple",
+    "checklist": [
+      { "point": "Ative bloqueio de tela com biometria/PIN forte", "priority": "essential", "details": "Reduza tempo de bloqueio automático. Evite padrões fáceis e códigos curtos." },
+      { "point": "Criptografe o disco (Full Disk Encryption)", "priority": "essential", "details": "Ative FileVault (macOS), BitLocker (Windows Pro) ou criptografia nativa (Linux/Android). Guarde a chave de recuperação com segurança." },
+      { "point": "Atualizações automáticas do sistema e apps", "priority": "essential", "details": "Mantenha firmware/OS e aplicativos sempre atualizados para correções de segurança." },
+      { "point": "Backups regulares e testados", "priority": "optional", "details": "Faça backups automáticos e teste a restauração. Considere 3-2-1: 3 cópias, 2 mídias, 1 offsite." },
+      { "point": "Proteja conexões e Bluetooth/Wi-Fi", "priority": "optional", "details": "Desative quando não estiver usando. Use redes confiáveis e evite auto-conectar a pontos abertos." },
+      { "point": "Antimalware e proteção adicional", "priority": "advanced", "details": "Considere antimalware, bloqueadores de execução e listas de permissão, conforme seu perfil de risco." }
+    ]
+  }
+  ,
+  {
+    "title": "E-mail e Phishing",
+    "slug": "email-phishing",
+    "description": "Fortaleça a conta de e-mail e reconheça golpes comuns",
+    "intro": "O e-mail é porta de entrada para contas e recuperação de acesso. Blindá-lo reduz impactos.",
+    "icon": "mail",
+    "color": "red",
+    "checklist": [
+      { "point": "2FA no e-mail principal", "priority": "essential", "details": "Ative segundo fator (app autenticador/chave) na sua conta-raiz de e-mail." },
+      { "point": "Revisão de encaminhamentos e acessos", "priority": "essential", "details": "Verifique apps conectados, filtros suspeitos e encaminhamentos automáticos. Revogue o que não reconhecer." },
+      { "point": "Cuidado com anexos e links", "priority": "essential", "details": "Desconfie de urgência, erros grosseiros e remetentes improváveis. Pré-visualize links e valide remetente antes de abrir." },
+      { "point": "Aliases e endereços descartáveis", "priority": "optional", "details": "Use aliases/redirecionadores para segmentar inscrições e reduzir exposição do e-mail principal." },
+      { "point": "Separação de contas críticas", "priority": "advanced", "details": "Use um e-mail exclusivo para bancos/contas sensíveis, não divulgado publicamente." }
+    ]
+  }
 ]
-
