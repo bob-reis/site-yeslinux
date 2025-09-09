@@ -1,4 +1,6 @@
 import Link from 'next/link'
+import type { ChecklistData, ChecklistItem, Section } from '@/types/psc'
+import pscData from '@/data/psc/pt-BR.json'
 
 export const metadata = {
   title: 'Checklist de Segurança Pessoal | YesLinux',
@@ -6,7 +8,14 @@ export const metadata = {
     'Guia prático em português para fortalecer sua segurança digital: autenticação, privacidade, dispositivos e muito mais.',
 }
 
+function PriorityPill({ p }: { p: ChecklistItem['priority'] }) {
+  const label = p === 'essential' ? 'Essencial' : p === 'advanced' ? 'Avançado' : 'Opcional'
+  const color = p === 'essential' ? 'bg-green-500/15 text-green-300 border-green-500/30' : p === 'advanced' ? 'bg-amber-500/15 text-amber-300 border-amber-500/30' : 'bg-primary/10 text-primary/90 border-primary/30'
+  return <span className={`inline-flex items-center px-2 py-0.5 rounded border text-[10px] ${color}`}>{label}</span>
+}
+
 export default function PersonalSecurityChecklistPage() {
+  const data = pscData as unknown as ChecklistData
   return (
     <main className="min-h-screen py-10">
       <section className="container mx-auto px-4">
@@ -19,42 +28,33 @@ export default function PersonalSecurityChecklistPage() {
             </p>
           </div>
 
-          <div className="rounded-lg p-0 md:p-4">
-            <div className="prose prose-invert max-w-none">
-              <h2>Sobre</h2>
-              <p>
-                Esta é uma versão em português do projeto “Personal Security Checklist”, com foco
-                em práticas essenciais de segurança e privacidade para o dia a dia. Nosso objetivo é
-                tornar simples o que realmente importa: hábitos e configurações que reduzem riscos.
-              </p>
-
-              <h3>Status da tradução</h3>
-              <p>
-                A interface já está em português. Estamos concluindo a tradução completa do conteúdo
-                (checklists e artigos). Enquanto isso, você pode consultar a versão original em inglês
-                para referência.
-              </p>
-
-              <div className="mt-4 flex gap-4 flex-wrap">
-                <Link href="https://github.com/Lissy93/personal-security-checklist" target="_blank" className="btn btn-sm btn-outline">
-                  Ver repositório original (inglês)
-                </Link>
-              </div>
-
-              <h3 className="mt-8">O que você encontrará aqui</h3>
-              <ul>
-                <li>Orientações práticas de segurança (senhas, 2FA, backups, atualizações)</li>
-                <li>Privacidade digital (navegadores, rastreadores, dados pessoais)</li>
-                <li>Dispositivos e contas (configurações e cuidados essenciais)</li>
-                <li>Referências e materiais para aprofundamento</li>
-              </ul>
-
-              <h3 className="mt-8">Versão interativa</h3>
-              <p>
-                Estamos integrando uma versão interativa do checklist diretamente no site YesLinux. Em breve você
-                poderá percorrer seções, marcar progresso e salvar localmente — tudo em português e no nosso tema.
-              </p>
-            </div>
+          <div className="rounded-lg p-0 md:p-4 space-y-8">
+            {data.map((section: Section) => (
+              <section key={section.slug} className="card-cyber rounded-lg p-5">
+                <div className="flex items-start justify-between gap-4">
+                  <div>
+                    <h2 className="text-xl font-semibold text-primary">{section.title}</h2>
+                    <p className="text-text-muted text-sm">{section.description}</p>
+                  </div>
+                </div>
+                {section.intro && (
+                  <p className="mt-3 text-text-muted/90 text-sm leading-relaxed">{section.intro}</p>
+                )}
+                <ul className="mt-4 space-y-4">
+                  {section.checklist.map((item: ChecklistItem, idx: number) => (
+                    <li key={`${section.slug}-${idx}`} className="rounded border border-white/10 bg-dark/40 p-4">
+                      <div className="flex items-start justify-between gap-3">
+                        <h3 className="font-medium leading-6">{item.point}</h3>
+                        <PriorityPill p={item.priority} />
+                      </div>
+                      {item.details && (
+                        <p className="mt-1 text-sm text-text-muted leading-relaxed">{item.details}</p>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            ))}
           </div>
 
           <hr className="my-8 border-white/10" />
@@ -72,4 +72,3 @@ export default function PersonalSecurityChecklistPage() {
     </main>
   )
 }
-

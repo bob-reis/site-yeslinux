@@ -1,0 +1,63 @@
+[
+  {
+    "title": "Autenticação",
+    "slug": "autenticacao",
+    "description": "Proteja as credenciais de login das suas contas online",
+    "intro": "A maioria das violações de dados ocorre por senhas fracas, padrão ou roubadas. Use senhas longas e únicas, gerencie-as em um cofre de senhas, habilite 2FA, monitore vazamentos e tenha cuidado ao fazer login.",
+    "icon": "password",
+    "color": "yellow",
+    "checklist": [
+      {
+        "point": "Use uma senha forte",
+        "priority": "essential",
+        "details": "Evite palavras de dicionário, nomes e padrões previsíveis. Prefira uma frase secreta (12+ caracteres) ou gere senhas aleatórias longas no seu gerenciador."
+      },
+      {
+        "point": "Não reutilize senhas",
+        "priority": "essential",
+        "details": "Se um serviço vaza sua senha e você a reutiliza, invasores podem acessar outras contas por credential stuffing. Use uma senha diferente para cada conta."
+      },
+      {
+        "point": "Use um gerenciador de senhas",
+        "priority": "essential",
+        "details": "Cofres geram, armazenam e preenchem suas credenciais com criptografia protegida por uma senha mestra forte. Extensões e apps facilitam o uso no dia a dia."
+      },
+      {
+        "point": "Evite compartilhar senhas",
+        "priority": "essential",
+        "details": "Compartilhar aumenta o risco de comprometimento. Se for inevitável, use recursos de compartilhamento do próprio gerenciador de senhas."
+      },
+      {
+        "point": "Habilite 2FA",
+        "priority": "essential",
+        "details": "Ative autenticação de dois fatores (app autenticador, chaves de segurança etc.). Assim, mesmo que alguém obtenha sua senha, não conseguirá entrar sem o segundo fator."
+      },
+      {
+        "point": "Guarde os códigos de backup",
+        "priority": "essential",
+        "details": "Armazene códigos de recuperação em local seguro (papel, cofre ou mídia offline). Não guarde junto com as senhas; fatores devem ser separados."
+      },
+      {
+        "point": "Ative alertas de vazamento",
+        "priority": "optional",
+        "details": "Cadastre seu e-mail em serviços de monitoramento (ex.: Have I Been Pwned) para ser avisado em novos vazamentos e agir rápido trocando senhas."
+      },
+      {
+        "point": "Proteja PIN/senha ao digitar",
+        "priority": "optional",
+        "details": "Evite linha de visão de câmeras e olhares curiosos; cubra o teclado e não exiba senhas em texto claro na tela."
+      },
+      {
+        "point": "Evite login em dispositivos de terceiros",
+        "priority": "optional",
+        "details": "Você não sabe se estão limpos. Evite especialmente em contas sensíveis. Se for necessário, use janela anônima e encerre a sessão ao final."
+      },
+      {
+        "point": "Não use dicas de senha",
+        "priority": "optional",
+        "details": "Dicas são fáceis de adivinhar. Se um site exigir, use uma resposta aleatória e registre no gerenciador (mantendo separação entre senha e 2FA)."
+      }
+    ]
+  }
+]
+
