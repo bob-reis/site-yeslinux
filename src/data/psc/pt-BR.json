@@ -108,4 +108,100 @@
       { "point": "Separação de contas críticas", "priority": "advanced", "details": "Use um e-mail exclusivo para bancos/contas sensíveis, não divulgado publicamente." }
     ]
   }
+  ,
+  {
+    "title": "Contas Online",
+    "slug": "contas-online",
+    "description": "Higiene de segurança para contas e perfis",
+    "intro": "Práticas consistentes de gerenciamento de contas reduzem impacto de vazamentos e abuso.",
+    "icon": "account",
+    "color": "teal",
+    "checklist": [
+      { "point": "Revisar sessões ativas e dispositivos", "priority": "essential", "details": "Encerre sessões antigas e dispositivos que não reconhece nas configurações de segurança das contas." },
+      { "point": "Revogar apps de terceiros", "priority": "essential", "details": "Remova integrações/app perms que não usa. Menos acessos = menor superfície de ataque." },
+      { "point": "Perguntas de segurança aleatórias", "priority": "optional", "details": "Use respostas aleatórias registradas no cofre; evite respostas verdadeiras facilmente descobertas." },
+      { "point": "Separar contas por contexto", "priority": "optional", "details": "Use contas distintas para pessoal, trabalho e testes. Reduz correlação e dano em caso de comprometimento." },
+      { "point": "Monitorar logins e alertas", "priority": "advanced", "details": "Habilite alertas de login e revisão periódica de atividades incomuns." }
+    ]
+  }
+  ,
+  {
+    "title": "Redes Sociais",
+    "slug": "redes-sociais",
+    "description": "Reduza exposição pública e riscos de engenharia social",
+    "intro": "Ajustes de privacidade e cautela com o que publica diminuem vetores de ataque.",
+    "icon": "social",
+    "color": "pink",
+    "checklist": [
+      { "point": "Privacidade do perfil e posts", "priority": "essential", "details": "Restrinja visibilidade a amigos/contatos. Revise quem pode ver publicações e dados do perfil." },
+      { "point": "Remova dados sensíveis", "priority": "essential", "details": "Evite expor telefone, e-mail principal, endereço e rotina. Fotos podem revelar localização e hábitos." },
+      { "point": "Autenticação em 2 fatores", "priority": "essential", "details": "Ative 2FA para reduzir sequestro de contas por senha vazada ou phishing." },
+      { "point": "Listas de amigos/seguidores", "priority": "optional", "details": "Revise conexões e remova desconhecidos. Golpistas exploram confiança de rede." },
+      { "point": "Controle de marcações e apps conectados", "priority": "optional", "details": "Aprove atualizações de privacidade, desative marcações automáticas e remova apps com acesso excessivo." }
+    ]
+  }
+  ,
+  {
+    "title": "Mensageria",
+    "slug": "mensageria",
+    "description": "Proteja conversas e metadados onde possível",
+    "intro": "Prefira criptografia de ponta a ponta e verificação de contatos para reduzir risco de interceptação.",
+    "icon": "message",
+    "color": "indigo",
+    "checklist": [
+      { "point": "Criptografia ponta a ponta (E2EE)", "priority": "essential", "details": "Use mensageiros com E2EE habilitado por padrão e confirme cadeias de segurança quando possível." },
+      { "point": "Proteção do app com biometria/PIN", "priority": "essential", "details": "Ative bloqueio do app, ocultação de prévias e restrição de capturas conforme necessidade." },
+      { "point": "Verificação de contatos", "priority": "optional", "details": "Confirme a identidade do contato via códigos/chaves. Reduz risco de ataque man-in-the-middle." },
+      { "point": "Autodestruição de mensagens sensíveis", "priority": "optional", "details": "Use temporizadores para reduzir exposição caso o dispositivo seja acessado por terceiros." },
+      { "point": "Backups com cuidado", "priority": "advanced", "details": "Entenda implicações de backups em nuvem (podem não ser E2EE). Prefira backups locais criptografados se necessário." }
+    ]
+  }
+  ,
+  {
+    "title": "Backups",
+    "slug": "backups",
+    "description": "Garanta resiliência com cópias confiáveis e restauráveis",
+    "intro": "Backups são seu seguro contra ransomware, falhas e perda. O que não é testado, não existe.",
+    "icon": "backup",
+    "color": "green",
+    "checklist": [
+      { "point": "Regra 3-2-1", "priority": "essential", "details": "3 cópias, 2 mídias, 1 offsite. Automatize e monitore falhas." },
+      { "point": "Criptografia e proteção de acesso", "priority": "essential", "details": "Proteja backups com criptografia e controle de acesso. Evite montar permanentemente em máquinas expostas." },
+      { "point": "Testes de restauração", "priority": "essential", "details": "Teste a recuperação periodicamente. Documente passos e tempos de restauração." },
+      { "point": "Versionamento e retenção", "priority": "optional", "details": "Mantenha versões múltiplas para reverter corrupção silenciosa. Defina políticas de retenção." },
+      { "point": "Plano de recuperação", "priority": "advanced", "details": "Tenha um runbook simples para incidentes: contatos, prioridades, passos e responsabilidades." }
+    ]
+  }
+  ,
+  {
+    "title": "Nuvem e Compartilhamento",
+    "slug": "nuvem-compartilhamento",
+    "description": "Proteja arquivos e acessos em serviços de nuvem",
+    "intro": "Configure compartilhamentos com parcimônia, revogue acessos antigos e use criptografia quando possível.",
+    "icon": "cloud",
+    "color": "cyan",
+    "checklist": [
+      { "point": "Permissões mínimas necessárias", "priority": "essential", "details": "Compartilhe com pessoas/grupos específicos e somente leitura quando couber. Defina expiração." },
+      { "point": "Auditoria periódica de links", "priority": "essential", "details": "Revise links públicos e revogue os que não são mais necessários." },
+      { "point": "Autenticação forte nas contas de nuvem", "priority": "essential", "details": "2FA/chaves de segurança e senha forte, já que a nuvem concentra dados sensíveis." },
+      { "point": "Criptografia do lado do cliente", "priority": "optional", "details": "Para materiais muito sensíveis, considere criptografar antes do upload (ex.: age, gocryptfs)." },
+      { "point": "Logs e notificações", "priority": "advanced", "details": "Habilite alertas de acesso incomum e monitore eventos relevantes quando disponível." }
+    ]
+  }
+  ,
+  {
+    "title": "Redes e Wi‑Fi",
+    "slug": "redes-wifi",
+    "description": "Endureça o roteador e navegue com segurança em redes públicas",
+    "intro": "Configuração correta do Wi‑Fi doméstico e cautela em redes abertas reduzem riscos de interceptação.",
+    "icon": "wifi",
+    "color": "orange",
+    "checklist": [
+      { "point": "WPA2/3 com senha forte", "priority": "essential", "details": "Evite WEP/WPA obsoletos. Use senhas longas e únicas para Wi‑Fi e painel do roteador." },
+      { "point": "Atualize firmware do roteador", "priority": "essential", "details": "Aplique atualizações e desative recursos inseguros (UPnP, WPS) quando não necessários." },
+      { "point": "Rede de convidados isolada", "priority": "optional", "details": "Separe dispositivos de convidados/IoT da sua rede principal." },
+      { "point": "Cautela em redes públicas", "priority": "optional", "details": "Evite acesso a contas sensíveis; prefira tethering/VPN confiável quando necessário." },
+      { "point": "Registros e monitoramento básico", "priority": "advanced", "details": "Ative logs e alertas disponíveis no roteador; revise periodicamente." }
+    ]
+  }
 ]
