@@ -204,4 +204,102 @@
       { "point": "Registros e monitoramento básico", "priority": "advanced", "details": "Ative logs e alertas disponíveis no roteador; revise periodicamente." }
     ]
   }
+  ,
+  {
+    "title": "Dispositivos Móveis",
+    "slug": "dispositivos-moveis",
+    "description": "Eleve a segurança de smartphones e tablets",
+    "intro": "Celulares concentram dados sensíveis. Pequenos ajustes reduzem bastante o risco.",
+    "icon": "mobile",
+    "color": "violet",
+    "checklist": [
+      { "point": "Bloqueio de tela forte", "priority": "essential", "details": "Use biometria e PIN/senha forte. Reduza tempo de bloqueio automático." },
+      { "point": "Atualizações do sistema e apps", "priority": "essential", "details": "Ative atualização automática de SO e apps para correções de segurança." },
+      { "point": "Instalar apenas de lojas oficiais", "priority": "essential", "details": "Evite APKs/sideload sem verificação. Revise permissões solicitadas pelos apps." },
+      { "point": "Localizar e apagar remotamente", "priority": "optional", "details": "Ative serviço de localização/limpeza remota para perda/roubo." },
+      { "point": "Criptografia e backup seguro", "priority": "optional", "details": "Mantenha criptografia do dispositivo ativa e backups protegidos por senha/2FA." },
+      { "point": "Hardening adicional", "priority": "advanced", "details": "Limite permissões em segundo plano, revogue depuração USB e avalie bloquear instalação de fontes desconhecidas." }
+    ]
+  }
+  ,
+  {
+    "title": "Computadores Pessoais",
+    "slug": "computadores-pessoais",
+    "description": "Boas práticas de segurança em desktops e laptops",
+    "intro": "Atualizações, princípio do menor privilégio e criptografia são pilares.",
+    "icon": "desktop",
+    "color": "slate",
+    "checklist": [
+      { "point": "Sistema e software atualizados", "priority": "essential", "details": "Aplique atualizações de segurança do SO e aplicativos com frequência." },
+      { "point": "Conta sem privilégios administrativos", "priority": "essential", "details": "Use usuário padrão no dia a dia. Eleve privilégio apenas quando necessário." },
+      { "point": "Criptografia de disco e senha de firmware", "priority": "essential", "details": "Ative FDE (LUKS/BitLocker/FileVault) e, se couber, senha em BIOS/UEFI." },
+      { "point": "Firewall e inicialização segura", "priority": "optional", "details": "Mantenha firewall ativo e habilite Secure Boot quando suportado." },
+      { "point": "Auto‑start e serviços desnecessários", "priority": "optional", "details": "Revise inicialização automática e desative o que não for essencial." },
+      { "point": "Antimalware e listas de permissão", "priority": "advanced", "details": "Considere proteção adicional e restrições de execução conforme seu perfil de risco." }
+    ]
+  }
+  ,
+  {
+    "title": "Casa Inteligente",
+    "slug": "casa-inteligente",
+    "description": "Endureça dispositivos IoT e assistentes de voz",
+    "intro": "Separe rede de IoT, troque senhas padrão e minimize exposição na nuvem.",
+    "icon": "home",
+    "color": "yellow",
+    "checklist": [
+      { "point": "Rede separada para IoT", "priority": "essential", "details": "Isole IoT da rede principal (VLAN/rede de convidados) para reduzir impacto de falhas." },
+      { "point": "Trocar senhas padrão e atualizar firmware", "priority": "essential", "details": "Evite credenciais default e mantenha dispositivos sempre atualizados." },
+      { "point": "Desativar UPnP/WPS e serviços expostos", "priority": "optional", "details": "Reduza serviços automágicos que ampliam a superfície de ataque." },
+      { "point": "Privacidade de microfones/câmeras", "priority": "optional", "details": "Revise quem pode acessar gravações e desative histórico quando possível." },
+      { "point": "Exposição mínima à nuvem", "priority": "advanced", "details": "Prefira integrações locais quando disponíveis e evite port‑forwarding público." }
+    ]
+  }
+  ,
+  {
+    "title": "Finanças Pessoais",
+    "slug": "financas-pessoais",
+    "description": "Proteja contas bancárias, cartões e transações online",
+    "intro": "Autenticação forte, alertas e cautela com phishing reduzem fraudes.",
+    "icon": "bank",
+    "color": "emerald",
+    "checklist": [
+      { "point": "2FA em bancos e carteiras", "priority": "essential", "details": "Ative 2FA/app token/chave para acesso e operações sensíveis." },
+      { "point": "Alertas de transação", "priority": "essential", "details": "Habilite SMS/e‑mail/app para autorizações e movimentações incomuns." },
+      { "point": "Cartões virtuais e limites", "priority": "optional", "details": "Use cartões virtuais/limites por transação para compras online." },
+      { "point": "Separação de e‑mail para finanças", "priority": "optional", "details": "Use um endereço pouco exposto para reduzir spear‑phishing em contas financeiras." },
+      { "point": "Congelamento de crédito (quando aplicável)", "priority": "advanced", "details": "Avalie bloquear consultas/aberturas indesejadas conforme disponibilidade no seu país." }
+    ]
+  }
+  ,
+  {
+    "title": "Fator Humano",
+    "slug": "fator-humano",
+    "description": "Reduza riscos de engenharia social e erros humanos",
+    "intro": "Atenção ao contexto, verificação de pedidos e redução de exposição ajudam muito.",
+    "icon": "user",
+    "color": "rose",
+    "checklist": [
+      { "point": "Verificar pedidos fora do padrão", "priority": "essential", "details": "Confirme por canal alternativo solicitações urgentes/sensíveis (pagamentos, códigos, dados)." },
+      { "point": "Menos exposição pública", "priority": "essential", "details": "Evite divulgar dados pessoais e rotina que facilitem engenharia social." },
+      { "point": "Higiene de senhas e 2FA", "priority": "optional", "details": "Reforce práticas com familiares e colegas. Ajude a configurar 2FA e cofres." },
+      { "point": "Sinais de phishing", "priority": "optional", "details": "Domínios parecidos, anexos inesperados, urgência, erros grosseiros e pedidos de sigilo." },
+      { "point": "Simulações e exercícios", "priority": "advanced", "details": "Pratique cenários simples de verificação e resposta com quem convive/trabalha." }
+    ]
+  }
+  ,
+  {
+    "title": "Segurança Física",
+    "slug": "seguranca-fisica",
+    "description": "Dificulte furto/acesso físico e perda de dados",
+    "intro": "Bloqueio, criptografia e backups offline protegem mesmo sem conexão.",
+    "icon": "lock",
+    "color": "stone",
+    "checklist": [
+      { "point": "Bloqueio automático e ocultação em locais públicos", "priority": "essential", "details": "Mantenha dispositivos sob vigilância e bloqueio curto quando afastar‑se." },
+      { "point": "Criptografia de disco e senha de boot/BIOS", "priority": "essential", "details": "Evita acesso a dados mesmo com roubo físico do equipamento." },
+      { "point": "Backups offline e offsite", "priority": "optional", "details": "Guarde cópias fora de casa/escritório. Proteja contra incêndio/roubo." },
+      { "point": "Travamento físico (cadeado) e marcação", "priority": "optional", "details": "Reduza furto oportunista; registre serial e mantenha notas fiscais." },
+      { "point": "Proteção de portas e mídia removível", "priority": "advanced", "details": "Restrinja boot externo e uso de USB onde for adequado." }
+    ]
+  }
 ]
