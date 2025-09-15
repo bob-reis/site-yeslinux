@@ -22,10 +22,10 @@ export default function RadarChart({ sections }: Props) {
     setPercents(arr)
   }, [sections])
 
-  const size = 420
+  const size = 360
   const cx = size / 2
   const cy = size / 2
-  const radius = size * 0.34
+  const radius = size * 0.30
   const levels = [25, 50, 75, 100]
   const count = Math.max(1, sections.length)
 
@@ -70,18 +70,18 @@ export default function RadarChart({ sections }: Props) {
         ))}
         {/* Percent labels */}
         {levels.map((lv) => (
-          <text key={`lvl-${lv}`} x={cx} y={cy - (lv / 100) * radius} fill="rgba(255,255,255,0.6)" fontSize="12" textAnchor="middle" dy={-2}>
+          <text key={`lvl-${lv}`} x={cx} y={cy - (lv / 100) * radius} fill="rgba(255,255,255,0.6)" fontSize="11" textAnchor="middle" dy={-2}>
             {lv}%
           </text>
         ))}
         {/* Section labels around */}
         {sections.map((s, i) => {
           const a = angleFor(i)
-          const lx = cx + (radius + 24) * Math.cos(a)
-          const ly = cy + (radius + 24) * Math.sin(a)
-          const anchor = Math.cos(a) > 0.3 ? 'start' : Math.cos(a) < -0.3 ? 'end' : 'middle'
+          const lx = cx + (radius + 16) * Math.cos(a)
+          const ly = cy + (radius + 16) * Math.sin(a)
+          const anchor = Math.cos(a) > 0.35 ? 'start' : Math.cos(a) < -0.35 ? 'end' : 'middle'
           return (
-            <text key={`lbl-${s.slug}`} x={lx} y={ly} fill="rgba(255,255,255,0.75)" fontSize="12" textAnchor={anchor as any}>
+            <text key={`lbl-${s.slug}`} x={lx} y={ly} fill="rgba(255,255,255,0.75)" fontSize="11" textAnchor={anchor as any}>
               {s.title}
             </text>
           )
@@ -96,4 +96,3 @@ export default function RadarChart({ sections }: Props) {
     </div>
   )
 }
-

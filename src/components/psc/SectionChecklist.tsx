@@ -9,6 +9,8 @@ type Props = { section: Section }
 export default function SectionChecklist({ section }: Props) {
   const storageKey = `psc:${section.slug}:checks`
   const [checked, setChecked] = React.useState<Record<number, boolean>>({})
+  const ignoreKey = `psc:${section.slug}:ignore`
+  const [ignored, setIgnored] = React.useState<Record<number, boolean>>({})
   const total = section.checklist.length
   const done = Object.values(checked).filter(Boolean).length
   const pct = total ? Math.round((done / total) * 100) : 0
@@ -25,6 +27,19 @@ export default function SectionChecklist({ section }: Props) {
       localStorage.setItem(storageKey, JSON.stringify(checked))
     } catch {}
   }, [checked, storageKey])
+
+  React.useEffect(() => {
+    try {
+      const saved = localStorage.getItem(ignoreKey)
+      if (saved) setIgnored(JSON.parse(saved))
+    } catch {}
+  }, [ignoreKey])
+
+  React.useEffect(() => {
+    try {
+      localStorage.setItem(ignoreKey, JSON.stringify(ignored))
+    } catch {}
+  }, [ignored, ignoreKey])
 
   const colorMap: Record<string, string> = {
     yellow: '#facc15', emerald: '#10b981', teal: '#14b8a6', cyan: '#06b6d4', blue: '#3b82f6',
@@ -46,27 +61,40 @@ export default function SectionChecklist({ section }: Props) {
         <div className="h-1.5 rounded bar-animate" style={{ width: `${pct}%`, background: col }} />
       </div>
       {section.intro && <p className="text-text-muted mb-4">{section.intro}</p>}
-      <ul className="space-y-3">
-        {section.checklist.map((item, idx) => (
-          <li key={idx} className="flex items-start gap-3">
-            <input
-              id={`chk-${idx}`}
-              type="checkbox"
-              className="mt-1"
-              checked={!!checked[idx]}
-              onChange={(e) => setChecked((c) => ({ ...c, [idx]: e.target.checked }))}
-            />
-            <div>
-              <div className="flex items-center gap-2">
-                <label htmlFor={`chk-${idx}`} className="font-medium cursor-pointer">
-                  {item.point}
+      <ul className="space-y-2">
+        {section.checklist.map((item, idx) => {
+          const isIgnored = !!ignored[idx]
+          return (
+            <li key={idx} className={`grid grid-cols-[auto_1fr] md:grid-cols-[auto_1fr] gap-3 p-3 rounded-lg ${isIgnored ? 'opacity-60' : ''} hover:bg-white/5`}>
+              <div className="flex flex-col items-center gap-2 pt-1">
+                <input
+                  id={`chk-${idx}`}
+                  type="checkbox"
+                  className=""
+                  checked={!!checked[idx]}
+                  onChange={(e) => setChecked((c) => ({ ...c, [idx]: e.target.checked }))}
+                />
+                <label className="text-[11px] text-text-muted inline-flex items-center gap-1">
+                  <input
+                    type="checkbox"
+                    checked={isIgnored}
+                    onChange={(e) => setIgnored((ig) => ({ ...ig, [idx]: e.target.checked }))}
+                  />
+                  Ignorar
                 </label>
-                <PriorityBadge value={item.priority as any} />
               </div>
-              <p className="text-sm text-text-muted mt-1 whitespace-pre-wrap">{item.details}</p>
-            </div>
-          </li>
-        ))}
+              <div>
+                <div className="flex items-center gap-2">
+                  <label htmlFor={`chk-${idx}`} className="font-medium cursor-pointer">
+                    {item.point}
+                  </label>
+                  <PriorityBadge value={item.priority as any} />
+                </div>
+                <p className="text-sm text-text-muted mt-1 whitespace-pre-wrap">{item.details}</p>
+              </div>
+            </li>
+          )
+        })}
       </ul>
     </div>
   )

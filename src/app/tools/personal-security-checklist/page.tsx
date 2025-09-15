@@ -4,6 +4,7 @@ import PriorityDashboard from '@/components/psc/PriorityDashboard'
 import ClearProgressButton from '@/components/psc/ClearProgressButton'
 import SectionProgressList from '@/components/psc/SectionProgressList'
 import RadarChart from '@/components/psc/RadarChart'
+import SecurityTipsCard from '@/components/psc/SecurityTipsCard'
 import { loadPscSections } from '@/lib/psc-data'
 
 export const metadata = {
@@ -48,6 +49,7 @@ export default function PSCIndexPage() {
                   <OverallProgress sections={sections} />
                 </div>
                 <PriorityDashboard sections={sections} />
+                <SecurityTipsCard />
               </div>
               <div className="">
                 <RadarChart sections={sections} />
