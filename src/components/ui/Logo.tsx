@@ -6,7 +6,7 @@ interface LogoProps {
   className?: string
 }
 
-const Logo: React.FC<LogoProps> = ({ href = '#inicio', className = '', ...rest }) => (
+const Logo: React.FC<LogoProps> = ({ href = '/#inicio', className = '', ...rest }) => (
   <a
     href={href}
     className={`font-mono text-2xl font-bold neon-text-primary ${className}`}

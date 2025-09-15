@@ -52,43 +52,40 @@ const HeroSection = () => {
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="max-w-4xl mx-auto"
+          className="max-w-5xl mx-auto"
         >
-          {/* Logo/Title */}
-          <motion.div variants={itemVariants} className="mb-8">
-            <h1 className="text-4xl md:text-7xl font-bold mb-4">
-              <span className="text-primary font-mono">YES</span>
-              <span className="text-white">LINUX</span>
-            </h1>
-            <div className="flex items-center justify-center space-x-4 text-sm md:text-base text-text-muted font-mono">
-              <Shield className="w-5 h-5 text-primary" />
-              <span>SEGURANÇA</span>
-              <Code className="w-5 h-5 text-secondary" />
-              <span>LIBERDADE</span>
-              <Zap className="w-5 h-5 text-accent" />
-              <span>INOVAÇÃO</span>
+          {/* Neon Card */}
+          <motion.div
+            variants={itemVariants}
+            className="mx-auto rounded-2xl border border-white/20 bg-white/10 backdrop-blur-md p-8 md:p-12"
+            style={{ boxShadow: '0 25px 50px -12px rgba(0,0,0,0.25), 0 0 30px rgba(0,255,65,0.35), 0 0 60px rgba(0,255,65,0.2)' }}
+          >
+            {/* Logo/Title */}
+            <div className="mb-6">
+              <h1 className="text-4xl md:text-7xl font-bold mb-2">
+                <span className="text-primary font-mono">YES</span>
+                <span className="text-white">LINUX</span>
+              </h1>
+              <div className="flex items-center justify-center gap-5 text-sm md:text-base text-text-muted font-mono">
+                <span className="inline-flex items-center gap-2"><Shield className="w-5 h-5 text-primary" /> SEGURANÇA</span>
+                <span className="inline-flex items-center gap-2"><Code className="w-5 h-5 text-secondary" /> LIBERDADE</span>
+                <span className="inline-flex items-center gap-2"><Zap className="w-5 h-5 text-accent" /> INOVAÇÃO</span>
+              </div>
             </div>
+
+            {/* Headline */}
+            <h2 className="text-2xl md:text-4xl font-bold mb-4 text-text-light leading-tight">
+              Segurança, liberdade e inovação em{' '}
+              <span className="text-primary typing-animation">cada linha de código</span>
+            </h2>
+
+            {/* Subtitle */}
+            <p className="text-lg md:text-xl text-text-muted max-w-3xl mx-auto leading-relaxed">
+              Na YesLinux, unimos <span className="text-primary">software livre</span>,{' '}
+              <span className="text-secondary">cibersegurança</span> e <span className="text-accent">tecnologia de ponta</span> para
+              proteger seu negócio e impulsionar sua transformação digital.
+            </p>
           </motion.div>
-
-          {/* Main Headline */}
-          <motion.h2 
-            variants={itemVariants}
-            className="text-2xl md:text-4xl font-bold mb-6 text-text-light leading-tight"
-          >
-            Segurança, liberdade e inovação em{' '}
-            <span className="text-primary typing-animation">cada linha de código</span>
-          </motion.h2>
-
-          {/* Subtitle */}
-          <motion.p 
-            variants={itemVariants}
-            className="text-lg md:text-xl text-text-muted mb-12 max-w-3xl mx-auto leading-relaxed"
-          >
-            Na YesLinux, unimos <span className="text-primary">software livre</span>, 
-            {' '}<span className="text-secondary">cibersegurança</span> e{' '}
-            <span className="text-accent">tecnologia de ponta</span> para proteger seu negócio 
-            e impulsionar sua transformação digital.
-          </motion.p>
 
         </motion.div>
 
