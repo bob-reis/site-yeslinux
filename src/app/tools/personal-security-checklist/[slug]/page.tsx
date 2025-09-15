@@ -13,13 +13,13 @@ export function generateStaticParams() {
 
 export const dynamic = 'force-static'
 
-export function generateMetadata({ params }: Props): Metadata {
+export function generateMetadata({ params }: Readonly<Props>): Metadata {
   const sections = loadPscSections()
   const s = sections.find((x) => x.slug === params.slug)
   return { title: s ? `${s.title} | PSC` : 'Checklist | PSC' }
 }
 
-export default function PSCSectionPage({ params }: Props) {
+export default function PSCSectionPage({ params }: Readonly<Props>) {
   const sections = loadPscSections()
   const s = sections.find((x) => x.slug === params.slug)
 

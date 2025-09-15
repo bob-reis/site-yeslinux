@@ -11,7 +11,7 @@ describe('loadPscSections', () => {
   })
 
   it('parses generated checklist array with as const', async () => {
-    vi.spyOn(fs, 'readFileSync').mockReturnValue(SAMPLE as unknown as Buffer)
+    vi.spyOn(fs, 'readFileSync').mockReturnValue(SAMPLE as unknown as string)
     const { loadPscSections } = await import('./psc-data')
     const result = loadPscSections()
     expect(result.length).toBe(1)
@@ -26,4 +26,3 @@ describe('loadPscSections', () => {
     expect(result).toEqual([])
   })
 })
-

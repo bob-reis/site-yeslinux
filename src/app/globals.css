@@ -75,12 +75,7 @@ body {
   transition: width 0.8s ease-out;
 }
 
-/* Dark glass panels tuned for contrast */
-.card-glass {
-  background: linear-gradient(180deg, rgba(18,22,28,0.85), rgba(12,16,22,0.78));
-  border: 1px solid rgba(255,255,255,0.06);
-  box-shadow: 0 4px 20px rgba(0,0,0,0.35);
-}
+/* Dark glass panels tuned for contrast - merged below */
 
 /* Terminal Styles */
 .terminal {
@@ -147,8 +142,9 @@ body {
 
 /* Glass + subtle animated matrix glow */
 .card-glass {
-  background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
-  border: 1px solid rgba(255,255,255,0.08);
+  background: linear-gradient(180deg, rgba(18,22,28,0.85), rgba(12,16,22,0.78));
+  border: 1px solid rgba(255,255,255,0.06);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.35);
   backdrop-filter: blur(8px);
   position: relative;
   overflow: hidden;
