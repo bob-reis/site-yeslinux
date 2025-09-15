@@ -165,6 +165,10 @@ npm run build            # Garante que o projeto compila (type-check via Next)
 - Avaliação de Maturidade: `/tools/maturidade`
 - ROSI Calculator (MVP): `/tools/rosi-calculator`
   - O que é ROSI: `/docs/rosi`
+- Personal Security Checklist (PSC): `/tools/personal-security-checklist`
+  - Integração nativa no Next.js (dashboard com progresso geral, gauges por prioridade, radar por seção e persistência em localStorage)
+  - Dados carregados de `personal-security-checklist/web/src/data/checklists.generated.ts`
+  - Pasta `personal-security-checklist/**` excluída da análise do Sonar (arquivos de referência)
 
 ### ROSI Calculator (MVP)
 - Cálculos: ROI (%), economia anual, perda evitada, payback e score de mitigação.
