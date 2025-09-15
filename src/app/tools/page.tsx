@@ -56,6 +56,15 @@ export default function ToolsIndexPage() {
           <div className="card-cyber rounded-lg p-5">
             <h2 className="text-lg font-semibold mb-2 text-primary flex items-center gap-2"><Shield className="w-5 h-5" /> Blue Team Tools</h2>
             <ul className="text-sm text-text-muted space-y-2">
+              <li>
+                <div className="flex flex-col">
+                  <span className="font-medium">Checklist de Segurança Pessoal</span>
+                  <span className="text-text-muted">Guia prático para reforçar a segurança e privacidade pessoal.</span>
+                  <a className="text-primary hover:underline w-fit inline-flex items-center gap-1" href="/personal-security-checklist">
+                    Abrir ferramenta <ArrowRight className="w-4 h-4" />
+                  </a>
+                </div>
+              </li>
               <li className="flex items-center justify-between opacity-80">
                 <span>Incident severity helper</span>
                 <span className="inline-flex items-center px-2 py-0.5 rounded border border-primary/30 text-primary/90 text-[10px] bg-primary/10">Em breve</span>
