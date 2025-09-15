@@ -2,7 +2,7 @@
 import React from 'react'
 import type { Sections } from '@/types/psc'
 
-type Props = { sections: Sections }
+type Props = Readonly<{ sections: Sections }>
 
 export default function OverallProgress({ sections }: Props) {
   const [done, setDone] = React.useState(0)
@@ -38,4 +38,3 @@ export default function OverallProgress({ sections }: Props) {
     </div>
   )
 }
-

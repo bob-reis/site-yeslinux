@@ -1,8 +1,9 @@
 "use client"
 import React from 'react'
 import type { Sections, Priority } from '@/types/psc'
+import Gauge from '@/components/psc/Gauge'
 
-type Props = { sections: Sections }
+type Props = Readonly<{ sections: Sections }>
 
 const PRIOS: Priority[] = ['essential', 'optional', 'advanced']
 const LABEL: Record<Priority, string> = { essential: 'Essencial', optional: 'Opcional', advanced: 'Avançado' }
@@ -21,7 +22,7 @@ export default function PriorityDashboard({ sections }: Props) {
     const dn: Record<Priority, number> = { essential: 0, optional: 0, advanced: 0 }
     sections.forEach((s) => {
       s.checklist.forEach((item, idx) => {
-        const p = item.priority as Priority
+        const p: Priority = item.priority
         if (!PRIOS.includes(p)) return
         tot[p]++
         try {
@@ -35,36 +36,7 @@ export default function PriorityDashboard({ sections }: Props) {
     setDone(dn)
   }, [sections])
 
-  // Semicircular gauge with animated stroke using pathLength normalization
-  const Gauge = ({ pct, color }: { pct: number; color: string }) => {
-    const clamped = Math.max(0, Math.min(100, pct))
-    const [val, setVal] = React.useState(0)
-    React.useEffect(() => {
-      const id = requestAnimationFrame(() => setVal(clamped))
-      return () => cancelAnimationFrame(id)
-    }, [clamped])
-
-    const cx = 60, cy = 60, r = 42
-    const start = { x: cx - r, y: cy }
-    const end = { x: cx + r, y: cy }
-    const path = `M ${start.x} ${start.y} A ${r} ${r} 0 0 1 ${end.x} ${end.y}`
-    return (
-      <svg width="120" height="80" viewBox="0 0 120 80">
-        <path d={path} stroke="rgba(255,255,255,0.12)" strokeWidth="10" fill="none" strokeLinecap="round" pathLength={100} />
-        <path
-          d={path}
-          stroke={color}
-          strokeWidth="10"
-          fill="none"
-          strokeLinecap="round"
-          pathLength={100}
-          strokeDasharray="100"
-          strokeDashoffset={100 - val}
-          className="stroke-animate"
-        />
-      </svg>
-    )
-  }
+  // Gauge moved to separate component
 
   return (
     <div className="grid md:grid-cols-3 gap-4">

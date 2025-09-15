@@ -1,7 +1,7 @@
 import React from 'react'
 import type { Priority } from '@/types/psc'
 
-type Props = { value: Priority }
+type Props = Readonly<{ value: Priority }>
 
 const styles: Record<Priority, { bg: string; text: string; label: string }> = {
   essential: { bg: 'rgba(0,255,65,0.15)', text: '#00ff41', label: 'Essencial' },
@@ -20,4 +20,3 @@ export default function PriorityBadge({ value }: Props) {
     </span>
   )
 }
-

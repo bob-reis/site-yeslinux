@@ -1,7 +1,7 @@
 "use client"
 import React from 'react'
 
-type Props = { className?: string }
+type Props = Readonly<{ className?: string }>
 
 export default function ClearProgressButton({ className = '' }: Props) {
   const onClear = () => {
@@ -22,4 +22,3 @@ export default function ClearProgressButton({ className = '' }: Props) {
     </button>
   )
 }
-
