@@ -61,11 +61,11 @@ export default function SectionChecklist({ section }: Props) {
         <div className="h-1.5 rounded bar-animate" style={{ width: `${pct}%`, background: col }} />
       </div>
       {section.intro && <p className="text-text-muted mb-4">{section.intro}</p>}
-      <ul className="space-y-3">
+      <ul className="divide-y divide-white/10 rounded-lg overflow-hidden">
         {section.checklist.map((item, idx) => {
           const isIgnored = !!ignored[idx]
           return (
-            <li key={idx} className={`p-3 rounded-lg hover:bg-white/5 ${isIgnored ? 'opacity-60' : ''}`}>
+            <li key={idx} className={`py-4 ${isIgnored ? 'opacity-60' : ''}`}>
               <div className="grid md:grid-cols-2 gap-4 items-start">
                 {/* Left: title + controls */}
                 <div className="flex items-start gap-3">
