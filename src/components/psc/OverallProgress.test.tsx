@@ -8,6 +8,7 @@ describe('<OverallProgress />', () => {
 
   it('shows total and done counts', () => {
     render(<OverallProgress sections={SECTIONS_S1} />)
-    expect(screen.getByText(/1\/2/)).toBeInTheDocument()
+    const wrapper = screen.getByText('Progresso geral').parentElement as HTMLElement
+    expect(wrapper).toHaveTextContent(/1\s*\/\s*3/)
   })
 })

@@ -12,8 +12,8 @@ export default function ClearProgressButton({ className = '' }: Props) {
     keys.forEach((k) => {
       if (k.startsWith('psc:')) localStorage.removeItem(k)
     })
-    // Força atualização para componentes de progresso
-    window.location.reload()
+    // Força atualização para componentes de progresso (ignora falha em testes/jsdom)
+    try { window.location.reload() } catch {}
   }
 
   return (
