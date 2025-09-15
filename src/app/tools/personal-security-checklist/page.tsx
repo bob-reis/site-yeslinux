@@ -30,7 +30,7 @@ export default function PSCIndexPage() {
         {sections.length === 0 ? (
           <div className="card-cyber rounded-lg p-6">
             <p className="text-text-muted">
-              Não foi possível carregar os dados da checklist. Verifique se o arquivo
+              Não foi possível carregar os dados da checklist. Verifique se o arquivo{' '}
               <code className="mx-1 text-primary">personal-security-checklist/web/src/data/checklists.generated.ts</code>{' '}
               existe no repositório.
             </p>

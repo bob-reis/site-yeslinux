@@ -2,7 +2,7 @@
 import React from 'react'
 import type { Sections } from '@/types/psc'
 
-type Props = { sections: Sections }
+type Props = Readonly<{ sections: Sections }>
 
 export default function RadarChart({ sections }: Props) {
   // Compute percent done per section
@@ -58,8 +58,7 @@ export default function RadarChart({ sections }: Props) {
 
   return (
     <div ref={wrapRef} className="card-glass rounded-xl p-6 md:p-8 flex items-center justify-center" style={{ overflow: 'visible' }}>
-      <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`}
-        role="img" aria-label="Gráfico de radar de progresso por seção">
+      <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`} aria-label="Gráfico de radar de progresso por seção">
         {/* Grid levels */}
         {levels.map((lv, idx) => (
           <polygon
@@ -96,7 +95,10 @@ export default function RadarChart({ sections }: Props) {
           const offset = Math.max(12, size * 0.06)
           const lx = cx + (radius + offset) * Math.cos(a)
           const ly = cy + (radius + offset) * Math.sin(a)
-          const anchor = Math.cos(a) > 0.35 ? 'start' : Math.cos(a) < -0.35 ? 'end' : 'middle'
+          const cos = Math.cos(a)
+          let anchor: 'start' | 'end' | 'middle' = 'middle'
+          if (cos > 0.35) anchor = 'start'
+          else if (cos < -0.35) anchor = 'end'
           const fs = Math.max(8, Math.round(size * 0.022))
           const words = s.title.split(' ')
           let line1 = ''

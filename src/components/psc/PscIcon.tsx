@@ -1,6 +1,13 @@
 import React from 'react'
 
-type Props = { name: string; color?: string; className?: string; size?: number }
+type Props = Readonly<{ name: string; color?: string; className?: string; size?: number }>
+
+const UserIcon = ({ className, common }: { className?: string; common: any }) => (
+  <svg viewBox="0 0 24 24" className={className} {...common}>
+    <circle cx="12" cy="7" r="4" />
+    <path d="M5.5 22a7.5 7.5 0 0 1 13 0" />
+  </svg>
+)
 
 export default function PscIcon({ name, color = '#00ff41', className, size = 20 }: Props) {
   const common = { width: size, height: size, fill: 'none', stroke: color, strokeWidth: 2, strokeLinecap: 'round', strokeLinejoin: 'round' } as const
@@ -33,12 +40,7 @@ export default function PscIcon({ name, color = '#00ff41', className, size = 20 
         </svg>
       )
     case 'social':
-      return (
-        <svg viewBox="0 0 24 24" className={className} {...common}>
-          <circle cx="12" cy="7" r="4" />
-          <path d="M5.5 22a7.5 7.5 0 0 1 13 0" />
-        </svg>
-      )
+      return <UserIcon className={className} common={common} />
     case 'network':
       return (
         <svg viewBox="0 0 24 24" className={className} {...common}>
@@ -74,12 +76,7 @@ export default function PscIcon({ name, color = '#00ff41', className, size = 20 
         </svg>
       )
     case 'human':
-      return (
-        <svg viewBox="0 0 24 24" className={className} {...common}>
-          <circle cx="12" cy="7" r="4" />
-          <path d="M5.5 22a7.5 7.5 0 0 1 13 0" />
-        </svg>
-      )
+      return <UserIcon className={className} common={common} />
     case 'physical':
       return (
         <svg viewBox="0 0 24 24" className={className} {...common}>
@@ -95,4 +92,3 @@ export default function PscIcon({ name, color = '#00ff41', className, size = 20 
       )
   }
 }
-
