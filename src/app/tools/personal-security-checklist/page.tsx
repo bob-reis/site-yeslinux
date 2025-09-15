@@ -3,6 +3,7 @@ import OverallProgress from '@/components/psc/OverallProgress'
 import PriorityDashboard from '@/components/psc/PriorityDashboard'
 import ClearProgressButton from '@/components/psc/ClearProgressButton'
 import SectionProgressList from '@/components/psc/SectionProgressList'
+import RadarChart from '@/components/psc/RadarChart'
 import { loadPscSections } from '@/lib/psc-data'
 
 export const metadata = {
@@ -35,24 +36,30 @@ export default function PSCIndexPage() {
             </p>
           </div>
         ) : (
-          <div className="grid lg:grid-cols-3 gap-6">
-            <div className="lg:col-span-1 space-y-6">
-              <div>
-                <div className="flex items-center justify-between mb-2">
-                  <h2 className="text-lg font-semibold">Seu Progresso</h2>
-                  <ClearProgressButton />
+          <>
+            {/* Dashboard row */}
+            <div className="grid lg:grid-cols-3 gap-6 mb-8">
+              <div className="space-y-6">
+                <div>
+                  <div className="flex items-center justify-between mb-2">
+                    <h2 className="text-lg font-semibold">Seu Progresso</h2>
+                    <ClearProgressButton />
+                  </div>
+                  <OverallProgress sections={sections} />
                 </div>
-                <OverallProgress sections={sections} />
+                <PriorityDashboard sections={sections} />
               </div>
-              <PriorityDashboard sections={sections} />
+              <div className="">
+                <RadarChart sections={sections} />
+              </div>
+              <div className="">
+                <SectionProgressList sections={sections} />
+              </div>
             </div>
-            <div className="lg:col-span-1">
-              <SectionProgressList sections={sections} />
-            </div>
-            <div className="lg:col-span-1">
-              <SectionLinkGrid sections={sections} />
-            </div>
-          </div>
+
+            {/* Cards row (below dashboard) */}
+            <SectionLinkGrid sections={sections} />
+          </>
         )}
       </section>
     </main>
