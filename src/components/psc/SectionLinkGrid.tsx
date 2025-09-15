@@ -37,7 +37,7 @@ export default function SectionLinkGrid({ sections }: Props) {
           <a
             key={s.slug}
             href={`/tools/personal-security-checklist/${s.slug}`}
-            className="card-cyber rounded-lg p-5 hover:shadow-lg transition-shadow"
+            className="card-glass rounded-xl p-5 hover:shadow-lg transition-shadow"
             style={{ borderLeft: `4px solid ${col}` }}
           >
             <div className="flex items-start gap-3 mb-2">
@@ -49,8 +49,8 @@ export default function SectionLinkGrid({ sections }: Props) {
               <span>{stat.done}/{stat.total} concluídos</span>
               <span className="font-medium" style={{ color: col }}>{pct}%</span>
             </div>
-            <div className="mt-1 h-1.5 bg-white/10 rounded">
-              <div className="h-1.5 rounded" style={{ width: `${pct}%`, background: col }} />
+            <div className="mt-1 h-1.5 bg-white/10 rounded overflow-hidden">
+              <div className="h-1.5 rounded bar-animate" style={{ width: `${pct}%`, background: col }} />
             </div>
           </a>
         )

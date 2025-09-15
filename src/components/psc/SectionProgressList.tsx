@@ -40,8 +40,8 @@ export default function SectionProgressList({ sections }: Props) {
                 {sec.title}
               </a>
               <div className="w-1/2">
-                <div className="h-1.5 bg-white/10 rounded">
-                  <div className="h-1.5 rounded" style={{ width: `${pct}%`, background: col }} />
+                <div className="h-1.5 bg-white/10 rounded overflow-hidden">
+                  <div className="h-1.5 rounded bar-animate" style={{ width: `${pct}%`, background: col }} />
                 </div>
               </div>
             </li>
@@ -51,4 +51,3 @@ export default function SectionProgressList({ sections }: Props) {
     </div>
   )
 }
-

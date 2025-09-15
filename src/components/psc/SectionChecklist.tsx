@@ -42,8 +42,8 @@ export default function SectionChecklist({ section }: Props) {
         <span>Progresso da seção</span>
         <span className="font-medium" style={{ color: col }}>{done}/{total} · {pct}%</span>
       </div>
-      <div className="h-1.5 bg-white/10 rounded mb-4">
-        <div className="h-1.5 rounded" style={{ width: `${pct}%`, background: col }} />
+      <div className="h-1.5 bg-white/10 rounded mb-4 overflow-hidden">
+        <div className="h-1.5 rounded bar-animate" style={{ width: `${pct}%`, background: col }} />
       </div>
       {section.intro && <p className="text-text-muted mb-4">{section.intro}</p>}
       <ul className="space-y-3">

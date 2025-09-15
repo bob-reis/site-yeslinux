@@ -67,6 +67,21 @@ body {
   text-shadow: 0 0 8px #00ff41, 0 0 16px #00ff41, 0 0 32px #00ff41;
 }
 
+/* Animated strokes and bars */
+.stroke-animate {
+  transition: stroke-dashoffset 0.9s ease-out;
+}
+.bar-animate {
+  transition: width 0.8s ease-out;
+}
+
+/* Dark glass panels tuned for contrast */
+.card-glass {
+  background: linear-gradient(180deg, rgba(18,22,28,0.85), rgba(12,16,22,0.78));
+  border: 1px solid rgba(255,255,255,0.06);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.35);
+}
+
 /* Terminal Styles */
 .terminal {
   background: rgba(1, 4, 9, 0.95);
