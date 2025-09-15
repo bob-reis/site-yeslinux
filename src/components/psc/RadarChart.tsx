@@ -91,11 +91,12 @@ export default function RadarChart({ sections }: Props) {
         {/* Section labels around */}
         {sections.map((s, i) => {
           const a = angleFor(i)
-          const offset = Math.max(16, size * 0.08)
-          const lx = cx + (radius - offset) * Math.cos(a)
-          const ly = cy + (radius - offset) * Math.sin(a)
+          // Place labels OUTSIDE the radar with a small font
+          const offset = Math.max(18, size * 0.12)
+          const lx = cx + (radius + offset) * Math.cos(a)
+          const ly = cy + (radius + offset) * Math.sin(a)
           const anchor = Math.cos(a) > 0.35 ? 'start' : Math.cos(a) < -0.35 ? 'end' : 'middle'
-          const fs = Math.max(10, Math.round(size * 0.028))
+          const fs = Math.max(8, Math.round(size * 0.022))
           const words = s.title.split(' ')
           let line1 = ''
           let line2 = ''
@@ -103,8 +104,8 @@ export default function RadarChart({ sections }: Props) {
             if ((line1 + ' ' + w).trim().length <= 12 || line1.length === 0) line1 = (line1 + ' ' + w).trim()
             else line2 = (line2 + ' ' + w).trim()
           }
-          // Compute vertical shift for two lines
-          const dy1 = line2 ? -3 : 0
+          // Slight vertical lift for two-line labels
+          const dy1 = line2 ? -2 : 0
           return (
             <text key={`lbl-${s.slug}`} x={lx} y={ly} fill="rgba(255,255,255,0.75)" fontSize={fs} textAnchor={anchor as any}>
               <tspan x={lx} dy={dy1}>{line1}</tspan>
