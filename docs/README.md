@@ -15,6 +15,8 @@ Bem-vindo à documentação técnica completa do site institucional YesLinux. Es
 - [**Padrões de Código**](./development/coding-standards.md)
 - [**Testes**](./development/testing.md)
 - [**Performance**](./development/performance.md)
+ - **Ferramentas**
+   - [Personal Security Checklist (PSC)](./tools/personal-security-checklist.md)
 
 ### 🔒 Segurança
 - [**Práticas de Segurança**](./security/practices.md)
@@ -47,7 +49,7 @@ Esta documentação reflete os **padrões de excelência YesLinux**:
 
 | Métrica | Valor Atual | Meta |
 |---------|-------------|------|
-| Test Coverage | 85%+ | 80%+ |
+| Test Coverage | 80%+ | 80%+ |
 | TypeScript Coverage | 100% | 100% |
 | Lighthouse Performance | 95+ | 90+ |
 | Security Rating (SonarCloud) | A | A |
