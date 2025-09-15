@@ -39,7 +39,7 @@ export default function RadarChart({ sections }: Props) {
 
   const cx = size / 2
   const cy = size / 2
-  const radius = size * 0.32
+  const radius = size * 0.30
   const levels = [25, 50, 75, 100]
   const count = Math.max(1, sections.length)
 
@@ -57,7 +57,7 @@ export default function RadarChart({ sections }: Props) {
     : ''
 
   return (
-    <div ref={wrapRef} className="card-glass rounded-xl p-4 flex items-center justify-center">
+    <div ref={wrapRef} className="card-glass rounded-xl p-6 md:p-8 flex items-center justify-center" style={{ overflow: 'visible' }}>
       <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`}
         role="img" aria-label="Gráfico de radar de progresso por seção">
         {/* Grid levels */}
@@ -91,13 +91,24 @@ export default function RadarChart({ sections }: Props) {
         {/* Section labels around */}
         {sections.map((s, i) => {
           const a = angleFor(i)
-          const offset = Math.max(8, size * 0.02)
+          const offset = Math.max(16, size * 0.08)
           const lx = cx + (radius - offset) * Math.cos(a)
           const ly = cy + (radius - offset) * Math.sin(a)
           const anchor = Math.cos(a) > 0.35 ? 'start' : Math.cos(a) < -0.35 ? 'end' : 'middle'
+          const fs = Math.max(10, Math.round(size * 0.028))
+          const words = s.title.split(' ')
+          let line1 = ''
+          let line2 = ''
+          for (const w of words) {
+            if ((line1 + ' ' + w).trim().length <= 12 || line1.length === 0) line1 = (line1 + ' ' + w).trim()
+            else line2 = (line2 + ' ' + w).trim()
+          }
+          // Compute vertical shift for two lines
+          const dy1 = line2 ? -3 : 0
           return (
-            <text key={`lbl-${s.slug}`} x={lx} y={ly} fill="rgba(255,255,255,0.75)" fontSize={Math.max(10, Math.round(size * 0.03))} textAnchor={anchor as any}>
-              {s.title}
+            <text key={`lbl-${s.slug}`} x={lx} y={ly} fill="rgba(255,255,255,0.75)" fontSize={fs} textAnchor={anchor as any}>
+              <tspan x={lx} dy={dy1}>{line1}</tspan>
+              {line2 && <tspan x={lx} dy={fs * 1.1}>{line2}</tspan>}
             </text>
           )
         })}
