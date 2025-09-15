@@ -61,36 +61,47 @@ export default function SectionChecklist({ section }: Props) {
         <div className="h-1.5 rounded bar-animate" style={{ width: `${pct}%`, background: col }} />
       </div>
       {section.intro && <p className="text-text-muted mb-4">{section.intro}</p>}
-      <ul className="space-y-2">
+      <ul className="space-y-3">
         {section.checklist.map((item, idx) => {
           const isIgnored = !!ignored[idx]
           return (
-            <li key={idx} className={`grid grid-cols-[auto_1fr] md:grid-cols-[auto_1fr] gap-3 p-3 rounded-lg ${isIgnored ? 'opacity-60' : ''} hover:bg-white/5`}>
-              <div className="flex flex-col items-center gap-2 pt-1">
-                <input
-                  id={`chk-${idx}`}
-                  type="checkbox"
-                  className=""
-                  checked={!!checked[idx]}
-                  onChange={(e) => setChecked((c) => ({ ...c, [idx]: e.target.checked }))}
-                />
-                <label className="text-[11px] text-text-muted inline-flex items-center gap-1">
+            <li key={idx} className={`p-3 rounded-lg hover:bg-white/5 ${isIgnored ? 'opacity-60' : ''}`}>
+              <div className="grid md:grid-cols-2 gap-4 items-start">
+                {/* Left: title + controls */}
+                <div className="flex items-start gap-3">
                   <input
+                    id={`chk-${idx}`}
                     type="checkbox"
-                    checked={isIgnored}
-                    onChange={(e) => setIgnored((ig) => ({ ...ig, [idx]: e.target.checked }))}
+                    className="mt-1"
+                    checked={!!checked[idx]}
+                    onChange={(e) => setChecked((c) => ({ ...c, [idx]: e.target.checked }))}
                   />
-                  Ignorar
-                </label>
-              </div>
-              <div>
-                <div className="flex items-center gap-2">
-                  <label htmlFor={`chk-${idx}`} className="font-medium cursor-pointer">
-                    {item.point}
-                  </label>
-                  <PriorityBadge value={item.priority as any} />
+                  <div>
+                    <div className="flex items-center gap-3">
+                      <label htmlFor={`chk-${idx}`} className="cursor-pointer text-base font-semibold leading-snug">
+                        {item.point}
+                      </label>
+                      <PriorityBadge value={item.priority as any} />
+                    </div>
+                    <label className="mt-2 inline-flex items-center gap-2 cursor-pointer select-none">
+                      <input
+                        type="checkbox"
+                        className="sr-only peer"
+                        checked={isIgnored}
+                        onChange={(e) => setIgnored((ig) => ({ ...ig, [idx]: e.target.checked }))}
+                        aria-label="Ignorar item"
+                      />
+                      <div className="w-9 h-5 bg-white/10 rounded-full relative transition-colors peer-checked:bg-primary/25">
+                        <span className="absolute top-0.5 left-0.5 w-4 h-4 rounded-full bg-white/60 transition-transform peer-checked:translate-x-4" />
+                      </div>
+                      <span className="text-xs text-text-muted">Ignorar</span>
+                    </label>
+                  </div>
                 </div>
-                <p className="text-sm text-text-muted mt-1 whitespace-pre-wrap">{item.details}</p>
+                {/* Right: details */}
+                <div>
+                  <p className="text-sm leading-relaxed text-text-muted whitespace-pre-wrap">{item.details}</p>
+                </div>
               </div>
             </li>
           )

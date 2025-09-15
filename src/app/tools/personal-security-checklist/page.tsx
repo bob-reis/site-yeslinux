@@ -39,7 +39,7 @@ export default function PSCIndexPage() {
         ) : (
           <>
             {/* Dashboard row */}
-            <div className="grid lg:grid-cols-3 gap-6 mb-8">
+            <div className="grid gap-6 mb-8" style={{ gridTemplateColumns: '1fr 1.45fr 0.85fr' }}>
               <div className="space-y-6">
                 <div>
                   <div className="flex items-center justify-between mb-2">
@@ -52,9 +52,11 @@ export default function PSCIndexPage() {
                 <SecurityTipsCard />
               </div>
               <div className="">
+                <h2 className="text-sm font-semibold text-text-muted mb-2">Progresso por Seção</h2>
                 <RadarChart sections={sections} />
               </div>
               <div className="">
+                <h2 className="text-sm font-semibold text-text-muted mb-2">Por Seção</h2>
                 <SectionProgressList sections={sections} />
               </div>
             </div>

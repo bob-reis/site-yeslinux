@@ -37,9 +37,12 @@ export default function PSCSectionPage({ params }: Props) {
     <main className="min-h-screen py-10">
       <section className="container mx-auto px-4">
         <div className="flex items-center justify-between mb-4">
-          <div>
-            <Link href="/tools/personal-security-checklist" className="text-primary hover:underline">← Voltar</Link>
-            <h1 className="text-2xl font-semibold mt-1">{s.title}</h1>
+          <div className="flex items-center gap-3">
+            <Link href="/tools/personal-security-checklist" className="btn-cyber px-3 py-1.5 rounded inline-flex items-center gap-1">
+              <span>←</span>
+              <span>Voltar</span>
+            </Link>
+            <h1 className="text-2xl font-semibold">{s.title}</h1>
           </div>
           <ClearProgressButton />
         </div>

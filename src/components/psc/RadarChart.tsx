@@ -22,10 +22,10 @@ export default function RadarChart({ sections }: Props) {
     setPercents(arr)
   }, [sections])
 
-  const size = 360
+  const size = 380
   const cx = size / 2
   const cy = size / 2
-  const radius = size * 0.30
+  const radius = size * 0.31
   const levels = [25, 50, 75, 100]
   const count = Math.max(1, sections.length)
 
