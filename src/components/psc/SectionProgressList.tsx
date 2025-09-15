@@ -26,20 +26,20 @@ export default function SectionProgressList({ sections }: Props) {
   }
 
   return (
-    <div className="card-glass rounded-xl p-5">
-      <ul className="space-y-3">
+    <div className="card-glass rounded-xl p-4">
+      <ul className="space-y-2">
         {sections.map((sec) => {
           const col = colorMap[sec.color] || '#00ff41'
           const done = state[sec.slug] || 0
           const total = sec.checklist.length
           const pct = total ? Math.round((done / total) * 100) : 0
           return (
-            <li key={sec.slug} className="flex items-center gap-3">
-              <PscIcon name={sec.icon} color={col} size={18} />
-              <a href={`/tools/personal-security-checklist/${sec.slug}`} className="flex-1 hover:underline" style={{ color: col }}>
+            <li key={sec.slug} className="flex items-center gap-2 text-sm">
+              <PscIcon name={sec.icon} color={col} size={16} />
+              <a href={`/tools/personal-security-checklist/${sec.slug}`} className="flex-1 hover:underline truncate" style={{ color: col }}>
                 {sec.title}
               </a>
-              <div className="w-1/2">
+              <div className="w-2/5">
                 <div className="h-1.5 bg-white/10 rounded overflow-hidden">
                   <div className="h-1.5 rounded bar-animate" style={{ width: `${pct}%`, background: col }} />
                 </div>

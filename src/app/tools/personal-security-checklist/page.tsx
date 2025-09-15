@@ -39,7 +39,7 @@ export default function PSCIndexPage() {
         ) : (
           <>
             {/* Dashboard row */}
-            <div className="grid gap-6 mb-8" style={{ gridTemplateColumns: '1fr 1.45fr 0.85fr' }}>
+            <div className="grid gap-6 mb-8" style={{ gridTemplateColumns: 'minmax(320px,1fr) minmax(420px,1.7fr) minmax(260px,0.8fr)' }}>
               <div className="space-y-6">
                 <div>
                   <div className="flex items-center justify-between mb-2">

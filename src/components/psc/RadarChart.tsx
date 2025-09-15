@@ -7,6 +7,8 @@ type Props = { sections: Sections }
 export default function RadarChart({ sections }: Props) {
   // Compute percent done per section
   const [percents, setPercents] = React.useState<number[]>([])
+  const wrapRef = React.useRef<HTMLDivElement | null>(null)
+  const [size, setSize] = React.useState(380)
 
   React.useEffect(() => {
     const arr = sections.map((s) => {
@@ -22,10 +24,22 @@ export default function RadarChart({ sections }: Props) {
     setPercents(arr)
   }, [sections])
 
-  const size = 380
+  // Responsive: fill available width (with min/max)
+  React.useEffect(() => {
+    if (!wrapRef.current || typeof ResizeObserver === 'undefined') return
+    const obs = new ResizeObserver((entries) => {
+      const w = entries[0]?.contentRect?.width || 380
+      // Leave some breathing space inside the card
+      const next = Math.max(320, Math.min(540, Math.floor(w - 24)))
+      setSize(next)
+    })
+    obs.observe(wrapRef.current)
+    return () => obs.disconnect()
+  }, [])
+
   const cx = size / 2
   const cy = size / 2
-  const radius = size * 0.31
+  const radius = size * 0.35
   const levels = [25, 50, 75, 100]
   const count = Math.max(1, sections.length)
 
@@ -43,7 +57,7 @@ export default function RadarChart({ sections }: Props) {
     : ''
 
   return (
-    <div className="card-glass rounded-xl p-4 flex items-center justify-center">
+    <div ref={wrapRef} className="card-glass rounded-xl p-4 flex items-center justify-center">
       <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`}
         role="img" aria-label="Gráfico de radar de progresso por seção">
         {/* Grid levels */}
@@ -70,18 +84,18 @@ export default function RadarChart({ sections }: Props) {
         ))}
         {/* Percent labels */}
         {levels.map((lv) => (
-          <text key={`lvl-${lv}`} x={cx} y={cy - (lv / 100) * radius} fill="rgba(255,255,255,0.6)" fontSize="11" textAnchor="middle" dy={-2}>
+          <text key={`lvl-${lv}`} x={cx} y={cy - (lv / 100) * radius} fill="rgba(255,255,255,0.6)" fontSize={Math.max(9, Math.round(size * 0.028))} textAnchor="middle" dy={-2}>
             {lv}%
           </text>
         ))}
         {/* Section labels around */}
         {sections.map((s, i) => {
           const a = angleFor(i)
-          const lx = cx + (radius + 16) * Math.cos(a)
-          const ly = cy + (radius + 16) * Math.sin(a)
+          const lx = cx + (radius + Math.max(12, size * 0.04)) * Math.cos(a)
+          const ly = cy + (radius + Math.max(12, size * 0.04)) * Math.sin(a)
           const anchor = Math.cos(a) > 0.35 ? 'start' : Math.cos(a) < -0.35 ? 'end' : 'middle'
           return (
-            <text key={`lbl-${s.slug}`} x={lx} y={ly} fill="rgba(255,255,255,0.75)" fontSize="11" textAnchor={anchor as any}>
+            <text key={`lbl-${s.slug}`} x={lx} y={ly} fill="rgba(255,255,255,0.75)" fontSize={Math.max(10, Math.round(size * 0.034))} textAnchor={anchor as any}>
               {s.title}
             </text>
           )
