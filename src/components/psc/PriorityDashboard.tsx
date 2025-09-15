@@ -35,40 +35,40 @@ export default function PriorityDashboard({ sections }: Props) {
     setDone(dn)
   }, [sections])
 
+  // Semicircular gauge (arc) like the original
+  const Gauge = ({ pct, color }: { pct: number; color: string }) => {
+    // Arc from 180deg to 0deg
+    const cx = 60, cy = 60, r = 42
+    const start = { x: cx - r, y: cy }
+    const end = { x: cx + r, y: cy }
+    const clamped = Math.max(0, Math.min(100, pct))
+    const angle = Math.PI * (1 - clamped / 100) // PI..0
+    const x = cx + r * Math.cos(angle)
+    const y = cy - r * Math.sin(angle)
+    const pathBg = `M ${start.x} ${start.y} A ${r} ${r} 0 0 1 ${end.x} ${end.y}`
+    const pathFg = `M ${start.x} ${start.y} A ${r} ${r} 0 ${clamped > 50 ? 1 : 0} 1 ${x} ${y}`
+    return (
+      <svg width="120" height="80" viewBox="0 0 120 80">
+        <path d={pathBg} stroke="rgba(255,255,255,0.12)" strokeWidth="10" fill="none" strokeLinecap="round" />
+        <path d={pathFg} stroke={color} strokeWidth="10" fill="none" strokeLinecap="round" />
+      </svg>
+    )
+  }
+
   return (
     <div className="grid md:grid-cols-3 gap-4">
       {PRIOS.map((p) => {
         const t = total[p] || 0
         const d = done[p] || 0
         const pct = t ? Math.round((d / t) * 100) : 0
-        const r = 34 // radius
-        const c = 2 * Math.PI * r
-        const offset = c - (pct / 100) * c
         return (
-          <div key={p} className="card-cyber rounded-lg p-4 flex items-center gap-4">
-            <svg width="90" height="90" viewBox="0 0 90 90">
-              <circle cx="45" cy="45" r={r} stroke="rgba(255,255,255,0.12)" strokeWidth="8" fill="none" />
-              <circle
-                cx="45"
-                cy="45"
-                r={r}
-                stroke={COLOR[p]}
-                strokeWidth="8"
-                strokeDasharray={`${c} ${c}`}
-                strokeDashoffset={offset}
-                strokeLinecap="round"
-                fill="none"
-              />
-              <text x="50%" y="52%" textAnchor="middle" dominantBaseline="middle" fontSize="16" fill={COLOR[p]}>{pct}%</text>
-            </svg>
-            <div>
-              <div className="text-sm text-text-muted">{LABEL[p]}</div>
-              <div className="text-lg font-semibold" style={{ color: COLOR[p] }}>{d}/{t}</div>
-            </div>
+          <div key={p} className="card-glass rounded-xl p-4 flex flex-col items-center gap-2">
+            <Gauge pct={pct} color={COLOR[p]} />
+            <div className="text-base font-semibold" style={{ color: COLOR[p] }}>{LABEL[p]}</div>
+            <div className="text-xs text-text-muted">{d}/{t} itens</div>
           </div>
         )
       })}
     </div>
   )
 }
-

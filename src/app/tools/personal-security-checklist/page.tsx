@@ -2,6 +2,7 @@ import SectionLinkGrid from '@/components/psc/SectionLinkGrid'
 import OverallProgress from '@/components/psc/OverallProgress'
 import PriorityDashboard from '@/components/psc/PriorityDashboard'
 import ClearProgressButton from '@/components/psc/ClearProgressButton'
+import SectionProgressList from '@/components/psc/SectionProgressList'
 import { loadPscSections } from '@/lib/psc-data'
 
 export const metadata = {
@@ -34,18 +35,24 @@ export default function PSCIndexPage() {
             </p>
           </div>
         ) : (
-          <>
-            <div className="mb-6">
-              <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+          <div className="grid lg:grid-cols-3 gap-6">
+            <div className="lg:col-span-1 space-y-6">
+              <div>
+                <div className="flex items-center justify-between mb-2">
+                  <h2 className="text-lg font-semibold">Seu Progresso</h2>
+                  <ClearProgressButton />
+                </div>
                 <OverallProgress sections={sections} />
-                <ClearProgressButton className="md:ml-4" />
               </div>
-            </div>
-            <div className="mb-6">
               <PriorityDashboard sections={sections} />
             </div>
-            <SectionLinkGrid sections={sections} />
-          </>
+            <div className="lg:col-span-1">
+              <SectionProgressList sections={sections} />
+            </div>
+            <div className="lg:col-span-1">
+              <SectionLinkGrid sections={sections} />
+            </div>
+          </div>
         )}
       </section>
     </main>
