@@ -5,7 +5,7 @@ import PriorityBadge from '@/components/psc/PriorityBadge'
 import PscIcon from '@/components/psc/PscIcon'
 import { PSC_COLORS } from '@/lib/psc-colors'
 
-type Props = { section: Section }
+type Props = Readonly<{ section: Section }>
 
 export default function SectionChecklist({ section }: Props) {
   const storageKey = `psc:${section.slug}:checks`
@@ -62,7 +62,7 @@ export default function SectionChecklist({ section }: Props) {
         {section.checklist.map((item, idx) => {
           const isIgnored = !!ignored[idx]
           return (
-            <li key={idx} className={`py-4 ${isIgnored ? 'opacity-60' : ''}`}>
+            <li key={`${section.slug}-${item.point}`} className={`py-4 ${isIgnored ? 'opacity-60' : ''}`}>
               <div className="grid md:grid-cols-2 gap-4 items-start">
                 {/* Left: title + controls */}
                 <div className="flex items-start gap-3">

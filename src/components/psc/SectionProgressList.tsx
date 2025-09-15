@@ -3,7 +3,7 @@ import React from 'react'
 import type { Sections } from '@/types/psc'
 import PscIcon from '@/components/psc/PscIcon'
 
-type Props = { sections: Sections }
+type Props = Readonly<{ sections: Sections }>
 
 export default function SectionProgressList({ sections }: Props) {
   const [state, setState] = React.useState<Record<string, number>>({})

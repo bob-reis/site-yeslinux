@@ -7,7 +7,6 @@ describe('<ClearProgressButton />', () => {
     localStorage.clear()
     localStorage.setItem('psc:x:checks', JSON.stringify({ 0: true }))
     vi.spyOn(window, 'confirm').mockReturnValue(true as any)
-    vi.spyOn(window.location, 'reload').mockImplementation(() => {})
   })
 
   it('clears local progress and reloads', () => {
@@ -16,4 +15,3 @@ describe('<ClearProgressButton />', () => {
     expect(localStorage.getItem('psc:x:checks')).toBeNull()
   })
 })
-

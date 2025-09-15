@@ -4,7 +4,7 @@ import type { Sections } from '@/types/psc'
 import PscIcon from '@/components/psc/PscIcon'
 import { PSC_COLORS } from '@/lib/psc-colors'
 
-type Props = { sections: Sections }
+type Props = Readonly<{ sections: Sections }>
 
 export default function SectionLinkGrid({ sections }: Props) {
   const [progress, setProgress] = React.useState<Record<string, { done: number; total: number }>>({})
