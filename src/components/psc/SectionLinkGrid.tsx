@@ -2,6 +2,7 @@
 import React from 'react'
 import type { Sections } from '@/types/psc'
 import PscIcon from '@/components/psc/PscIcon'
+import { PSC_COLORS } from '@/lib/psc-colors'
 
 type Props = { sections: Sections }
 
@@ -28,11 +29,7 @@ export default function SectionLinkGrid({ sections }: Props) {
       {sections.map((s) => {
         const stat = progress[s.slug] || { done: 0, total: s.checklist.length }
         const pct = s.checklist.length ? Math.round((stat.done / stat.total) * 100) : 0
-        const colorMap: Record<string, string> = {
-          yellow: '#facc15', emerald: '#10b981', teal: '#14b8a6', cyan: '#06b6d4', blue: '#3b82f6',
-          violet: '#8b5cf6', fuchsia: '#d946ef', red: '#ef4444', purple: '#a855f7', indigo: '#6366f1', lime: '#84cc16',
-        }
-        const col = colorMap[s.color] || '#00ff41'
+        const col = PSC_COLORS[s.color] || '#00ff41'
         return (
           <a
             key={s.slug}

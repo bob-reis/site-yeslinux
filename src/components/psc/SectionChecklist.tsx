@@ -3,6 +3,7 @@ import React from 'react'
 import type { Section } from '@/types/psc'
 import PriorityBadge from '@/components/psc/PriorityBadge'
 import PscIcon from '@/components/psc/PscIcon'
+import { PSC_COLORS } from '@/lib/psc-colors'
 
 type Props = { section: Section }
 
@@ -41,11 +42,7 @@ export default function SectionChecklist({ section }: Props) {
     } catch {}
   }, [ignored, ignoreKey])
 
-  const colorMap: Record<string, string> = {
-    yellow: '#facc15', emerald: '#10b981', teal: '#14b8a6', cyan: '#06b6d4', blue: '#3b82f6',
-    violet: '#8b5cf6', fuchsia: '#d946ef', red: '#ef4444', purple: '#a855f7', indigo: '#6366f1', lime: '#84cc16',
-  }
-  const col = colorMap[section.color] || '#00ff41'
+  const col = PSC_COLORS[section.color] || '#00ff41'
 
   return (
     <div className="card-cyber rounded-lg p-5" style={{ borderLeft: `4px solid ${col}` }}>
