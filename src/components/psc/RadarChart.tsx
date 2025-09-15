@@ -92,7 +92,8 @@ export default function RadarChart({ sections }: Props) {
         {sections.map((s, i) => {
           const a = angleFor(i)
           // Place labels OUTSIDE the radar with a small font
-          const offset = Math.max(18, size * 0.12)
+          // Bring labels closer to the polygon (~50% of previous distance)
+          const offset = Math.max(12, size * 0.06)
           const lx = cx + (radius + offset) * Math.cos(a)
           const ly = cy + (radius + offset) * Math.sin(a)
           const anchor = Math.cos(a) > 0.35 ? 'start' : Math.cos(a) < -0.35 ? 'end' : 'middle'
