@@ -39,7 +39,7 @@ export default function RadarChart({ sections }: Props) {
 
   const cx = size / 2
   const cy = size / 2
-  const radius = size * 0.35
+  const radius = size * 0.32
   const levels = [25, 50, 75, 100]
   const count = Math.max(1, sections.length)
 
@@ -91,11 +91,12 @@ export default function RadarChart({ sections }: Props) {
         {/* Section labels around */}
         {sections.map((s, i) => {
           const a = angleFor(i)
-          const lx = cx + (radius + Math.max(12, size * 0.04)) * Math.cos(a)
-          const ly = cy + (radius + Math.max(12, size * 0.04)) * Math.sin(a)
+          const offset = Math.max(8, size * 0.02)
+          const lx = cx + (radius - offset) * Math.cos(a)
+          const ly = cy + (radius - offset) * Math.sin(a)
           const anchor = Math.cos(a) > 0.35 ? 'start' : Math.cos(a) < -0.35 ? 'end' : 'middle'
           return (
-            <text key={`lbl-${s.slug}`} x={lx} y={ly} fill="rgba(255,255,255,0.75)" fontSize={Math.max(10, Math.round(size * 0.034))} textAnchor={anchor as any}>
+            <text key={`lbl-${s.slug}`} x={lx} y={ly} fill="rgba(255,255,255,0.75)" fontSize={Math.max(10, Math.round(size * 0.03))} textAnchor={anchor as any}>
               {s.title}
             </text>
           )

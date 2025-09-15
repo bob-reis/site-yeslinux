@@ -2,7 +2,6 @@ import SectionLinkGrid from '@/components/psc/SectionLinkGrid'
 import OverallProgress from '@/components/psc/OverallProgress'
 import PriorityDashboard from '@/components/psc/PriorityDashboard'
 import ClearProgressButton from '@/components/psc/ClearProgressButton'
-import SectionProgressList from '@/components/psc/SectionProgressList'
 import RadarChart from '@/components/psc/RadarChart'
 import SecurityTipsCard from '@/components/psc/SecurityTipsCard'
 import { loadPscSections } from '@/lib/psc-data'
@@ -38,8 +37,8 @@ export default function PSCIndexPage() {
           </div>
         ) : (
           <>
-            {/* Dashboard row */}
-            <div className="grid gap-6 mb-8" style={{ gridTemplateColumns: 'minmax(320px,1fr) minmax(420px,1.7fr) minmax(260px,0.8fr)' }}>
+            {/* Dashboard row (2 colunas para dar mais espaço ao radar) */}
+            <div className="grid gap-6 mb-8" style={{ gridTemplateColumns: 'minmax(320px,1fr) minmax(540px,2fr)' }}>
               <div className="space-y-6">
                 <div>
                   <div className="flex items-center justify-between mb-2">
@@ -54,10 +53,6 @@ export default function PSCIndexPage() {
               <div className="">
                 <h2 className="text-sm font-semibold text-text-muted mb-2">Progresso por Seção</h2>
                 <RadarChart sections={sections} />
-              </div>
-              <div className="">
-                <h2 className="text-sm font-semibold text-text-muted mb-2">Por Seção</h2>
-                <SectionProgressList sections={sections} />
               </div>
             </div>
 
