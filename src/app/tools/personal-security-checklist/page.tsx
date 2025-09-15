@@ -1,4 +1,5 @@
 import SectionLinkGrid from '@/components/psc/SectionLinkGrid'
+import OverallProgress from '@/components/psc/OverallProgress'
 import { loadPscSections } from '@/lib/psc-data'
 
 export const metadata = {
@@ -13,10 +14,15 @@ export default function PSCIndexPage() {
   return (
     <main className="min-h-screen py-10">
       <section className="container mx-auto px-4">
-        <h1 className="text-3xl font-bold mb-3">Checklist de Segurança Pessoal</h1>
-        <p className="text-text-muted mb-8">
-          Guia prático para reforçar sua segurança e privacidade digital. Dados ficam apenas no seu navegador.
-        </p>
+        <div className="hero mb-8 mx-auto max-w-6xl w-full">
+          <div className="hero-content text-center w-full p-6">
+            <div className="w-full flex flex-col items-center bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20 shadow-2xl p-10 transition-all duration-300" style={{ boxShadow: '0 25px 50px -12px rgba(0,0,0,0.25), 0 0 30px rgba(0,255,65,0.3), 0 0 60px rgba(0,255,65,0.2)' }}>
+              <p className="opacity-80 text-xl">O Guia Definitivo</p>
+              <h1 className="text-4xl md:text-5xl font-bold" style={{ color: '#00ff41' }}>Checklist de Segurança Pessoal</h1>
+              <p className="subtitle pt-2 opacity-90 text-lg">Guia prático para reforçar sua segurança e privacidade digital</p>
+            </div>
+          </div>
+        </div>
         {sections.length === 0 ? (
           <div className="card-cyber rounded-lg p-6">
             <p className="text-text-muted">
@@ -26,7 +32,12 @@ export default function PSCIndexPage() {
             </p>
           </div>
         ) : (
-          <SectionLinkGrid sections={sections} />
+          <>
+            <div className="mb-6">
+              <OverallProgress sections={sections} />
+            </div>
+            <SectionLinkGrid sections={sections} />
+          </>
         )}
       </section>
     </main>
