@@ -66,6 +66,12 @@ Thumbs.db
 
 # Vercel
 .vercel
+.vercel/output/
+.turbo/
+.vitest/
+.next/
+.next/cache/
+.next/static/
 
 # TypeScript
 *.tsbuildinfo
@@ -79,3 +85,4 @@ CLAUDE.md
 AGENTS.md
 Projetos-Yeslinux/
 referencia/
+personal-security-checklist/web/node_modules/

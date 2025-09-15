@@ -60,7 +60,7 @@ export default function ToolsIndexPage() {
                 <div className="flex flex-col">
                   <span className="font-medium">Checklist de Segurança Pessoal</span>
                   <span className="text-text-muted">Guia prático para reforçar a segurança e privacidade pessoal.</span>
-                  <a className="text-primary hover:underline w-fit inline-flex items-center gap-1" href="/personal-security-checklist">
+                  <a className="text-primary hover:underline w-fit inline-flex items-center gap-1" href="/tools/personal-security-checklist">
                     Abrir ferramenta <ArrowRight className="w-4 h-4" />
                   </a>
                 </div>
