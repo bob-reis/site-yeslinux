@@ -9,6 +9,8 @@ export function generateStaticParams() {
   return sections.map((s) => ({ slug: s.slug }))
 }
 
+export const dynamic = 'force-static'
+
 export function generateMetadata({ params }: Props): Metadata {
   const sections = loadPscSections()
   const s = sections.find((x) => x.slug === params.slug)
@@ -39,4 +41,3 @@ export default function PSCSectionPage({ params }: Props) {
     </main>
   )
 }
-

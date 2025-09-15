@@ -5,6 +5,8 @@ export const metadata = {
   title: 'Personal Security Checklist | YesLinux Tools',
 }
 
+export const dynamic = 'force-static'
+
 export default function PSCIndexPage() {
   const sections = loadPscSections()
 
@@ -30,4 +32,3 @@ export default function PSCIndexPage() {
     </main>
   )
 }
-
