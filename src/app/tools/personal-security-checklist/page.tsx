@@ -1,5 +1,7 @@
 import SectionLinkGrid from '@/components/psc/SectionLinkGrid'
 import OverallProgress from '@/components/psc/OverallProgress'
+import PriorityDashboard from '@/components/psc/PriorityDashboard'
+import ClearProgressButton from '@/components/psc/ClearProgressButton'
 import { loadPscSections } from '@/lib/psc-data'
 
 export const metadata = {
@@ -34,7 +36,13 @@ export default function PSCIndexPage() {
         ) : (
           <>
             <div className="mb-6">
-              <OverallProgress sections={sections} />
+              <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+                <OverallProgress sections={sections} />
+                <ClearProgressButton className="md:ml-4" />
+              </div>
+            </div>
+            <div className="mb-6">
+              <PriorityDashboard sections={sections} />
             </div>
             <SectionLinkGrid sections={sections} />
           </>

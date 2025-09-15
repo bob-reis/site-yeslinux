@@ -59,6 +59,14 @@ body {
   box-shadow: 0 0 10px var(--accent);
 }
 
+/* Neon text for logo/header */
+.neon-text-primary {
+  text-shadow: 0 0 6px #00ff41, 0 0 12px #00ff41, 0 0 24px #00ff41;
+}
+.neon-text-primary:hover {
+  text-shadow: 0 0 8px #00ff41, 0 0 16px #00ff41, 0 0 32px #00ff41;
+}
+
 /* Terminal Styles */
 .terminal {
   background: rgba(1, 4, 9, 0.95);

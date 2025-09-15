@@ -1,4 +1,6 @@
+import Link from 'next/link'
 import SectionChecklist from '@/components/psc/SectionChecklist'
+import ClearProgressButton from '@/components/psc/ClearProgressButton'
 import { loadPscSections } from '@/lib/psc-data'
 import type { Metadata } from 'next'
 
@@ -34,7 +36,13 @@ export default function PSCSectionPage({ params }: Props) {
   return (
     <main className="min-h-screen py-10">
       <section className="container mx-auto px-4">
-        <h1 className="text-2xl font-semibold mb-2">{s.title}</h1>
+        <div className="flex items-center justify-between mb-4">
+          <div>
+            <Link href="/tools/personal-security-checklist" className="text-primary hover:underline">← Voltar</Link>
+            <h1 className="text-2xl font-semibold mt-1">{s.title}</h1>
+          </div>
+          <ClearProgressButton />
+        </div>
         <p className="text-text-muted mb-6">{s.description}</p>
         <SectionChecklist section={s} />
       </section>
